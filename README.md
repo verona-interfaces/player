@@ -1,5 +1,4 @@
-Indexed DB
-----------
+# Verona Interface Definition
 
 This is a repository for the development of the Verona Interface (First Edition) definition.
 * [Latest Editor's Draft](https://iqb.github.io/VeronaInterface/)
