@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Verona Interface Definition</title>
+  <script 
+    src='https://www.w3.org/Tools/respec/respec-w3c-common' 
+    class='remove'></script>
+  <script class='remove'>
+    var respecConfig = {
+      specStatus: "finding",
+      format: "markdown",
+      editors: [{
+          name: "Martin Mechtel",
+        mailto: "mechtel@iqb.hu-berlin.de",
+        company: "IQB",
+        companyURL: "https://www.iqb.hu-berlin.de",
+      },{
+        name: "Berengar W. Lehr",
+        mailto: "Berengar.Lehr@kompetenztest.de",
+        company: "Projekt kompetenztest.de",
+        companyURL: "https://www.kompetenztest.de",
+      }],
+      edDraftURI: "https://iqb.github.com/VeronaInterface",
+      shortName: "VeronaInterface",
+      logos: [{
+        src: "logo-vid.png",
+        alt: "Icon for the Verona Interface"
+      }]
+    };
+  </script>
+</head>
+<body>
+  <section id='abstract'>
+  This document defines the communication between a **TestCenter** and a **Player** to execute computer based assesments as offered for the German [VERA - Vergleichsarbeiten](https://www.iqb.hu-berlin.de/vera),
+  or the [National Assessment Studies and IQB Trends in Student Achievement](https://www.iqb.hu-berlin.de/bt).
+  </section>
+    
+  <section id='sotd'>
+  The defintion was proposed and is currently discussed.
+  </section>
+
+  <section class="introductory">
+  ## Introduction
+  The **Player** is currently expected to be loaded into an `iframe` in the **TestCenter**. Both ends of this interface communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage).
+  After the **Player** loads it announces it's state by a <a>ReadyNotification</a> which is answered by the **TestCenter** with an <a></a>DataTransfer</a> including the `unitDefinition` that contains all unit and subunits supposed to be presented. The **Player** then announces the beginning of the assesment with a <a></a>StartedNotification</a>. Entries submitted by the assessee are transfered to the **TestCenter** via a <a></a>ChangedDataTransfer</a>. If the current page is supposed to change due to events from the **TestCenter** this is communicated via a <a></a>PageNavigationRequest</a>, if the event to change the page is originated in the **Player** it <a></a>PageNavigationRequestedNotification</a> or <a></a>NavigationRequestedNotification</a>, depending on the exact curcumstances.
+  In the following the word "specifies" means that information contained in an expression was created by the sending instance. The word "containes" means the information was received form a third party (e.g. a database) and is only forwarded.
+  </section>
+
+  <section>
+  ## <dfn>ReadyNotification</dfn> (Player 🡒 Testcenter)
+
+  Announcing Load Complete and sending the major part of version of the interface this player understands
+  (see above: starting by publishing this document with **1**)
+    
+  ```typescript
+  {
+    type: 'vo.FromItemPlayer.ReadyNotification';
+    version: number;
+  }
+  ```
+  
+  * <dfn>type</dfn> specifies the type of the message
+  * <dfn>version</dfn> specifies the interfaces major version number required to communicate
+  </section>
+
+  <section>
+  ## <dfn>DataTransfer</dfn> (Testcenter 🡒 Player)
+
+  ```typescript
+  {
+    type: 'vo.ToPlayer.DataTransfer';
+    sessionId: string;
+    unitDefinition: string;
+    restorePoint?: string;
+    unitNumber?: string;
+    unitTitle?: string;
+  }
+  ```
+  
+  * <dfn>sessionId</dfn> specifies the Testcenter 🡘 Player session
+  * <dfn>unitDefinition</dfn> containes the definition of all units and subunits
+  * <dfn data-dfn-for="DataTransfer">restorePoint</dfn> containes a serialised JSON value containing the last state of this unit
+  * <dfn>unitNumber</dfn> specifies the number of the unit in the assessment
+  * <dfn>unitTitle</dfn> specifies title of the current unit
+  </section>
+    
+  <section>
+  ## <dfn>StartedNotification</dfn> (Player 🡒 Testcenter)
+  
+  ```typescript
+  {
+    type: 'vo.FromPlayer.StartedNotification';
+    sessionId: string;
+    validPages?: string[];
+    currentPage?: string;
+    presentationComplete?: 'yes' | 'no';
+    responsesGiven?: 'yes' | 'no' | 'all';
+  }
+  ```
+  
+  * <dfn>validPages</dfn> specifies the current list of valid accessible pages
+  * <dfn>currentPage</dfn> specifies the currently active page
+  * <dfn>presentationComplete</dfn> specifies the current presentation state
+  * <dfn>responsesGiven</dfn> specifies the response state of the unit
+  </section>
+    
+  <section>
+  ## <dfn>ChangedDataTransfer</dfn> (Player 🡒 Testcenter)
+  
+  ```typescript
+  {
+    type: 'vo.FromPlayer.ChangedDataTransfer';
+    sessionId: string;
+    validPages?: string[];
+    currentPage?: string;
+    restorePoint?: string;
+    response?: string;
+    responseConverter?: string;
+    responseComplete?: boolean;
+    presentationComplete?: 'yes' | 'no';
+    responsesGiven?: 'yes' | 'no' | 'all';
+  }
+  ```
+  
+  * <dfn data-dfn-for="ChangedDataTransfer">restorePoint</dfn> specifies a serialised JSON value containing the current state of this unit
+  * <dfn>response</dfn> **?????**
+  * <dfn>responseConverter</dfn> **?????**
+  * <dfn>responseComplete</dfn> **?????**
+  </section>
+
+  <section>
+  ## <dfn>NavigateToPage</dfn> (Testcenter 🡒 Player)
+      
+  Requests that the player has to navigate to the given page; newPage is one of the strings given to the host
+  via <a>validPages</a>; completion is announced by the player via <a>ChangedDataTransfer</a>.
+
+  ```typescript
+  {
+    type: 'vo.ToPlayer.NavigateToPage';
+    sessionId: string;
+    newPage: string;
+  }
+  ```
+        
+  * <dfn>newPage</dfn> specifies to which page a navigation
+  </section>      
+
+
+  6. FromPlayer.PageNavigationRequest
+  Player  Host
+  The player requests the controller to check and send ToPlayer.PageNavigationRequest. newPage is the id of
+  the requested page or "#next"/"#previous".
+  {
+  type: 'vo.FromPlayer.PageNavigationRequest';
+  sessionId: string;
+  newPage: string;
+  }
+  27. FromPlayer.UnitNavigationRequest
+  Player  Host
+  navigationTarget is an sequence-ID of a certain unit or one of these: (unit) "#next", "#previous", "#first",
+  "#last", (booklet) "#end"
+  {
+  type: 'vo.FromPlayer.UnitNavigationRequest';
+  sessionId: string;
+  navigationTarget: string;
+  }
+
+</body>
+</html>
