@@ -1,0 +1,8 @@
+@startuml
+skinparam ParticipantPadding 50
+
+|||
+Testcenter --> Player: unloading
+destroy Player
+
+@enduml

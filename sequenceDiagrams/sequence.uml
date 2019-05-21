@@ -1,0 +1,23 @@
+@startuml
+
+title course of an assessments
+hide footbox
+
+participant Testcenter
+create Player
+Testcenter -> Player: (loading)
+Testcenter <- Player: ReadyNotification
+Testcenter -> Player: DataTransfer
+Testcenter <- Player: StartedNotification
+
+|||
+
+loop
+    Testcenter <- Player: ChangedDataTransfer
+end
+
+|||
+
+Testcenter --> Player: //navigation//
+
+@enduml

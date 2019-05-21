@@ -1,0 +1,9 @@
+@startuml
+skinparam ParticipantPadding 50
+hide footbox
+
+|||
+Testcenter -> Player: NavigateToPage
+Testcenter <- Player: ChangedDataTransfer
+
+@enduml
