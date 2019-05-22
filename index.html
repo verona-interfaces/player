@@ -10,8 +10,10 @@
   <script class='remove'>
     var respecConfig = {
       specStatus: "finding",
+      overwriteStatus: true,
+      postProcess: [(c,d) => (d.querySelector('h2.subtitle + h2').remove())],
       subtitle: "decoupling item presentation from assessment management",
-      license: "cc0",
+      license: "CC BY-SA",
       format: "markdown",
       tocIntroductory: true,
       wg: "Vera Online Arbeitsgruppe",
@@ -33,6 +35,11 @@
         src: "logo-vid.png",
         alt: "Icon for the Verona Interface"
       }],
+      overrideCopyright: `<p class="copyright">
+          <img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png">
+          Copyright © ${(new Date()).getFullYear()} <a href="https://www.iqb.hu-berlin.de"><abbr title="Institut zur Qualitätsentwicklung im Bildungswesen">IQB</abbr></a>.<br>
+        Nutzbar unter einer <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.
+      </p>`,
       // github: "https://git.inio.de/ber/VeronaInterface"
     };
   </script>
@@ -42,6 +49,10 @@
     }
     .tilted {
       transform: rotate(-90deg);
+    }
+    .copyright img {
+      position: relative;
+      top: 3px;
     }
   </style>
 </head>
@@ -57,7 +68,8 @@
 
   <section class="introductory">
   ## Introduction
-  The **Player** is currently expected to be loaded into an `iframe` in the **Testcenter**. Both ends of this interface communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/x-doc-messaging).
+  The **Player** is currently expected to be loaded into an `iframe` in the **Testcenter**. Both ends of this interface communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/x-doc-messaging). The only data saved beyond the livetime of a **Player** is the data transfered in <a>`restorePoint`</a>
+
   <p class="ciu_embed" data-feature="x-doc-messaging" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
     <a href="http://caniuse.com/#feat=x-doc-messaging">Can I Use postMessage?</a>
     Data on support for the postMessage feature across the major browsers from caniuse.com.
@@ -65,36 +77,45 @@
 </section>
 
   <section>
-  Generalised course of an assesment from initialisation to end.
-  <figure id="flowchart">
-    <img src="sequenceDiagrams/sequence.svg" alt="">
+  ## Communication squence
+
+  ### General course
+
+  <figure>
     <figcaption>Generalised course of an assesment from initialisation to end.</figcaption>
+    <img src="sequenceDiagrams/sequence.svg">
   </figure>
 
-  After the **Player** loads it announces it's state by a <a>ReadyNotification</a> which is answered by the **Testcenter** with an <a></a>DataTransfer</a> including the `unitDefinition` that contains all unit and subunits supposed to be presented. The **Player** then announces the beginning of the assesment with a <a></a>StartedNotification</a>. Entries submitted by the assessee are transfered to the **Testcenter** via a <a></a>ChangedDataTransfer</a>.
+  After the **Player** loads it announces it's state by a <a>`ReadyNotification`</a> which is answered by the **Testcenter** with an <a>`DataTransfer`</a> including the `unitDefinition` containing the unit and all subunits supposed to be presented. The **Player** then announces the beginning of the assesment with a <a>`StartedNotification`</a>. Entries submitted by the assessee are transfered to the **Testcenter** via a <a>`ChangedDataTransfer`</a>.
 
-  ### Navigation flow
+  ### Navigation
 
-  All different ways to navigate between pages and items, denepding on the trigger and level of the navigation.
-  <table>
-    <tr>
-      <td></td>
-      <th class="centered">from Testcenter</th>
-      <th class="centered">from Player</th>
-    </tr>
-    <tr>
-      <th class="tilted">inter-item</th>
-      <td><img src="sequenceDiagrams/inter-testcenter.svg"></td>
-      <td><img src="sequenceDiagrams/inter-player.svg"></td>
-    </tr>
-    <tr>
-      <th class="tilted">between items</th>
-      <td><img src="sequenceDiagrams/outer-testcenter.svg"></td>
-      <td><img src="sequenceDiagrams/outer-player.svg"></td>
-    </tr>
-  </table>
-
-  If the current page is supposed to change due to events from the **Testcenter** this is communicated via a <a></a>PageNavigationRequest</a>, if the event to change the page is originated in the **Player** it sends a <a></a>PageNavigationRequestedNotification</a> or <a></a>NavigationRequestedNotification</a>, depending on the exact curcumstances.
+  <figure>
+    <figcaption>
+      All different ways to navigate between pages and items, depending on the trigger and level of the navigation.
+    </figcaption>
+    <table>
+      <tbody>
+        <tr>
+          <td></td>
+          <th class="centered">from Testcenter</th>
+          <th class="centered">from Player</th>
+        </tr>
+        <tr>
+          <th class="tilted">inter-item</th>
+          <td><img src="sequenceDiagrams/inter-testcenter.svg"></td>
+          <td><img src="sequenceDiagrams/inter-player.svg"></td>
+        </tr>
+        <tr>
+          <th class="tilted">between items</th>
+          <td><img src="sequenceDiagrams/outer-testcenter.svg"></td>
+          <td><img src="sequenceDiagrams/outer-player.svg"></td>
+        </tr>
+      </tbody>
+    </table>
+  </figure>
+  
+  If the current page is supposed to change due to events from the **Testcenter** this is communicated via a <a>`NavigateToPage`</a>, if the event to change the page is originated in the **Player** it sends a <a>`PageNavigationRequest`</a> or a <a>`UnitNavigationRequest`</a> if the loaded unit should be changed.
   </section>
 
   <section>
@@ -102,11 +123,11 @@
 
   The following messages are defined for **Player**  🡘 **Testcenter** communication. No other messages MUST be send. The word *specifies* means that information contained in an expression was created by the sending instance. The word *containes* means the information was received form a third party (e.g. a database) and is only forwarded.
     
-  <section>
+  <section data-dfn-for="ReadyNotification">
   ### <dfn>ReadyNotification</dfn> (Player 🡒 Testcenter)
 
   Announcing Load Complete and sending the major part of version of the interface this **Player** understands
-  (see above: starting by publishing this document with **1**)
+  (see above: starting by publishing this document with `1`)
     
   ```javascript
   {
@@ -119,7 +140,7 @@
   * <dfn>version</dfn> specifies the interfaces major version number required to communicate
   </section>
 
-  <section>
+  <section data-dfn-for="DataTransfer">
   ### <dfn>DataTransfer</dfn> (Testcenter 🡒 Player)
 
   ```javascript
@@ -135,12 +156,12 @@
   
   * <dfn>sessionId</dfn> specifies the Testcenter 🡘 Player session
   * <dfn>unitDefinition</dfn> containes the definition of all units and subunits
-  * <dfn data-dfn-for="DataTransfer.restorePoint">restorePoint</dfn> containes a serialised JSON value containing the last state of this unit
+  * <dfn data-lt-noDefault data-lt="DataTransfer.restorePoint">restorePoint</dfn> containes a serialised JSON value containing the last state of this unit
   * <dfn>unitNumber</dfn> specifies the number of the unit in the assessment
   * <dfn>unitTitle</dfn> specifies title of the current unit
   </section>
     
-  <section>
+  <section data-dfn-for="StartedNotification">
   ### <dfn>StartedNotification</dfn> (Player 🡒 Testcenter)
   
   ```javascript
@@ -160,7 +181,7 @@
   * <dfn>responsesGiven</dfn> specifies the response state of the unit
   </section>
     
-  <section>
+  <section data-dfn-for="ChangedDataTransfer">
   ### <dfn>ChangedDataTransfer</dfn> (Player 🡒 Testcenter)
   
   ```javascript
@@ -178,16 +199,16 @@
   }
   ```
   
-  * <dfn data-dfn-for="ChangedDataTransfer.restorePoint">restorePoint</dfn> specifies a serialised JSON value containing the current state of this unit
-  * <dfn>response</dfn> **?????**
-  * <dfn>responseConverter</dfn> **?????**
-  * <dfn>responseComplete</dfn> **?????**
+  * <dfn>restorePoint</dfn> specifies a serialised JSON value containing the current state of this unit
+  * <dfn>response</dfn> *currently unspecified*
+  * <dfn>responseConverter</dfn> *currently unspecified*
+  * <dfn>responseComplete</dfn> *currently unspecified*
   </section>
 
-  <section>
+  <section data-dfn-for="NavigateToPage">
   ### <dfn>NavigateToPage</dfn> (Testcenter 🡒 Player)
       
-  Requests that the player has to navigate to the given page. Completion is announced by the **Player** via <a>ChangedDataTransfer</a>.
+  Requests that the player has to navigate to the given page. Completion is announced by the **Player** via <a>`ChangedDataTransfer`</a>.
 
   ```javascript
   {
@@ -197,13 +218,13 @@
   }
   ```
         
-  * <dfn data-dfn-for="NavigateToPage.newPage">newPage</dfn> specifies to which page a navigation and is one of the strings given via <a>validPages</a>
+  * <dfn data-lt-noDefault data-lt="NavigateToPage.newPage">newPage</dfn> specifies to which page to navigate and is one of the strings given via <a>`validPages`</a>.
   </section>      
 
-  <section>
+  <section data-dfn-for="PageNavigationRequest">
   ### <dfn>PageNavigationRequest</dfn> (Player 🡒 Testcenter)
 
-  The **Player** requests the **Testcenter** to check and send a <a>NavigateToPage</a>.
+  The **Player** requests the **Testcenter** to check and send a <a>`NavigateToPage`</a>.
 
   ```javascript
   {
@@ -213,10 +234,10 @@
   }
   ```
 
-  * <dfn data-dfn-for="PageNavigationRequest.newPage">newPage</dfn> is the id of the requested page or `#next`/`#previous`.
+  * <dfn>newPage</dfn> is the id of the requested page or `#next`/`#previous`.
   </section>
 
-  <section>
+  <section data-dfn-for="UnitNavigationRequest">
   ### <dfn>UnitNavigationRequest</dfn> (Player 🡒 Testcenter)
   
   ```javascript
@@ -227,7 +248,7 @@
   }
   ```
 
-  * <dfn data-dfn-for="UnitNavigationRequest.newPage">newPage</dfn> is an sequence-ID of a certain unit or one of these: (unit) `#next`, `#previous`, `#first`,
+  * <dfn>navigationTarget</dfn> is an sequence-ID of a certain unit or one of these: (unit) `#next`, `#previous`, `#first`,
   `#last`, (booklet) `#end`.
   </section>
   </section>
@@ -236,6 +257,8 @@
   ## About 
   
   This document was generated with [W3C ReSpec](https://github.com/w3c/respec). The UML sequence diagrams source code is located in the sequenceDiagrams folder and   are created  using [PlanetUML](http://plantuml.com).
+
+  <section id="tof"></section>
   </section>
 
 </body>
