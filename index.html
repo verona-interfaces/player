@@ -3,6 +3,8 @@
 <head>
   <meta charset='utf-8'>
   <title>Verona Interface Definition</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/typescript.min.js"></script>
   <script 
     src='https://www.w3.org/Tools/respec/respec-w3c-common' 
     class='remove'></script>
@@ -11,7 +13,13 @@
     var respecConfig = {
       specStatus: "finding",
       overwriteStatus: true,
-      postProcess: [(c,d) => (d.querySelector('h2.subtitle + h2').remove())],
+      postProcess: [
+        (c,d) => ([...d.querySelectorAll('code.hljs')].forEach(c => (c.classList.value = 
+          [...c.classList].map(t => t.replace(/^language-/, '')).join(', ')
+        ))),
+        (c,d) => (d.querySelector('h2.subtitle + h2').remove()),
+        (c,d) => hljs.initHighlighting()
+      ],
       subtitle: "decoupling item presentation from assessment management",
       license: "CC BY-SA",
       format: "markdown",
@@ -53,6 +61,9 @@
     .copyright img {
       position: relative;
       top: 3px;
+    }
+    .hljs {
+      background: #f8f8f8 !important;
     }
   </style>
 </head>
@@ -124,12 +135,12 @@
   The following messages are defined for **Player**  🡘 **Testcenter** communication. No other messages MUST be send. The word *specifies* means that information contained in an expression was created by the sending instance. The word *containes* means the information was received form a third party (e.g. a database) and is only forwarded.
     
   <section data-dfn-for="ReadyNotification">
-  ### <dfn>ReadyNotification</dfn> (Player 🡒 Testcenter)
+  <h2><dfn>ReadyNotification</dfn> <small>Player 🡒 Testcenter</small></h2>
 
   Announcing Load Complete and sending the major part of version of the interface this **Player** understands
   (see above: starting by publishing this document with `1`)
     
-  ```javascript
+  ```typescript
   {
     type: 'vo.FromItemPlayer.ReadyNotification';
     version: number;
@@ -141,9 +152,9 @@
   </section>
 
   <section data-dfn-for="DataTransfer">
-  ### <dfn>DataTransfer</dfn> (Testcenter 🡒 Player)
+  <h2><dfn>DataTransfer</dfn> <small>Testcenter 🡒 Player</small></h2>
 
-  ```javascript
+  ```typescript
   {
     type: 'vo.ToPlayer.DataTransfer';
     sessionId: string;
@@ -162,9 +173,9 @@
   </section>
     
   <section data-dfn-for="StartedNotification">
-  ### <dfn>StartedNotification</dfn> (Player 🡒 Testcenter)
+  <h2><dfn>StartedNotification</dfn> <small>Player 🡒 Testcenter</small></h2>
   
-  ```javascript
+  ```typescript
   {
     type: 'vo.FromPlayer.StartedNotification';
     sessionId: string;
@@ -182,9 +193,9 @@
   </section>
     
   <section data-dfn-for="ChangedDataTransfer">
-  ### <dfn>ChangedDataTransfer</dfn> (Player 🡒 Testcenter)
+  <h2><dfn>ChangedDataTransfer</dfn> <small>Player 🡒 Testcenter</small></h2>
   
-  ```javascript
+  ```typescript
   {
     type: 'vo.FromPlayer.ChangedDataTransfer';
     sessionId: string;
@@ -206,41 +217,41 @@
   </section>
 
   <section data-dfn-for="NavigateToPage">
-  ### <dfn>NavigateToPage</dfn> (Testcenter 🡒 Player)
-      
+  <h2><dfn>NavigateToPage</dfn> <small>Testcenter 🡒 Player</small></h2>
+  
   Requests that the player has to navigate to the given page. Completion is announced by the **Player** via <a>`ChangedDataTransfer`</a>.
-
-  ```javascript
+  
+  ```typescript
   {
     type: 'vo.ToPlayer.NavigateToPage';
     sessionId: string;
     newPage: string;
   }
   ```
-        
+  
   * <dfn data-lt-noDefault data-lt="NavigateToPage.newPage">newPage</dfn> specifies to which page to navigate and is one of the strings given via <a>`validPages`</a>.
-  </section>      
+  </section>
 
   <section data-dfn-for="PageNavigationRequest">
-  ### <dfn>PageNavigationRequest</dfn> (Player 🡒 Testcenter)
-
+  <h2><dfn>PageNavigationRequest</dfn> <small>Player 🡒 Testcenter</small></h2>
+  
   The **Player** requests the **Testcenter** to check and send a <a>`NavigateToPage`</a>.
-
-  ```javascript
+  
+  ```typescript
   {
     type: 'vo.FromPlayer.PageNavigationRequest';
     sessionId: string;
     newPage: string;
   }
   ```
-
+  
   * <dfn>newPage</dfn> is the id of the requested page or `#next`/`#previous`.
   </section>
 
   <section data-dfn-for="UnitNavigationRequest">
-  ### <dfn>UnitNavigationRequest</dfn> (Player 🡒 Testcenter)
+  <h2><dfn>UnitNavigationRequest</dfn> <small>Player 🡒 Testcenter</small></h2>
   
-  ```javascript
+  ```typescript
   {
     type: 'vo.FromPlayer.UnitNavigationRequest';
     sessionId: string;
@@ -262,4 +273,5 @@
   </section>
 
 </body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/tomorrow.min.css">
 </html>
