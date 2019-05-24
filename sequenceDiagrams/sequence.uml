@@ -1,6 +1,5 @@
 @startuml
 
-title course of an assessments
 hide footbox
 
 participant Testcenter
