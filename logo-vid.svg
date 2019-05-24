@@ -17,33 +17,8 @@
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="logo-vid.svg"
    inkscape:export-filename="/home/ber/Code/VeronaInterfaceDefinition/logo-vid.png"
-   inkscape:export-xdpi="112.10123"
-   inkscape:export-ydpi="112.10123">
-  <defs
-     id="defs2" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="6.3960018"
-     inkscape:cx="29.322395"
-     inkscape:cy="51.672314"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:measure-start="0,0"
-     inkscape:measure-end="0,0"
-     inkscape:window-width="1920"
-     inkscape:window-height="999"
-     inkscape:window-x="1920"
-     inkscape:window-y="627"
-     inkscape:window-maximized="1"
-     showborder="true"
-     borderlayer="false"
-     inkscape:pagecheckerboard="true" />
+   inkscape:export-xdpi="112"
+   inkscape:export-ydpi="112">
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -52,62 +27,45 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Ebene 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-272)">
+     style="fill:none;fill-rule:evenodd;stroke:#aeaeae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="layer1">
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 14.614663,273.48806 4.597717,22.03049"
-       id="path1661"
-       inkscape:connector-curvature="0"
+       d="m 17.5,12.5 2.5,11.5"
+       id="rechter unterer Holmen"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a80aae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 2.2408606,284.49773 c 0.08936,8.71763 20.8141894,0.11795 21.1213984,8.79905"
-       id="path1669-5"
-       inkscape:connector-curvature="0"
+       style="stroke:#ae00ae"
+       d="m 2,12.249567 c 0,9 21,0 21,9"
+       id="unteres Kabel"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 10.007002,273.27568 5.462615,295.53369"
-       id="path1661-6"
-       inkscape:connector-curvature="0"
+       d="M 10,1 5,24"
+       id="linker Holmen"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#00a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 2.2480122,275.74948 c 0.089356,8.71763 20.8141878,0.11795 21.1213968,8.79905"
-       id="path1669"
-       inkscape:connector-curvature="0"
+       d="m 9,4 h 7"
+       id="obere Sprosse"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 6.0395802,293.02877 18.554564,292.9874"
-       id="path1663"
-       inkscape:connector-curvature="0"
+       d="m 7.5,12.5 h 10"
+       id="mittlere Sprosse"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 7.7527615,284.39016 9.0815235,-0.0877 v 0"
-       id="path1667"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 9.2904375,276.03404 H 14.999082"
-       id="path1671"
-       inkscape:connector-curvature="0"
+       d="M 6,21 H 19"
+       id="untere Sprosse"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 15.727368,278.80367 0.552528,2.69566"
-       id="path1661-7"
-       inkscape:connector-curvature="0"
+       style="stroke:#00aeae"
+       d="m 2,3.75 c 0,9 21,0 21,9"
+       id="oberes Kabel"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="m 15,1 2.5,11.5"
+       id="rechter oberer Holmen"
        sodipodi:nodetypes="cc" />
   </g>
 </svg>

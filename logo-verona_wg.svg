@@ -16,34 +16,9 @@
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="logo-verona_wg.svg"
-   inkscape:export-filename="/home/ber/Code/VeronaInterfaceDefinition/logo-vid.png"
-   inkscape:export-xdpi="112.10123"
-   inkscape:export-ydpi="112.10123">
-  <defs
-     id="defs2" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="4.965625"
-     inkscape:cx="98.460139"
-     inkscape:cy="34.429937"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:measure-start="0,0"
-     inkscape:measure-end="0,0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1080"
-     inkscape:window-x="1920"
-     inkscape:window-y="600"
-     inkscape:window-maximized="1"
-     showborder="true"
-     borderlayer="false"
-     inkscape:pagecheckerboard="true" />
+   inkscape:export-filename="/home/ber/Code/VeronaInterfaceDefinition/logo-verona_wg.png"
+   inkscape:export-xdpi="112"
+   inkscape:export-ydpi="112">
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -52,56 +27,41 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Ebene 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-272)">
+     style="fill:none;fill-rule:evenodd;stroke:#aeaeae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="layer1">
     <path
-       style="opacity:1;fill:#a80aae;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.0240829;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 8,284.5 h 9 l 2,8.5 H 6 Z"
-       id="rect831"
-       inkscape:connector-curvature="0"
+       style="opacity:1;fill:#ae00ae;fill-opacity:1;stroke:none"
+       d="m 7.5,12.5 h 10 L 19,21 H 6 Z"
+       id="unterer Bildschirm"
        sodipodi:nodetypes="ccccc" />
     <path
-       style="opacity:1;fill:#00a9ae;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.85585213;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 9,276 h 7 l 1,8.5 H 8 Z"
-       id="rect23"
-       inkscape:connector-curvature="0"
+       style="opacity:1;fill:#00aeae;fill-opacity:1;stroke:none"
+       d="m 9,4 h 7 l 1.5,8.5 h -10 z"
+       id="oberer Bildschirm"
        sodipodi:nodetypes="ccccc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 15,273 5,23"
-       id="path1661"
-       inkscape:connector-curvature="0"
+       d="M 10,1 5,24"
+       id="linker Holmen"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 10,273 5,296"
-       id="path1661-6"
-       inkscape:connector-curvature="0"
+       d="m 15,1 5,23"
+       id="rechter Holmen"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 6,293 H 19"
-       id="path1663"
-       inkscape:connector-curvature="0"
+       d="m 9,4 h 7"
+       id="obere Sprosse"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 8,284.5 h 9"
-       id="path1667"
-       inkscape:connector-curvature="0"
+       d="m 7.5,12.5 h 10"
+       id="mittlere Sprosse"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#a8a9ae;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 9,276 h 7"
-       id="path1671"
-       inkscape:connector-curvature="0"
+       d="M 6,21 H 19"
+       id="untere Sprosse"
        sodipodi:nodetypes="cc" />
   </g>
 </svg>
