@@ -157,8 +157,8 @@
   }
   ```
   
-  * <dfn>type</dfn> specifies the type of the message
-  * <dfn>version</dfn> specifies the interfaces major version number required to communicate
+  * <dfn>type</dfn> specifies the type of the message.
+  * <dfn>version</dfn> specifies the interfaces major version number required to communicate.
   </section>
 
   <section data-dfn-for="DataTransfer">
@@ -177,11 +177,11 @@
   }
   ```
   
-  * <dfn>sessionId</dfn> specifies the **Player** 🡘 **Testcenter** session
-  * <dfn>unitDefinition</dfn> containes the definition of all units and subunits
-  * <dfn data-lt-noDefault data-lt="DataTransfer.restorePoint">restorePoint</dfn> containes a serialised JSON value containing the last state of this unit
-  * <dfn>unitNumber</dfn> specifies the position number of the unit in the assessment
-  * <dfn>unitTitle</dfn> specifies title of the that unit
+  * <dfn>sessionId</dfn> specifies the **Player** 🡘 **Testcenter** session.
+  * <dfn>unitDefinition</dfn> containes the definition of all units and subunits.
+  * <dfn data-lt-noDefault data-lt="DataTransfer.restorePoint">restorePoint</dfn> containes a serialised JSON value containing the last state of this unit.
+  * <dfn>unitNumber</dfn> specifies the position number of the unit in the assessment.
+  * <dfn>unitTitle</dfn> specifies title of the that unit.
   </section>
     
   <section data-dfn-for="StartedNotification">
@@ -198,10 +198,8 @@
   }
   ```
   
-  * <dfn>validPages</dfn> specifies the current list of valid, accessible pages
-  * <dfn>currentPage</dfn> specifies the currently active page
-  * <dfn>presentationComplete</dfn> specifies the current presentation state
-  * <dfn>responsesGiven</dfn> specifies the response state of the unit
+  * <dfn>validPages</dfn> specifies the current list of valid, accessible pages.
+  * <dfn>currentPage</dfn> specifies the currently active page.
   * <dfn>presentationComplete</dfn> specifies wether all content was presented (pages opened and scrolled to the bottom, audio played).
   * <dfn>responsesGiven</dfn> specifies if and if yes if all responses where given.
   </section>
@@ -224,10 +222,6 @@
   }
   ```
   
-  * <dfn>restorePoint</dfn> specifies a serialised JSON value containing the current state of this unit
-  * <dfn>response</dfn> *currently unspecified*
-  * <dfn>responseConverter</dfn> *currently unspecified*
-  * <dfn>responseComplete</dfn> *currently unspecified*
   * <dfn>restorePoint</dfn> specifies the current state of this unit.
   * <dfn>response</dfn> specifies only relevant answere data.
   * <dfn>responseConverter</dfn> identifier specifying the form of the response data to select the evaluation mechanism.
@@ -247,7 +241,7 @@
   }
   ```
   
-  * <dfn data-lt-noDefault data-lt="NavigateToPage.newPage">newPage</dfn> specifies to which page to navigate and is one of the strings given via <a>`validPages`</a>
+  * <dfn data-lt-noDefault data-lt="NavigateToPage.newPage">newPage</dfn> specifies to which page to navigate and is one of the strings given via <a>`validPages`</a>.
   </section>
 
   <section data-dfn-for="PageNavigationRequest">
@@ -263,7 +257,7 @@
   }
   ```
   
-  * <dfn>newPage</dfn> is the id of the requested page or one of this keywords: `#next`/`#previous`
+  * <dfn>newPage</dfn> is the id of the requested page or one of this keywords: `#next`/`#previous`.
   </section>
 
   <section data-dfn-for="UnitNavigationRequest">
@@ -277,8 +271,7 @@
   }
   ```
 
-  * <dfn>navigationTarget</dfn> is the ID of a certain unit or one of these keywords: (unit) `#next`, `#previous`, `#first`,
-  `#last`, (booklet) `#end`
+  * <dfn>navigationTarget</dfn> is the ID of a certain unit or one of these keywords: (unit) `#next`, `#previous`, `#first`, `#last`, (booklet) `#end`.
   </section>
   </section>
 
