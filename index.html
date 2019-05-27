@@ -153,12 +153,12 @@
   ```typescript
   {
     type: 'vo.FromPlayer.ReadyNotification';
-    version: number;
+    version: string;
   }
   ```
   
   * <dfn>type</dfn> specifies the type of the message.
-  * <dfn>version</dfn> specifies the interfaces major version number required to communicate.
+  * <dfn>version</dfn> [semantiv versioning](https://semver.npmjs.com/) compatibility range.
   </section>
 
   <section data-dfn-for="DataTransfer">
