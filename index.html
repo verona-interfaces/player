@@ -20,7 +20,7 @@
         (c,d) => (d.querySelector('h2.subtitle + h2').remove()),
         (c,d) => hljs.initHighlighting()
       ],
-      subtitle: "decoupling item presentation from assessment management",
+      subtitle: "decoupling unit presentation from assessment management",
       license: "CC BY-SA",
       format: "markdown",
       tocIntroductory: true,
@@ -74,8 +74,7 @@
 </head>
 <body>
   <section id='abstract'>
-  This document defines the communication between a **Testcenter** and a **Player** to execute computer based assesments as offered for the German [VERA - Vergleichsarbeiten](https://www.iqb.hu-berlin.de/vera),
-  or the [National Assessment Studies and IQB Trends in Student Achievement](https://www.iqb.hu-berlin.de/bt). A **Player** in this context is a HTML page or fragment possibly containing a javascript applicaton to present and handle interaction with an assessment unit. An **Testcenter** is piece of software that handles user authentication, unit selection, sequence and user input data, in short the management of an assessment.
+  This document defines the communication between a **Testcenter** and a **Player** to execute computer based assesments as offered for the German [VERA - Vergleichsarbeiten](https://www.iqb.hu-berlin.de/vera), or the [National Assessment Studies and IQB Trends in Student Achievement](https://www.iqb.hu-berlin.de/bt). A **Player** in this context is a HTML page or fragment possibly containing a javascript applicaton to present and handle interaction with an assessment unit. An **Testcenter** is piece of software that handles user authentication, unit selection, sequence and user input data, in short the management of an assessment. An (assessment) **Unit** is a collection of at least one **Page** (possibly scrollable but not pagable view unit) that in turn contains at least one **Subunit** with a task an interaction element. A **Unit** *should* contain only one stimulus but may for some good reasons contain more than one.
   </section>
     
   <section id='sotd'>
@@ -84,14 +83,14 @@
 
   <section class="introductory">
   ## Introduction
-  The **Player** is currently expected to be loaded into an [`iframe`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#Attributes) in the **Testcenter** using the `srcdoc` attribute. Both ends of this interface communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/x-doc-messaging). The only data saved beyond the lifetime of a **Player** is the data transfered in <a>`restorePoint`</a>.
+  The **Player** is currently expected to be loaded into an [`iframe`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#Attributes) in the **Testcenter** using the `srcdoc` attribute. Both ends of this interface (**Player** and **Testcenter**) communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/x-doc-messaging). The only data saved beyond the lifetime of a **Player** is the data transfered in <a>`response`</a> and <a>`restorePoint`</a>. A [polyfill](https://github.com/jugglinmike/srcdoc-polyfill) exists for older browsers (e.g. Internet Explorer, old Edge) not supporting the `srcdoc`-attribute.
+
+
 
   <p class="ciu_embed" data-feature="iframe-srcdoc" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
     <a href="https://caniuse.com/#feat=iframe-srcdoc">Can I Use srcdoc?</a>
     Data on support for the srcdoc attribute across major browsers from caniuse.com.
   </p>
-
-  There is a [`srcdoc` polyfill](https://github.com/jugglinmike/srcdoc-polyfill) for older browsers (e.g. Internet Explorer).
 
   <p class="ciu_embed" data-feature="x-doc-messaging" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
     <a href="http://caniuse.com/#feat=x-doc-messaging">Can I Use postMessage?</a>
@@ -99,7 +98,6 @@
   </p>
 </section>
 
-  <section>
   ## Communication squence
 
   ### General course
@@ -109,13 +107,15 @@
     <img src="sequenceDiagrams/sequence.svg">
   </figure>
 
-  After the **Player** loads it announces it's state by a <a>`ReadyNotification`</a> which is answered by the **Testcenter** with an <a>`DataTransfer`</a> including the <a>`unitDefinition`</a> containing the unit and all subunits supposed to be presented. Upon start the **Player** announces the beginning of the assesment of the unit with a <a>`StartedNotification`</a>. Entries submitted by the assessee are transfered to the **Testcenter** via a <a>`ChangedDataTransfer`</a>.
+  After the **Player** loads it announces it's state by a <a>`ReadyNotification`</a> which is answered by the **Testcenter** with an <a>`DataTransfer`</a> including the <a>`unitDefinition`</a> containing the unit and all subunits supposed to be presented. Upon start the **Player** announces the beginning of the assesment of the unit with a <a>`StartedNotification`</a>. Everytime a substantial change occures during the use of a **Player** a <a>`ChangedDataTransfer`</a> may be submitted. As there is no `unload` message e.g. before a timeout it is recommended to save user input regularly. The behaviour of the **Player** after a second <a>`DataTransfer`</a> is not defined, hence it can not be relied on a **Player** to work correctly after navigating to anoter unit played by the same player.
 
   ### Navigation
 
+  As a general rule navigation elements at least for navigating between units should be provided by the **Testcenter**, but it is possible for a **Player** tp provide it's own way of navigation inside or away from a unit.
+
   <figure>
     <figcaption>
-      All four ways to navigate between pages and items, depending on the trigger and level of navigation.
+      All four ways to navigate between units and pages, depending on the trigger and level of navigation.
     </figcaption>
     <table>
       <tbody>
@@ -125,12 +125,12 @@
           <th class="centered">from Player</th>
         </tr>
         <tr>
-          <th class="tilted">inter-item</th>
+          <th class="tilted">between pages<br>(inter-unit)</th>
           <td><img src="sequenceDiagrams/inter-testcenter.svg"></td>
           <td><img src="sequenceDiagrams/inter-player.svg"></td>
         </tr>
         <tr>
-          <th class="tilted">between items</th>
+          <th class="tilted">between units</th>
           <td><img src="sequenceDiagrams/outer-testcenter.svg"></td>
           <td><img src="sequenceDiagrams/outer-player.svg"></td>
         </tr>
@@ -138,7 +138,7 @@
     </table>
   </figure>
   
-  If the current page is supposed to change due to events from the **Testcenter** this is communicated via a <a>`NavigateToPage`</a> message. If the event to change the page is originated in the **Player** it sends a <a>`PageNavigationRequest`</a> or a <a>`UnitNavigationRequest`</a> respectively, if the loaded unit should be changed.
+  If the current page is supposed to change due to events from the **Testcenter** this is communicated via a <a>`NavigateToPage`</a> message. If the event to change the page is originated in the **Player** it sends a <a>`PageNavigationRequest`</a> or a <a>`UnitNavigationRequest`</a> respectively, if the loaded unit should be changed. The *Player* is supposed to confirm a page change with an <a>`ChangedDataTransfer`</a> message.
   </section>
 
   <section>
@@ -209,6 +209,8 @@
   <section data-dfn-for="ChangedDataTransfer">
   <h2><dfn>ChangedDataTransfer</dfn> <small>Player 🡒 Testcenter</small></h2>
   
+  May be send at all times the **Player** changes in content and structure of the unit occur.
+
   ```typescript
   {
     type: 'vo.FromPlayer.ChangedDataTransfer';
@@ -273,7 +275,7 @@
   }
   ```
 
-  * <dfn>navigationTarget</dfn> is the ID of a certain unit or one of these keywords: (unit) `#next`, `#previous`, `#first`, `#last`, (booklet) `#end`.
+  * <dfn>navigationTarget</dfn> is the ID of a certain unit or one of these keywords: (unit) `#next`, `#previous`, `#first`, `#last`, (assesment) `#end`.
   </section>
   </section>
 
