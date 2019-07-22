@@ -90,9 +90,9 @@
   ## Introduction
   The **Player** is expected to be loaded either into an [`iframe`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#Attributes) using the `srcdoc` attribute or in an [`ShadowTree / ShadowDOM`](https://developer.mozilla.org/en-US/docs/Glossary/Shadow_tree) by the **Testcenter**. Both ends of this interface (**Player** and **Testcenter**) communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/x-doc-messaging). The only data saved beyond the lifetime of a **Player** is the data transfered in <a>`response`</a> and <a>`restorePoint`</a>.
   
-  For older browsers, polyfills exists:
-  * A polyfill for [srcdoc](https://github.com/jugglinmike/srcdoc-polyfill) exists for older browsers (e.g. Internet Explorer, old Edge) not supporting the `srcdoc`-attribute.
-  * A polyfill for [shadowdom](https://github.com/webcomponents/polyfills) exists for older brow
+  For older browsers, polyfills exists, however, the features are commonly supported by common versions:
+  * [srcdoc](https://github.com/jugglinmike/srcdoc-polyfill)
+  * [shadowdom](https://github.com/webcomponents/polyfills)
 
   <p class="ciu_embed" data-feature="iframe-srcdoc" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
     <a href="https://caniuse.com/#feat=iframe-srcdoc">Can I Use srcdoc?</a>
@@ -112,28 +112,28 @@
 
 </section>
 
-  ## Communication sequence
+## Communication sequence
 
-  ### General course
+### General course
 
-  <figure>
-    <figcaption>Generalised course of an assesment from initialisation to end.</figcaption>
-    <img src="sequenceDiagrams/sequence.svg">
-  </figure>
+<figure>
+<figcaption>Generalised course of an assesment from initialisation to end.</figcaption>
+<img src="sequenceDiagrams/sequence.svg">
+</figure>
 
-  1. **Player** is loaded
-  2. **Player** sends <a>`ReadyNotification`</a>
-  3. **Testcenter** sends <a>`DataTransfer`</a> including
-    * <a>`unitDefinition`</a> containing the unit and all subunits
-  4. Assessment is started
-  5. **Player** sends <a>`StartedNotification`</a>
-  6. Loop until assessments ends:
-    1. **Player** sends <a>`ChangedDataTransfer`</a> on _substantial_ change
+1. **Player** is loaded
+2. **Player** sends <a>`ReadyNotification`</a>
+3. **Testcenter** sends <a>`DataTransfer`</a> including
+        * <a>`unitDefinition`</a> containing the unit and all subunits
+4. Assessment is started
+5. **Player** sends <a>`StartedNotification`</a>
+6. Loop until assessments ends:
+        1. **Player** sends <a>`ChangedDataTransfer`</a> on _substantial_ change
 
-  Note:
-  * No `unload` messages are provided, thus the user input should be saved regularly
-  * Behaviour of the **Player** is undefined if multiple <a>`DataTransfer`</a> messages are sent
-    * Don't rely on correct functionality of a player instance when using navigation in the **Testcenter**
+Note:
+* No `unload` messages are provided, thus the user input should be saved regularly
+* Behaviour of the **Player** is undefined if multiple <a>`DataTransfer`</a> messages are sent
+* Don't rely on correct functionality of a player instance when using navigation in the **Testcenter**
   
   ### Navigation
 
