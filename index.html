@@ -36,6 +36,11 @@
         mailto: "Berengar.Lehr@kompetenztest.de",
         company: "Projekt kompetenztest.de",
         companyURL: "https://www.kompetenztest.de",
+      },{
+        name: "Daniel Schiffner",
+        mailto: "schiffner@dipf.de",
+        company: "DIPF",
+        companyURL: "https://www.dipf.de"
       }],
       edDraftURI: "https://veronaworkgroup.github.io/VeronaPlayerInterface",
       shortName: "VeronaPlayerInterface",
@@ -74,7 +79,7 @@
 </head>
 <body>
   <section id='abstract'>
-  This document defines the communication between a **Testcenter** and a **Player** to execute computer based assesments as offered for the German [VERA - Vergleichsarbeiten](https://www.iqb.hu-berlin.de/vera), or the [National Assessment Studies and IQB Trends in Student Achievement](https://www.iqb.hu-berlin.de/bt). A **Player** in this context is a HTML page or fragment possibly containing a javascript applicaton to present and handle interaction with an assessment unit. An **Testcenter** is piece of software that handles user authentication, unit selection, sequence and user input data, in short the management of an assessment. An (assessment) **Unit** is a collection of at least one **Page** (possibly scrollable but not pagable view unit) that in turn contains at least one **Subunit** with a task an interaction element. A **Unit** *should* contain only one stimulus but may for some good reasons contain more than one.
+  This document defines the communication between a **Testcenter** and a **Player** to execute computer based assesments as offered for the German [VERA - Vergleichsarbeiten](https://www.iqb.hu-berlin.de/vera), or the [National Assessment Studies and IQB Trends in Student Achievement](https://www.iqb.hu-berlin.de/bt). A **Player** in this context is a HTML page or fragment possibly containing a javascript applicaton to present and handle interaction with an assessment unit. An **Testcenter** is piece of software that handles user authentication, unit selection, sequence and user input data, in short the management of an assessment. An (assessment) **Unit** is a collection of at least one **Page** (possibly scrollable but not pagable view unit) that in turn contains at least one **Subunit** with a task an interaction element. A **Unit** contains at least one stimulus.
   </section>
     
   <section id='sotd'>
@@ -83,9 +88,11 @@
 
   <section class="introductory">
   ## Introduction
-  The **Player** is currently expected to be loaded into an [`iframe`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#Attributes) in the **Testcenter** using the `srcdoc` attribute. Both ends of this interface (**Player** and **Testcenter**) communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/x-doc-messaging). The only data saved beyond the lifetime of a **Player** is the data transfered in <a>`response`</a> and <a>`restorePoint`</a>. A [polyfill](https://github.com/jugglinmike/srcdoc-polyfill) exists for older browsers (e.g. Internet Explorer, old Edge) not supporting the `srcdoc`-attribute.
-
-
+  The **Player** is expected to be loaded either into an [`iframe`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#Attributes) using the `srcdoc` attribute or in an [`ShadowTree / ShadowDOM`](https://developer.mozilla.org/en-US/docs/Glossary/Shadow_tree) by the **Testcenter**. Both ends of this interface (**Player** and **Testcenter**) communicate via [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/x-doc-messaging). The only data saved beyond the lifetime of a **Player** is the data transfered in <a>`response`</a> and <a>`restorePoint`</a>.
+  
+  For older browsers, polyfills exists, however, the features are commonly supported by common versions:
+  * [srcdoc](https://github.com/jugglinmike/srcdoc-polyfill)
+  * [shadowdom](https://github.com/webcomponents/polyfills)
 
   <p class="ciu_embed" data-feature="iframe-srcdoc" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
     <a href="https://caniuse.com/#feat=iframe-srcdoc">Can I Use srcdoc?</a>
@@ -96,19 +103,38 @@
     <a href="http://caniuse.com/#feat=x-doc-messaging">Can I Use postMessage?</a>
     Data on support for the postMessage feature across major browsers from caniuse.com.
   </p>
+
+  <p class="ciu_embed" data-feature="shadowdomv1" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+    <a href="https://caniuse.com/#feat=shadowdomv1">Can I Use Shadow DOM?</a>
+    Data on support for the Shadow DOM feature across major browsers from caniuse.com.
+  </p>
+  
+
 </section>
 
-  ## Communication squence
+## Communication sequence
 
-  ### General course
+### General course
 
-  <figure>
-    <figcaption>Generalised course of an assesment from initialisation to end.</figcaption>
-    <img src="sequenceDiagrams/sequence.svg">
-  </figure>
+<figure>
+<figcaption>Generalised course of an assesment from initialisation to end.</figcaption>
+<img src="sequenceDiagrams/sequence.svg">
+</figure>
 
-  After the **Player** loads it announces it's state by a <a>`ReadyNotification`</a> which is answered by the **Testcenter** with an <a>`DataTransfer`</a> including the <a>`unitDefinition`</a> containing the unit and all subunits supposed to be presented. Upon start the **Player** announces the beginning of the assesment of the unit with a <a>`StartedNotification`</a>. Everytime a substantial change occures during the use of a **Player** a <a>`ChangedDataTransfer`</a> may be submitted. As there is no `unload` message e.g. before a timeout it is recommended to save user input regularly. The behaviour of the **Player** after a second <a>`DataTransfer`</a> is not defined, hence it can not be relied on a **Player** to work correctly after navigating to anoter unit played by the same player.
+1. **Player** is loaded
+2. **Player** sends <a>`ReadyNotification`</a>
+3. **Testcenter** sends <a>`DataTransfer`</a> including
+        * <a>`unitDefinition`</a> containing the unit and all subunits
+4. Assessment is started
+5. **Player** sends <a>`StartedNotification`</a>
+6. Loop until assessments ends:
+        1. **Player** sends <a>`ChangedDataTransfer`</a> on _substantial_ change
 
+Note:
+* No `unload` messages are provided, thus the user input should be saved regularly
+* Behaviour of the **Player** is undefined if multiple <a>`DataTransfer`</a> messages are sent
+* Don't rely on correct functionality of a player instance when using navigation in the **Testcenter**
+  
   ### Navigation
 
   As a general rule navigation elements at least for navigating between units should be provided by the **Testcenter**, but it is possible for a **Player** tp provide it's own way of navigation inside or away from a unit.
