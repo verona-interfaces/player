@@ -268,11 +268,11 @@ Note:
   {
     type: 'vo.ToPlayer.NavigateToPage';
     sessionId: string;
-    newPage: string;
+    target: string;
   }
   ```
   
-  * <dfn data-lt-noDefault data-lt="NavigateToPage.newPage">newPage</dfn> specifies to which page to navigate and is one of the strings given via <a>`validPages`</a>.
+  * <dfn data-lt-noDefault data-lt="NavigateToPage.target">target</dfn> specifies to which page to navigate and is one of the strings given in <a>`validPages`</a>.
   </section>
 
   <section data-dfn-for="PageNavigationRequest">
@@ -284,11 +284,11 @@ Note:
   {
     type: 'vo.FromPlayer.PageNavigationRequest';
     sessionId: string;
-    newPage: string;
+    target: string;
   }
   ```
   
-  * <dfn>newPage</dfn> is the id of the requested page or one of this keywords: `#next`/`#previous`.
+  * <dfn>target</dfn> is the id of the requested page.
   </section>
 
   <section data-dfn-for="UnitNavigationRequest">
