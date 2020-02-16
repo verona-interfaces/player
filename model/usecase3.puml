@@ -1,0 +1,34 @@
+@startuml
+title Use Case 3: Run Test
+participant "Persistence Layer" as layer
+participant "Player Host Application" as app
+User -> app: Booklet Selection
+
+loop per Unit
+    create Player
+    app -> Player: (create)
+    layer--[#red]> app: <font color=red>Previous Unit State</font>
+    app --> Player: Previous Unit State
+
+    actor User
+
+    app -> Player: Start Unit
+    loop Unit State Change
+        alt
+            User -> Player: Change Unit State
+        else
+            Player -> Player: Change Unit State
+        end
+        Player -> app: Unit State
+        app -[#red]>layer: <font color=red>Unit State</font>
+    end
+    alt
+        User -> app: Unit Navigation Request
+    else
+        app -[#red]> app: <font color=red>Forced Unit Navigation</font>
+    end
+    app -> Player: (destroy)
+    destroy Player
+end
+
+@enduml

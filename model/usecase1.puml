@@ -1,0 +1,22 @@
+@startuml
+title Use Case 1: Simulate Unit
+participant "Player Host Application" as app
+User -> app: Navigation Request: go to unit
+create Player
+app -> Player: (create)
+
+actor User
+
+app -> Player: Start Unit
+loop Unit State Change
+    alt
+        User -> Player: Change Unit State
+    else
+        Player -> Player: Change Unit State
+    end
+end
+User -> app: Navigation Request (go back)
+app -> Player: (destroy)
+destroy Player
+
+@enduml
