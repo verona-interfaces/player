@@ -1,7 +1,8 @@
 @startuml
 title Use Case 3: Run Test
-participant "Persistence Layer" as layer
+database "Persistence Layer" as layer
 participant "Player Host Application" as app
+actor User order 4
 User -> app: Booklet Selection
 
 loop per Unit
@@ -9,8 +10,6 @@ loop per Unit
     app -> Player: (create)
     layer--[#red]> app: <font color=red>Previous Unit State</font>
     app --> Player: Previous Unit State
-
-    actor User
 
     app -> Player: Start Unit
     loop Unit State Change

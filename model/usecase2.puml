@@ -1,14 +1,13 @@
 @startuml
 title Use Case 2: Simulate Test
 participant "Player Host Application" as app
+actor User order 4
 User -> app: Booklet Selection
 
 loop per Unit
     create Player
     app -> Player: (create)
     app --[#red]> Player: <font color=red>Previous Unit State</font>
-
-    actor User
 
     app -> Player: Start Unit
     loop Unit State Change

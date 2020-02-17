@@ -1,0 +1,48 @@
+@startuml
+title Communication between Player and Application
+participant "Player Host Application" as app
+
+create Player
+app -> Player: (load)
+Player -> app: ReadyNotification
+note right
+    load/initialisation complete,
+    communication start
+end note
+
+group Start Command
+    app --> Player: SetUnitDefinitionCommand
+    note right
+        if player can serve multiple units
+    end note
+    app --> Player: SetPlayerConfigCommand
+    note right
+        unit state reporting policy,
+        unit number, unit title,
+        environment data (if not defaults)
+    end note
+    app --> Player: SetPreviousUnitStateCommand
+    note right
+        if some previous state is at hand
+    end note
+
+    app -> Player: StartCommand
+end
+
+loop Player User Interaction 0..unbound
+    alt
+        Player -> app: UnitStateChangedNotification
+    else
+        Player --> app: PageNavigationRequestedNotification
+        app -> Player: PageNavigationCommand
+    end
+end
+
+Player --> app: UnitNavigationRequestedNotification
+app --> Player: GetUnitStateQuery
+Player --> app: GetUnitStateQueryReturn
+
+app -> Player: (destroy)
+destroy Player
+
+@enduml

@@ -1,11 +1,10 @@
 @startuml
 title Use Case 1: Simulate Unit
 participant "Player Host Application" as app
+actor User order 4
 User -> app: Navigation Request: go to unit
 create Player
 app -> Player: (create)
-
-actor User
 
 app -> Player: Start Unit
 loop Unit State Change
