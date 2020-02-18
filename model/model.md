@@ -80,18 +80,22 @@ state and a list of events causing the state. Then, the state is sort of a snaps
 test, on the requirements of the assessment, on the available analysis resources. A state change can occur once or 
 very often or never (user ignores unit and navigates right to the next one).   
 
-* Page navigation: A page is a structural category of the unit. The idea is, that a user has to navigate through 
-several pages. The items are not placed on one big page (scroll up/down), but clustered on pages. The request to
-change the current page is sent from the player (when the user clicks on an arrow placed inside the player area) 
-or from any other navigation button outside the player. In any case, the navigation itself is triggered only by
-the application.
+* Page navigation: See page model [here](pages.md). If the application placed some UI elements (like buttons) for page 
+navigation outside the player area, the application sends on click a command to the player to trigger the 
+presentation of another page.
+
+* Stop/Continue: We expect for some tests, that the presentation of content should pause for some reasons. 
+First use case for this feature is when a testee opens another browser window. The application might recognise this
+as an undesired behaviour and might block the interaction until a test operator (proctor) is convinced that 
+the test can continue.   
 
 * Unit navigation: Analog, the source for the request to leave the unit can be the player or the application.
 
 * Unit state query: If the size of the payload of the UnitStateChangedNotification compromises the performance of
 the test system, another approach might be useful: The UnitStateChangedNotification is empty and the state is stored 
 only in the player. Before quitting the unit (and destroying the player), the application queries for the state to 
-store it. This procedure can be enforced by the appropriate setting (see start command - configuration).  
+store it. This stops the user interaction so no unit state change is possible anymore. This proceeding 
+can be enforced by the appropriate setting (see start command - configuration).  
 
 * Destruction: Following this model, one sequence ends with the destruction of the player. But it's up to the 
 application to keep the player to reuse. It's wise to check whether the next step requires the same player or 

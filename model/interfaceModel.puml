@@ -33,8 +33,11 @@ loop Player User Interaction 0..unbound
     alt
         Player -> app: UnitStateChangedNotification
     else
-        Player --> app: PageNavigationRequestedNotification
         app -> Player: PageNavigationCommand
+    else
+        app -> Player: StopCommand
+    else
+        app -> Player: ContinueCommand
     end
 end
 
