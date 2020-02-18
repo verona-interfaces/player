@@ -5,7 +5,7 @@ comprehension test, not the whole visible area is subject to pagination, maybe o
 text is visible all the time.
 
 ## Concept of Pages
-Although this approach refers to the paper based assessment, a page can understood more generally as a 
+Although this approach refers to the paper based assessment, a page can be understood more generally as a 
 visual stage of the unit. This can be important from the user's point of view, if the number of UI elements is
 too big and there is more structure needed to handle all aspects of the unit. 
 
@@ -26,6 +26,6 @@ in another test application, another way to navigate might be more appropriate. 
 navigation buttons which could be unique for the test. 
 
 It's up to the unit/test designer, but for our interface is important, that
-* the player lets the application know about the pages of the unit: number, names, current selected page - right
-after unit start and on any changes 
+* the player lets the application know about the pages of the unit: number, labels, current selected page - right
+after unit start and on any change 
 * the application can send a navigation command to select another page

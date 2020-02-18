@@ -44,10 +44,22 @@ java -jar ..\plantuml.jar -checkmetadata -o png model\*.puml
 
 ### API
 The API definition is very important, because all programming relies on it. We strongly suggest that an API definition 
-is used for e2e testing. This requires an API defintion standard format that can be read by computers. We went for
+is used for e2e testing. This requires an API definition standard format that can be read by computers. We went for
 the [AsyncAPI](https://www.asyncapi.com/) specification, because we deal with asynchronous messages rather 
 then HTTP requests.
 
-The API defintion in AsyncAPI format is stored in this repository. To evaluate the changes, we like to 
-transform the API files into markdown documents. These markdown representations of the API definition are 
-stored in this repository too. The tooling for this will be presented here soon.
+The API definition in AsyncAPI format is stored in this repository. We prefer the yaml format rather then the 
+JSON format. The corresponding and better readable markdown document should be created right after changes of the 
+definition file have been made, and should be included in this repository. It's easy if you use 
+the [AsyncAPI Generator](https://github.com/asyncapi/generator) by Fran Méndez:
+
+```
+npm install -g asyncapi-generator
+```
+
+The following command (PC-version) will create a `api/playerapi.md` file from `api/playerapi.yaml`:
+
+```
+ag -o .\api .\api\playerapi.yaml markdown 
+```
+
