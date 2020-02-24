@@ -1,5 +1,5 @@
 @startuml
-title Use Case 3: Run Test
+title Use Case "Run Test"
 database "Persistence Layer" as layer
 participant "Player Host Application" as app
 actor User order 4

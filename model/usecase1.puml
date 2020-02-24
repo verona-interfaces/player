@@ -1,5 +1,5 @@
 @startuml
-title Use Case 1: Simulate Unit
+title Use Case "Simulate Unit"
 participant "Player Host Application" as app
 actor User order 4
 User -> app: Navigation Request: go to unit

@@ -1,5 +1,5 @@
 @startuml
-title Use Case 2: Simulate Test
+title Use Case "Simulate Unit Sequence"
 participant "Player Host Application" as app
 actor User order 4
 User -> app: Booklet Selection

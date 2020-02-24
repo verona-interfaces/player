@@ -12,10 +12,15 @@ loop per Unit
         layer-> app: Previous Unit State
         app -> Player: Previous Unit State
         app -> Player: Start Unit
-        User -[#red]> Player: <font color=red>Evaluate Unit State</font>
-        Player -[#red]> app: <font color=red>Unit State Evaluation</font>
-        app -[#red]> layer: <font color=red>Unit State Evaluation</font>
-        User -[#red]> app: <font color=red>Testee Navigation Request</font>
+        loop 0..unbound
+            alt
+                User -> app: Page Navigation Request
+            else
+                User -[#red]> Player: <font color=red>Evaluate Unit State</font>
+                Player -[#red]> app: <font color=red>Unit State Evaluation</font>
+                app -[#red]> layer: <font color=red>Unit State Evaluation</font>
+            end
+        end
     end
 
     User -> app: Unit Navigation Request

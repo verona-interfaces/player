@@ -1,0 +1,253 @@
+asyncapi: 2.0.0
+info:
+  title: Verona Player Module
+  version: '2.0.0'
+  description: This is one part of the Verona Online Assessment Standards.
+  license:
+    name: MIT
+
+channels:
+  vopReadyNotification:
+    subscribe:
+      summary: The player announces that it's code is loaded and initialized so the communication can start.
+      message:
+        payload:
+          type: object
+          properties:
+            apiVersion:
+              type: string
+              pattern: '^\d+\.\d+.\d+$'
+              description: This lets the application know what API version the player supports. If this does not
+                fit the API version the application can offer, the player should not be used. An exception
+                should be thrown.
+            responseDataType:
+              type: string
+              description: This string is important when the responses and the logs are processed. Every data
+                transformation should know where the data came from. The type can be an ID of the player or
+                a known data format.
+          required:
+            - apiVersion
+
+  vopStartCommand:
+    publish:
+      summary: The application sends parameters for running the unit and commands the start of user interaction.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+              description: The session id flags all communication from this moment on. If a message has no or empty
+                session id, it's not processed.
+            unitDefinition:
+              type: string
+              format: byte
+              description: The definition of the unit (if given) lets the player adapt. An audio player gets it's audio
+                sequence, a choice player gets it's options...
+            restorePoint:
+              $ref: "#/components/schemas/RestorePoint"
+              description: If there is any state what should be restored, then this is the information for that.
+            playerConfig:
+              $ref: "#/components/schemas/PlayerConfig"
+          required:
+            - sessionId
+
+
+  vopStateChangedNotification:
+    subscribe:
+      summary: The state of the unit and/or of the player has changed.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+            timeStamp:
+              type: string
+              format: date-time
+            unitState:
+              $ref: "#/components/schemas/UnitState"
+            playerState:
+              $ref: "#/components/schemas/PlayerState"
+            log:
+              type: array
+              items:
+                $ref: "#/components/schemas/LogEntry"
+          required:
+            - sessionId
+            - timeStamp
+
+  vopPageNavigationCommand:
+    publish:
+      summary: The application wants the player to navigate to a specific page.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+            target:
+              type: string
+          required:
+            - sessionId
+            - target
+  vopUnitNavigationRequestedNotification:
+    subscribe:
+      summary: The user has triggered a navigation request.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+            target:
+              enum:
+                - next
+                - previous
+                - first
+                - last
+                - end
+          required:
+            - sessionId
+            - target
+
+  vopGetLastStateRequest:
+    publish:
+      summary: The application wants the player to report the last (unit) state and (optional) stop interaction.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+            stop:
+              type: boolean
+          required:
+            - sessionId
+            - stop
+
+  vopGetLastStateResponse:
+    subscribe:
+      summary: The player sends the last unit state.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+            timeStamp:
+              type: string
+              format: date-time
+            unitState:
+              $ref: "#/components/schemas/UnitState"
+            playerState:
+              $ref: "#/components/schemas/PlayerState"
+            log:
+              type: array
+              items:
+                $ref: "#/components/schemas/LogEntry"
+          required:
+            - sessionId
+            - timeStamp
+
+  vopStopCommand:
+    publish:
+      summary: The application wants the player to stop all activities and user interaction.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+          required:
+            - sessionId
+
+  vopContinueCommand:
+    publish:
+      summary: The application wants the player to continue all activities and user interaction.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            sessionId:
+              type: string
+          required:
+            - sessionId
+
+components:
+  schemas:
+    RestorePoint:
+      type: object
+      additionalProperties:
+        type: string
+        format: byte
+    LogEntry:
+      type: object
+      properties:
+        timeStamp:
+          type: string
+          format: date-time
+        key:
+          type: string
+        content:
+          type: string
+          format: byte
+      required:
+        - timeStamp
+        - key
+        - content
+    PlayerState:
+      type: object
+      properties:
+        state:
+          enum:
+            - running
+            - stopped
+        currentPage:
+          type: string
+        validPages:
+          type: array
+          items:
+            type: string
+      required:
+        - state
+        - currentPage
+        - validPages
+    UnitState:
+      type: object
+      properties:
+        restorePoint:
+          $ref: "#/components/schemas/RestorePoint"
+        presentationProgress:
+          enum:
+            - none
+            - some
+            - complete
+        responseProgress:
+          enum:
+            - none
+            - some
+            - complete
+            - complete-and-valid
+    PlayerConfig:
+      type: object
+      properties:
+        unitNumber:
+          type: integer
+          minimum: 1
+        unitTitle:
+          type: string
+          maxLength: 20
+        stateReportPolicy:
+          enum:
+            - none
+            - eager
+            - on-demand

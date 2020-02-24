@@ -54,7 +54,7 @@ This use case applies for:
 and decides, which code represents the response best. This is necessary to run any statistical analysis or to 
 report.
 * Feedback applications: In order to learn from the reported outcomes, a teacher likes to look at responses of 
-he tested students (replay). 
+the tested students (replay). 
 
 ## Player Interface Model
 
@@ -82,16 +82,18 @@ very often or never (user ignores unit and navigates right to the next one).
 
 * Page navigation: See page model [here](pages.md). If the application placed some UI elements (like buttons) for page 
 navigation outside the player area, the application sends on click a command to the player to trigger the 
-presentation of another page.
+presentation of another page. The player could trigger page navigation itself but should send a state notification
+to the application.
 
 * Stop/Continue: We expect for some tests, that the presentation of content should pause for some reasons. 
 First use case for this feature is when a testee opens another browser window. The application might recognise this
 as an undesired behaviour and might block the interaction until a test operator (proctor) is convinced that 
 the test can continue.   
 
-* Unit navigation: Analog, the source for the request to leave the unit can be the player or the application.
+* Unit navigation: Analog to page navigation, the source for the request to leave the unit can be the player or the 
+application.
 
-* Unit state query: If the size of the payload of the UnitStateChangedNotification compromises the performance of
+* Get Unit state: If the size of the payload of the UnitStateChangedNotification compromises the performance of
 the test system, another approach might be useful: The UnitStateChangedNotification is empty and the state is stored 
 only in the player. Before quitting the unit (and destroying the player), the application queries for the state to 
 store it. This stops the user interaction so no unit state change is possible anymore. This proceeding 
