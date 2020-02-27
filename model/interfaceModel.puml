@@ -16,7 +16,7 @@ end
 
 loop Player User Interaction 0..unbound
     alt
-        Player -> app: UnitStateChangedNotification
+        Player -> app: StateChangedNotification
     else
         app -> Player: PageNavigationCommand
     else
@@ -27,8 +27,8 @@ loop Player User Interaction 0..unbound
 end
 
 Player --> app: UnitNavigationRequestedNotification
-app --> Player: GetUnitStateRequest
-Player --> app: GetUnitStateResponse
+app --> Player: GetStateRequest
+Player --> app: GetStateResponse
 
 app -> Player: (destroy)
 destroy Player

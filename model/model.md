@@ -93,7 +93,7 @@ the test can continue.
 * Unit navigation: Analog to page navigation, the source for the request to leave the unit can be the player or the 
 application.
 
-* Get Unit state: If the size of the payload of the UnitStateChangedNotification compromises the performance of
+* Get state: If the size of the payload of the StateChangedNotification compromises the performance of
 the test system, another approach might be useful: The UnitStateChangedNotification is empty and the state is stored 
 only in the player. Before quitting the unit (and destroying the player), the application queries for the state to 
 store it. This stops the user interaction so no unit state change is possible anymore. This proceeding 

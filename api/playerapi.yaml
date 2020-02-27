@@ -3,13 +3,20 @@ info:
   title: Verona Player Module
   version: '2.0.0'
   description: This is one part of the Verona Online Assessment Standards.
+    All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
+    as target (parent.window), and the application binds the function call to the iframe element of the player.
+
+    Most important, the message body carries as first parameter the operationId of the message.
+
   license:
     name: MIT
 
 channels:
   vopReadyNotification:
     subscribe:
-      summary: The player announces that it's code is loaded and initialized so the communication can start.
+      operationId: vopReadyNotification
+      summary: player announces start
+      description: The player announces that it's code is loaded and initialized so the communication can start.
       message:
         payload:
           type: object
@@ -30,7 +37,9 @@ channels:
 
   vopStartCommand:
     publish:
-      summary: The application sends parameters for running the unit and commands the start of user interaction.
+      operationId: vopStartCommand
+      summary: application orders player to start
+      description: The application sends parameters for running the unit and commands the start of user interaction.
       message:
         contentType: application/json
         payload:
@@ -53,15 +62,17 @@ channels:
               description: If there is any state what should be restored, then this is the information for that.
             playerConfig:
               $ref: "#/components/schemas/PlayerConfig"
-            description: This data supplies some information or instruction about this specific run of the unit
-              (number, unit title, some behavioral data for the player).
+              description: This data supplies some information or instruction about this specific run of the unit
+                (number, unit title, some behavioral data for the player).
           required:
             - sessionId
 
 
   vopStateChangedNotification:
     subscribe:
-      summary: The state of the unit and/or of the player has changed.
+      operationId: vopStateChangedNotification
+      summary: state has changed
+      description: The state of the unit and/or of the player has changed. Some logs entries might be sent.
       message:
         contentType: application/json
         payload:
@@ -94,7 +105,9 @@ channels:
 
   vopPageNavigationCommand:
     publish:
-      summary: The application wants the player to navigate to a specific page.
+      operationId: vopPageNavigationCommand
+      summary: page navigation
+      description: The application wants the player to navigate to a specific page.
       message:
         contentType: application/json
         payload:
@@ -113,7 +126,9 @@ channels:
             - target
   vopUnitNavigationRequestedNotification:
     subscribe:
-      summary: The user has triggered a navigation request.
+      operationId: vopUnitNavigationRequestedNotification
+      summary: unit navigation
+      description: The user has triggered a navigation request.
       message:
         contentType: application/json
         payload:
@@ -136,9 +151,11 @@ channels:
             - sessionId
             - target
 
-  vopGetLastStateRequest:
+  vopGetStateRequest:
     publish:
-      summary: The application wants the player to report the last (unit) state and (optional) stop interaction.
+      operationId: vopGetStateRequest
+      summary: request for state
+      description: The application wants the player to report the last state and (optional) to stop interaction.
       message:
         contentType: application/json
         payload:
@@ -157,9 +174,11 @@ channels:
             - sessionId
             - stop
 
-  vopGetLastStateResponse:
+  vopGetStateResponse:
     subscribe:
-      summary: The player sends the last unit state.
+      operationId: vopGetStateResponse
+      summary: responding to state request
+      description: The player sends the last unit state.
       message:
         contentType: application/json
         payload:
@@ -174,19 +193,24 @@ channels:
               format: date-time
             unitState:
               $ref: "#/components/schemas/UnitState"
+              description: See StateChangedNotification.
             playerState:
               $ref: "#/components/schemas/PlayerState"
+              description: See StateChangedNotification.
             log:
               type: array
               items:
                 $ref: "#/components/schemas/LogEntry"
+              description: See StateChangedNotification.
           required:
             - sessionId
             - timeStamp
 
   vopStopCommand:
     publish:
-      summary: The application wants the player to stop all activities and user interaction.
+      operationId: vopStopCommand
+      summary: stop player
+      description: The application wants the player to stop all activities and user interaction.
       message:
         contentType: application/json
         payload:
@@ -201,7 +225,9 @@ channels:
 
   vopContinueCommand:
     publish:
-      summary: The application wants the player to continue all activities and user interaction.
+      operationId: vopContinueCommand
+      summary: continue player
+      description: The application wants the player to continue all activities and user interaction.
       message:
         contentType: application/json
         payload:
@@ -217,11 +243,17 @@ channels:
 components:
   schemas:
     RestorePoint:
+      description: These are all data needed for restoring the unit state after reload. This is also the
+        basis for extracting the responses of the testee. Because the load of the whole state could be huge,
+        we can split the state into chunks. So the data structure is "key of chunk" => "chunk data". In order to
+        restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the
+        first one (accourding to the time stamp) should be overwritten.
       type: object
       additionalProperties:
         type: string
         format: byte
     LogEntry:
+      description: The player can sent any information about events happening during the interaction phase.
       type: object
       properties:
         timeStamp:
@@ -229,13 +261,14 @@ components:
           format: date-time
         key:
           type: string
+          description: This key might help to classify the events afterwards.
         content:
           type: string
           format: byte
+          description: Some information to specify the event.
       required:
         - timeStamp
         - key
-        - content
     PlayerState:
       type: object
       properties:
@@ -246,6 +279,8 @@ components:
         currentPage:
           type: string
         validPages:
+          description: These data are structured as "page key" => "page label", so we have (1) keys for navigation
+            commands or state notifications and (2) strings as labels of navigation buttons if needed.
           type: array
           items:
             type: string

@@ -1,5 +1,4 @@
 # Verona Player Interface Definition
-
 This is a repository for the development of the Verona Player Interface (First Edition) definition.
 * [Latest Editor's Draft](https://veronaworkgroup.github.io/VeronaPlayerInterface/)
 
@@ -8,6 +7,13 @@ The First Draft was published as ''Item-Player interface definition v1.0'' on Se
 * [Second Draft](https://veronaworkgroup.github.io/VeronaPlayerInterface/Drafts/Vo%20interface%20Item-Player%20v1.pdf)
 
 Feature requests are documented in the [issue tracker](https://github.com/VeronaWorkgroup/VeronaPlayerInterface/issues/).
+
+## a temporary intro for branch "mayworkshop-input"
+
+Some propsed texts about Player API:
+* [Use cases and communication model between application and player](model/model.md)
+* [About pages of a unit](model/pages.md)
+* [Player API](api/asyncapi.md)
 
 ## for contributors
 

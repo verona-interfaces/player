@@ -52,7 +52,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            The player announces that it&#39;s code is loaded and initialized so the communication can start.
+            player announces start
           </span>
           
         </a>
@@ -68,7 +68,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            The application sends parameters for running the unit and commands the start of user interaction.
+            application orders player to start
           </span>
           
         </a>
@@ -86,7 +86,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            The state of the unit and/or of the player has changed.
+            state has changed
           </span>
           
         </a>
@@ -102,7 +102,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            The application wants the player to navigate to a specific page.
+            page navigation
           </span>
           
         </a>
@@ -120,7 +120,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            The user has triggered a navigation request.
+            unit navigation
           </span>
           
         </a>
@@ -131,12 +131,12 @@
       <li>
         
         <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
-          href="#operation-publish-vopGetLastStateRequest">
+          href="#operation-publish-vopGetStateRequest">
           <span class="bg-blue-dark font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded"
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            The application wants the player to report the last (unit) state and (optional) stop interaction.
+            request for state
           </span>
           
         </a>
@@ -149,12 +149,12 @@
         
         
         <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
-          href="#operation-subscribe-vopGetLastStateResponse">
+          href="#operation-subscribe-vopGetStateResponse">
           <span class="bg-green-dark font-bold no-underline text-white uppercase p-1 mr-2 rounded"
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            The player sends the last unit state.
+            responding to state request
           </span>
           
         </a>
@@ -170,7 +170,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            The application wants the player to stop all activities and user interaction.
+            stop player
           </span>
           
         </a>
@@ -187,7 +187,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            The application wants the player to continue all activities and user interaction.
+            continue player
           </span>
           
         </a>
@@ -215,7 +215,8 @@
   </div>
 
   <div class="markdown">
-    <p>This is one part of the Verona Online Assessment Standards.</p>
+    <p>This is one part of the Verona Online Assessment Standards. | All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
+Most important, the message body carries as first parameter the operationId of the message.</p>
 
   </div>
 
@@ -256,8 +257,9 @@
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The player announces that it&#39;s code is loaded and initialized so the communication can start.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">player announces start</p>
+    <div class="mt-4 mb-4 markdown"><p>The player announces that it's code is loaded and initialized so the communication can start.</p>
+</div>
 
 
 
@@ -418,7 +420,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>This string is important when the responses and the logs are processed. Every data transformation should know where the data came from. The type can be an ID of the player or a known data format.</p>
+          <div class="text-sm markdown"><p>This string is important when the responses and the logs are processed. Every data transformation afterwards requires to know where the data came from. The type can be an ID of the player or a known data format.</p>
 </div>
         
         
@@ -532,8 +534,9 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The application sends parameters for running the unit and commands the start of user interaction.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">application orders player to start</p>
+    <div class="mt-4 mb-4 markdown"><p>The application sends parameters for running the unit and commands the start of user interaction.</p>
+</div>
 
 
 
@@ -641,7 +644,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>The session id flags all communication from this moment on. If a message has no or empty session id, it's not processed.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication from this moment on. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit (via this StartCommand).</p>
 </div>
         
         
@@ -876,6 +879,9 @@ object
         </div>
 
         
+          <div class="text-sm markdown"><p>This data supplies some information or instruction about this specific run of the unit (number, unit title, some behavioral data for the player).</p>
+</div>
+        
         
         
         
@@ -965,6 +971,56 @@ string
             
             
               <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;">length <= 50</span>
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">unitId</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
                 style="height: 20px;font-size: 11px;padding: 3px;">length <= 20</span>
             
             
@@ -1032,6 +1088,64 @@ string
               <span class="border text-orange rounded ml-1 py-0 px-2">"eager"</span>
             
               <span class="border text-orange rounded ml-1 py-0 px-2">"on-demand"</span>
+            
+          </div>
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">logPolicy</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+          <div class="text-xs">
+            Enum:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"disabled"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"lean"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"rich"</span>
             
           </div>
         
@@ -1137,7 +1251,9 @@ string
   "playerConfig": {
     "unitNumber": 1,
     "unitTitle": "string",
-    "stateReportPolicy": "none"
+    "unitId": "string",
+    "stateReportPolicy": "none",
+    "logPolicy": "disabled"
   }
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
@@ -1184,8 +1300,9 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The state of the unit and/or of the player has changed.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">state has changed</p>
+    <div class="mt-4 mb-4 markdown"><p>The state of the unit and/or of the player has changed. Some logs entries might be sent.</p>
+</div>
 
 
 
@@ -1293,6 +1410,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+</div>
+        
         
         
         
@@ -1344,6 +1464,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Ensures, that later arriving states are ignored.</p>
+</div>
         
         
         
@@ -1397,6 +1520,9 @@ object
         </div>
 
         
+          <div class="text-sm markdown"><p>To be stored, evaluated etc. This is the main yield, the responses.</p>
+</div>
+        
         
         
         
@@ -1446,6 +1572,9 @@ object
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
+</div>
         
         
         
@@ -1714,6 +1843,9 @@ object
         </div>
 
         
+          <div class="text-sm markdown"><p>Information important only for the application to ensure the correct visual, such as navigation buttons.</p>
+</div>
+        
         
         
         
@@ -1873,6 +2005,9 @@ array&lt;string&gt;
         </div>
 
         
+          <div class="text-sm markdown"><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
+</div>
+        
         
         
         
@@ -2023,6 +2158,9 @@ array&lt;object&gt;
         </div>
 
         
+          <div class="text-sm markdown"><p>Log entries (lean version) add some information to the response in order to understand the response process better or (rich version) let the analyst replay every change of the state.</p>
+</div>
+        
         
         
         
@@ -2079,6 +2217,9 @@ object
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>The player can sent any information about events happening during the interaction phase.</p>
+</div>
         
         
         
@@ -2179,6 +2320,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>This key might help to classify the events afterwards.</p>
+</div>
+        
         
         
         
@@ -2200,8 +2344,6 @@ string
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
         <span class="text-sm " style="word-break: break-word;">content</span>
         
-        
-          <div class="text-red-dark text-xs">required</div>
         
       </div>
 
@@ -2230,6 +2372,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Some information to specify the event.</p>
+</div>
         
         
         
@@ -2349,7 +2494,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-02-24T15:07:39Z",
+  "timeStamp": "2020-02-27T13:26:48Z",
   "unitState": {
     "restorePoint": {
       "property1": "string",
@@ -2367,7 +2512,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2020-02-24T15:07:39Z",
+      "timeStamp": "2020-02-27T13:26:48Z",
       "key": "string",
       "content": "string"
     }
@@ -2410,8 +2555,9 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The application wants the player to navigate to a specific page.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">page navigation</p>
+    <div class="mt-4 mb-4 markdown"><p>The application wants the player to navigate to a specific page.</p>
+</div>
 
 
 
@@ -2519,6 +2665,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+</div>
+        
         
         
         
@@ -2567,6 +2716,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Id of the page matching one of the validPages given to the application by the playerState data of the StateChangedNotification.</p>
+</div>
         
         
         
@@ -2686,8 +2838,9 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The user has triggered a navigation request.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">unit navigation</p>
+    <div class="mt-4 mb-4 markdown"><p>The user has triggered a navigation request.</p>
+</div>
 
 
 
@@ -2795,6 +2948,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+</div>
+        
         
         
         
@@ -2814,10 +2970,8 @@ string
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">target</span>
+        <span class="text-sm " style="word-break: break-word;">targetRelative</span>
         
-        
-          <div class="text-red-dark text-xs">required</div>
         
       </div>
 
@@ -2843,6 +2997,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Refers to a unit relative to the position of the current unit or to the first or last unit. The key 'end' requests the finish of the test (close and go to the thank you page).</p>
+</div>
         
         
         
@@ -2931,7 +3088,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "target": "next"
+  "targetRelative": "next"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -2955,7 +3112,7 @@ string
     
       
 
-<a name="operation-publish-vopGetLastStateRequest"></a>
+<a name="operation-publish-vopGetStateRequest"></a>
 <div class="center-block p-8">
   <div class="operation pt-8 pb-8">
     <h3 class="font-mono text-base">
@@ -2964,14 +3121,15 @@ string
       
       
       
-<span class="string-chunk" >vopGetLastStateRequest</span>
+<span class="string-chunk" >vopGetStateRequest</span>
 
     </h3>
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The application wants the player to report the last (unit) state and (optional) stop interaction.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">request for state</p>
+    <div class="mt-4 mb-4 markdown"><p>The application wants the player to report the last state and (optional) to stop interaction.</p>
+</div>
 
 
 
@@ -3079,6 +3237,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+</div>
+        
         
         
         
@@ -3127,6 +3288,9 @@ boolean
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>If true, the player should not accept any user interaction anymore to be sure, that all states of the unit are reported. Usually, you will do so just before unloading the player and prepare for the next unit.</p>
+</div>
         
         
         
@@ -3189,11 +3353,11 @@ boolean
   
 
 <form>
-  <input type="radio" checked id="example-payload-vopGetLastStateRequest-&lt;anonymous-message-6&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopGetLastStateRequest-&lt;anonymous-message-6&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+  <input type="radio" checked id="example-payload-vopGetStateRequest-&lt;anonymous-message-6&gt;" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload-vopGetStateRequest-&lt;anonymous-message-6&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
 
-  <input type="radio" id="example-headers-vopGetLastStateRequest-&lt;anonymous-message-6&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopGetLastStateRequest-&lt;anonymous-message-6&gt;"
+  <input type="radio" id="example-headers-vopGetStateRequest-&lt;anonymous-message-6&gt;" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers-vopGetStateRequest-&lt;anonymous-message-6&gt;"
       class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
 
   <div class="payload-examples mt-4">
@@ -3230,7 +3394,7 @@ boolean
     
       
 
-<a name="operation-subscribe-vopGetLastStateResponse"></a>
+<a name="operation-subscribe-vopGetStateResponse"></a>
 <div class="center-block p-8">
   <div class="operation pt-8 pb-8">
     <h3 class="font-mono text-base">
@@ -3240,14 +3404,15 @@ boolean
         title="Subscribe">Sub</span>
       
       
-<span class="string-chunk" >vopGetLastStateResponse</span>
+<span class="string-chunk" >vopGetStateResponse</span>
 
     </h3>
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The player sends the last unit state.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">responding to state request</p>
+    <div class="mt-4 mb-4 markdown"><p>The player sends the last unit state.</p>
+</div>
 
 
 
@@ -3354,6 +3519,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+</div>
         
         
         
@@ -3459,6 +3627,9 @@ object
         </div>
 
         
+          <div class="text-sm markdown"><p>See StateChangedNotification.</p>
+</div>
+        
         
         
         
@@ -3508,6 +3679,9 @@ object
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
+</div>
         
         
         
@@ -3776,6 +3950,9 @@ object
         </div>
 
         
+          <div class="text-sm markdown"><p>See StateChangedNotification.</p>
+</div>
+        
         
         
         
@@ -3935,6 +4112,9 @@ array&lt;string&gt;
         </div>
 
         
+          <div class="text-sm markdown"><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
+</div>
+        
         
         
         
@@ -4085,6 +4265,9 @@ array&lt;object&gt;
         </div>
 
         
+          <div class="text-sm markdown"><p>See StateChangedNotification.</p>
+</div>
+        
         
         
         
@@ -4141,6 +4324,9 @@ object
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>The player can sent any information about events happening during the interaction phase.</p>
+</div>
         
         
         
@@ -4241,6 +4427,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>This key might help to classify the events afterwards.</p>
+</div>
+        
         
         
         
@@ -4262,8 +4451,6 @@ string
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
         <span class="text-sm " style="word-break: break-word;">content</span>
         
-        
-          <div class="text-red-dark text-xs">required</div>
         
       </div>
 
@@ -4292,6 +4479,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Some information to specify the event.</p>
+</div>
         
         
         
@@ -4400,18 +4590,18 @@ string
   
 
 <form>
-  <input type="radio" checked id="example-payload-vopGetLastStateResponse-&lt;anonymous-message-7&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopGetLastStateResponse-&lt;anonymous-message-7&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+  <input type="radio" checked id="example-payload-vopGetStateResponse-&lt;anonymous-message-7&gt;" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload-vopGetStateResponse-&lt;anonymous-message-7&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
 
-  <input type="radio" id="example-headers-vopGetLastStateResponse-&lt;anonymous-message-7&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopGetLastStateResponse-&lt;anonymous-message-7&gt;"
+  <input type="radio" id="example-headers-vopGetStateResponse-&lt;anonymous-message-7&gt;" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers-vopGetStateResponse-&lt;anonymous-message-7&gt;"
       class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
 
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-02-24T15:07:39Z",
+  "timeStamp": "2020-02-27T13:26:48Z",
   "unitState": {
     "restorePoint": {
       "property1": "string",
@@ -4429,7 +4619,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2020-02-24T15:07:39Z",
+      "timeStamp": "2020-02-27T13:26:48Z",
       "key": "string",
       "content": "string"
     }
@@ -4472,8 +4662,9 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The application wants the player to stop all activities and user interaction.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">stop player</p>
+    <div class="mt-4 mb-4 markdown"><p>The application wants the player to stop all activities and user interaction.</p>
+</div>
 
 
 
@@ -4580,6 +4771,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+</div>
         
         
         
@@ -4694,8 +4888,9 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">The application wants the player to continue all activities and user interaction.</p>
-    <div class="mt-4 mb-4 markdown"></div>
+    <p class="text-grey text-sm">continue player</p>
+    <div class="mt-4 mb-4 markdown"><p>The application wants the player to continue all activities and user interaction.</p>
+</div>
 
 
 
@@ -4802,6 +4997,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+</div>
         
         
         
