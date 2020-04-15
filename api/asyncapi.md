@@ -1,4 +1,4 @@
-# Verona Player Module 2.0.0 documentation
+# Verona Player Module 2.0.0-alpha.5 documentation
 
 
 
@@ -84,7 +84,7 @@ Most important, the message body carries as first parameter the operationId of t
     
       
 <tr>
-  <td>responseDataType </td>
+  <td>responseType </td>
   <td>string</td>
   <td><p>This string is important when the responses and the logs are processed. Every data transformation afterwards requires to know where the data came from. The type can be an ID of the player or a known data format.</p>
 </td>
@@ -108,7 +108,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "apiVersion": "string",
-  "responseDataType": "string"
+  "responseType": "string"
 }
 ```
 
@@ -194,7 +194,7 @@ Most important, the message body carries as first parameter the operationId of t
     
       
 <tr>
-  <td>restorePoint </td>
+  <td>responses </td>
   <td>object</td>
   <td><p>If there is any state what should be restored, then this is the information for that.</p>
 </td>
@@ -312,7 +312,7 @@ Most important, the message body carries as first parameter the operationId of t
 {
   "sessionId": "string",
   "unitDefinition": "string",
-  "restorePoint": {
+  "responses": {
     "property1": "string",
     "property2": "string"
   },
@@ -420,7 +420,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 <tr>
-  <td>unitState.restorePoint </td>
+  <td>unitState.responses </td>
   <td>object</td>
   <td><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
 </td>
@@ -515,7 +515,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 <tr>
   <td>playerState.validPages </td>
-  <td>array(string)</td>
+  <td>object</td>
   <td><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
 </td>
   <td><em>Any</em></td>
@@ -609,9 +609,9 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-02-27T13:28:10Z",
+  "timeStamp": "2020-04-15T07:18:43Z",
   "unitState": {
-    "restorePoint": {
+    "responses": {
       "property1": "string",
       "property2": "string"
     },
@@ -621,13 +621,14 @@ Most important, the message body carries as first parameter the operationId of t
   "playerState": {
     "state": "running",
     "currentPage": "string",
-    "validPages": [
-      "string"
-    ]
+    "validPages": {
+      "property1": "string",
+      "property2": "string"
+    }
   },
   "log": [
     {
-      "timeStamp": "2020-02-27T13:28:10Z",
+      "timeStamp": "2020-04-15T07:18:43Z",
       "key": "string",
       "content": "string"
     }
@@ -1010,7 +1011,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 <tr>
-  <td>unitState.restorePoint </td>
+  <td>unitState.responses </td>
   <td>object</td>
   <td><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
 </td>
@@ -1105,7 +1106,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 <tr>
   <td>playerState.validPages </td>
-  <td>array(string)</td>
+  <td>object</td>
   <td><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
 </td>
   <td><em>Any</em></td>
@@ -1199,9 +1200,9 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-02-27T13:28:10Z",
+  "timeStamp": "2020-04-15T07:18:43Z",
   "unitState": {
-    "restorePoint": {
+    "responses": {
       "property1": "string",
       "property2": "string"
     },
@@ -1211,13 +1212,14 @@ Most important, the message body carries as first parameter the operationId of t
   "playerState": {
     "state": "running",
     "currentPage": "string",
-    "validPages": [
-      "string"
-    ]
+    "validPages": {
+      "property1": "string",
+      "property2": "string"
+    }
   },
   "log": [
     {
-      "timeStamp": "2020-02-27T13:28:10Z",
+      "timeStamp": "2020-04-15T07:18:43Z",
       "key": "string",
       "content": "string"
     }

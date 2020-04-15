@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   
-  <title>Verona Player Module 2.0.0 documentation</title>
+  <title>Verona Player Module 2.0.0-alpha.5 documentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/atom-one-dark.min.css" />
@@ -24,7 +24,7 @@
 <div class="sidebar-panel fixed pin-t pin-l pin-b w-64 bg-grey-lighter font-sans pt-8 pr-4 pb-4 pl-4">
   <div class="sidebar-panel__content">
     
-    <h1 class="text-2xl font-thin">Verona Player Module 2.0.0</h1>
+    <h1 class="text-2xl font-thin">Verona Player Module 2.0.0-alpha.5</h1>
     
     <ul class="text-sm mt-10 list-reset mt-2">
       <li class="mb-3">
@@ -52,7 +52,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            player announces start
+            player announces readiness
           </span>
           
         </a>
@@ -205,7 +205,7 @@
     <div class="content-panel flex-1 leading-loose z-10">
       <div class="center-block p-8">
   <a name="introduction"></a>
-  <h1>Verona Player Module 2.0.0</h1>
+  <h1>Verona Player Module 2.0.0-alpha.5</h1>
   <div class="leading-normal mb-4">
     
     
@@ -215,7 +215,7 @@
   </div>
 
   <div class="markdown">
-    <p>This is one part of the Verona Online Assessment Standards. | All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
+    <p>This is one part of the Verona Online Assessment Standards. All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
 Most important, the message body carries as first parameter the operationId of the message.</p>
 
   </div>
@@ -257,7 +257,7 @@ Most important, the message body carries as first parameter the operationId of t
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">player announces start</p>
+    <p class="text-grey text-sm">player announces readiness</p>
     <div class="mt-4 mb-4 markdown"><p>The player announces that it's code is loaded and initialized so the communication can start.</p>
 </div>
 
@@ -392,7 +392,7 @@ string
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">responseDataType</span>
+        <span class="text-sm " style="word-break: break-word;">responseType</span>
         
         
       </div>
@@ -495,7 +495,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "apiVersion": "string",
-  "responseDataType": "string"
+  "responseType": "string"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -719,7 +719,7 @@ string
   <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">restorePoint</span>
+        <span class="text-sm " style="word-break: break-word;">responses</span>
         
         <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
           xmlns="http://www.w3.org/2000/svg" y="0">
@@ -1244,7 +1244,7 @@ string
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
   "unitDefinition": "string",
-  "restorePoint": {
+  "responses": {
     "property1": "string",
     "property2": "string"
   },
@@ -1540,7 +1540,7 @@ object
   <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">restorePoint</span>
+        <span class="text-sm " style="word-break: break-word;">responses</span>
         
         <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
           xmlns="http://www.w3.org/2000/svg" y="0">
@@ -1985,7 +1985,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-array&lt;string&gt;
+object
           
           
           
@@ -2023,16 +2023,18 @@ array&lt;string&gt;
         
 
         
+
+        
           
-            <p class="pl-6 mb-2 text-xs font-bold uppercase text-grey-darker">Items:</p>
-            
+            <p class="pl-6 mb-2 mt-4 text-xs font-bold text-grey-darker">Additional properties must adhere to the following schema:</p>
+            <div class="bg-grey-lightest pl-6">
               
 
 <div class="bg-grey-lightest pl-8 pr-8 rounded">
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">0</span>
+        <span class="text-sm italic text-grey" style="word-break: break-word;">(property name)</span>
         
         
       </div>
@@ -2072,14 +2074,8 @@ string
 </div>
 
 
-            
+            </div>
           
-
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional items are allowed.</p>
-          
-        
-
         
 
         
@@ -2494,9 +2490,9 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-02-27T13:26:48Z",
+  "timeStamp": "2020-04-15T07:42:03Z",
   "unitState": {
-    "restorePoint": {
+    "responses": {
       "property1": "string",
       "property2": "string"
     },
@@ -2506,13 +2502,14 @@ string
   "playerState": {
     "state": "running",
     "currentPage": "string",
-    "validPages": [
-      "string"
-    ]
+    "validPages": {
+      "property1": "string",
+      "property2": "string"
+    }
   },
   "log": [
     {
-      "timeStamp": "2020-02-27T13:26:48Z",
+      "timeStamp": "2020-04-15T07:42:03Z",
       "key": "string",
       "content": "string"
     }
@@ -3647,7 +3644,7 @@ object
   <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">restorePoint</span>
+        <span class="text-sm " style="word-break: break-word;">responses</span>
         
         <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
           xmlns="http://www.w3.org/2000/svg" y="0">
@@ -4092,7 +4089,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-array&lt;string&gt;
+object
           
           
           
@@ -4130,16 +4127,18 @@ array&lt;string&gt;
         
 
         
+
+        
           
-            <p class="pl-6 mb-2 text-xs font-bold uppercase text-grey-darker">Items:</p>
-            
+            <p class="pl-6 mb-2 mt-4 text-xs font-bold text-grey-darker">Additional properties must adhere to the following schema:</p>
+            <div class="bg-grey-lightest pl-6">
               
 
 <div class="bg-grey-lightest pl-8 pr-8 rounded">
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">0</span>
+        <span class="text-sm italic text-grey" style="word-break: break-word;">(property name)</span>
         
         
       </div>
@@ -4179,14 +4178,8 @@ string
 </div>
 
 
-            
+            </div>
           
-
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional items are allowed.</p>
-          
-        
-
         
 
         
@@ -4601,9 +4594,9 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-02-27T13:26:48Z",
+  "timeStamp": "2020-04-15T07:42:03Z",
   "unitState": {
-    "restorePoint": {
+    "responses": {
       "property1": "string",
       "property2": "string"
     },
@@ -4613,13 +4606,14 @@ string
   "playerState": {
     "state": "running",
     "currentPage": "string",
-    "validPages": [
-      "string"
-    ]
+    "validPages": {
+      "property1": "string",
+      "property2": "string"
+    }
   },
   "log": [
     {
-      "timeStamp": "2020-02-27T13:26:48Z",
+      "timeStamp": "2020-04-15T07:42:03Z",
       "key": "string",
       "content": "string"
     }
