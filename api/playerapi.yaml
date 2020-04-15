@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Player Module
-  version: '2.0.0'
+  version: '2.0.0-alpha.5'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
@@ -15,7 +15,7 @@ channels:
   vopReadyNotification:
     subscribe:
       operationId: vopReadyNotification
-      summary: player announces start
+      summary: player announces readiness
       description: The player announces that it's code is loaded and initialized so the communication can start.
       message:
         payload:
@@ -27,7 +27,7 @@ channels:
               description: This lets the application know what API version the player supports. If this does not
                 fit the API version the application can offer, the player should not be used. An exception
                 should be thrown.
-            responseDataType:
+            responseType:
               type: string
               description: This string is important when the responses and the logs are processed. Every data
                 transformation afterwards requires to know where the data came from. The type can be an ID of the
@@ -57,8 +57,8 @@ channels:
               format: byte
               description: The definition of the unit (if given) lets the player adapt. An audio player gets it's audio
                 sequence, a choice player gets it's options...
-            restorePoint:
-              $ref: "#/components/schemas/RestorePoint"
+            responses:
+              $ref: "#/components/schemas/ResponseType"
               description: If there is any state what should be restored, then this is the information for that.
             playerConfig:
               $ref: "#/components/schemas/PlayerConfig"
@@ -242,7 +242,7 @@ channels:
 
 components:
   schemas:
-    RestorePoint:
+    ResponseType:
       description: These are all data needed for restoring the unit state after reload. This is also the
         basis for extracting the responses of the testee. Because the load of the whole state could be huge,
         we can split the state into chunks. So the data structure is "key of chunk" => "chunk data". In order to
@@ -281,8 +281,8 @@ components:
         validPages:
           description: These data are structured as "page key" => "page label", so we have (1) keys for navigation
             commands or state notifications and (2) strings as labels of navigation buttons if needed.
-          type: array
-          items:
+          type: object
+          additionalProperties:
             type: string
       required:
         - state
@@ -291,8 +291,8 @@ components:
     UnitState:
       type: object
       properties:
-        restorePoint:
-          $ref: "#/components/schemas/RestorePoint"
+        responses:
+          $ref: "#/components/schemas/ResponseType"
         presentationProgress:
           enum:
             - none
