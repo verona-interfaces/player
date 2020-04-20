@@ -1,30 +1,19 @@
-# Verona Player Interface Definition
+# Verona Interfaces: Specification for Player
 
-This is a repository for the development of the Verona Player Interface (First Edition) definition.
-* [Latest Editor's Draft](https://veronaworkgroup.github.io/VeronaPlayerInterface/)
+In order to understand Verona Interfaces, please go 
+to [Verona Interfaces Introduction](https://github.com/verona-interfaces/introduction)! 
 
-The First Draft was published as ''Item-Player interface definition v1.0'' on September 20th, 2018. The Second Draft was published under the name as ''VERA online player interface definition v1.0'' on March 11th, 2019.
-* [First Draft](https://veronaworkgroup.github.io/VeronaPlayerInterface/Drafts/Item-Player%20interface%20definition%20v1.pdf)
-* [Second Draft](https://veronaworkgroup.github.io/VeronaPlayerInterface/Drafts/Vo%20interface%20Item-Player%20v1.pdf)
-
-Feature requests are documented in the [issue tracker](https://github.com/VeronaWorkgroup/VeronaPlayerInterface/issues/).
-
-## a temporary intro for branch "mayworkshop-input"
-
-Some propsed texts about Player API:
+Texts about Player API:
 * [Use cases and communication model between application and player](model/model.md)
 * [About pages of a unit](model/pages.md)
 * [Player API](api/asyncapi.md)
 
-## for contributors
+## For Contributors
 
 ### Markdown
 This player interface is rather complex, so there is a lot to explain. It's not only about sending messages between 
 pieces of code, it's also about the whole architecture of test applications to be understood. Markdown documents with 
 embedded UML diagrams seems to be a suitable format to present our approach.
-
-### ReDoc
-<Berengar?>    
 
 ### UML
 For discussions, we visualise models (sequences, interfaces, classes) via UML. These diagrams are stored in
