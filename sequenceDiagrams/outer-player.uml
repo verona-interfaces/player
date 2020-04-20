@@ -1,9 +1,0 @@
-@startuml
-skinparam ParticipantPadding 50
-
-Testcenter <- Player: UnitNavigationRequest
-Testcenter --> Player: unloading
-destroy Player
-
-
-@enduml
