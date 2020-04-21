@@ -6,7 +6,7 @@ to [Verona Interfaces Introduction](https://github.com/verona-interfaces/introdu
 Texts about Player API:
 * [Use cases and communication model between application and player](model/model.md)
 * [About pages of a unit](model/pages.md)
-* [Player API](api/asyncapi.md)
+* [Player API markdown](api/asyncapi.md), [Player API html](https://verona-interfaces.github.io/player)
 
 ## For Contributors
 
