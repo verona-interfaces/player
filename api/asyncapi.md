@@ -1,4 +1,4 @@
-# Verona Player Module 2.0.0-alpha.5 documentation
+# Verona Player Module 2.0.0 documentation
 
 
 
@@ -609,7 +609,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-04-15T07:18:43Z",
+  "timeStamp": "2020-05-06T05:35:16Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -628,7 +628,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-04-15T07:18:43Z",
+      "timeStamp": "2020-05-06T05:35:16Z",
       "key": "string",
       "content": "string"
     }
@@ -1200,7 +1200,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-04-15T07:18:43Z",
+  "timeStamp": "2020-05-06T05:35:16Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -1219,7 +1219,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-04-15T07:18:43Z",
+      "timeStamp": "2020-05-06T05:35:16Z",
       "key": "string",
       "content": "string"
     }

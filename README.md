@@ -4,9 +4,9 @@ In order to understand Verona Interfaces, please go
 to [Verona Interfaces Introduction](https://github.com/verona-interfaces/introduction)! 
 
 Texts about Player API:
-* [Use cases and communication model between application and player](model/model.md)
+* Model: [Use cases and communication](model/model.md)
 * [About pages of a unit](model/pages.md)
-* [Player API markdown](api/asyncapi.md), [Player API html](https://verona-interfaces.github.io/player)
+* Player API: [markdown](api/asyncapi.md), [shiny html](https://verona-interfaces.github.io/player)
 
 ## For Contributors
 

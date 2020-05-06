@@ -23,6 +23,9 @@ loop Player User Interaction 0..unbound
         app -> Player: StopCommand
     else
         app -> Player: ContinueCommand
+    else
+        app --> Player: GetStateRequest
+        Player --> app: GetStateResponse
     end
 end
 
