@@ -240,6 +240,29 @@ channels:
           required:
             - sessionId
 
+  vopWindowsFocusChangedNotification:
+    subscribe:
+      operationId: vopWindowsFocusChangedNotification
+      summary: the window of the player has got or lost the focus
+      description: In some use cases like exam mode the host must know whether the host or the player has the
+        window's focus. If none of these windows have the focus (i. e. the testee has left the test), some logging or
+        warning could be necessary. The player listens to the window events 'blur' and 'focus'.
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            timeStamp:
+              type: string
+              format: date-time
+              description: Ensures, that later arriving states are ignored.
+            hasFocus:
+              type: boolean
+              description: true if the player got the focus, false if it lost the focus.
+          required:
+            - timeStamp
+            - hasFocus
+
 components:
   schemas:
     ResponseType:
