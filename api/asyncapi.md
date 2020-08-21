@@ -1,4 +1,4 @@
-# Verona Player Module 2.0.0 documentation
+# Verona Player Module 2.1.0 documentation
 
 
 
@@ -298,6 +298,21 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
+<tr>
+  <td>playerConfig.pagingMode </td>
+  <td></td>
+  <td></td>
+  <td><code>separate</code>, <code>scroll</code>, <code>scroll-snap</code></td>
+</tr>
+
+
+
+
+
+
+
+
+
 
 
     
@@ -321,7 +336,8 @@ Most important, the message body carries as first parameter the operationId of t
     "unitTitle": "string",
     "unitId": "string",
     "stateReportPolicy": "none",
-    "logPolicy": "disabled"
+    "logPolicy": "disabled",
+    "pagingMode": "separate"
   }
 }
 ```
@@ -609,7 +625,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-20T11:22:41Z",
+  "timeStamp": "2020-08-21T07:55:00Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -628,7 +644,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-20T11:22:41Z",
+      "timeStamp": "2020-08-21T07:55:00Z",
       "key": "string",
       "content": "string"
     }
@@ -1200,7 +1216,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-20T11:22:41Z",
+  "timeStamp": "2020-08-21T07:55:00Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -1219,7 +1235,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-20T11:22:41Z",
+      "timeStamp": "2020-08-21T07:55:00Z",
       "key": "string",
       "content": "string"
     }
@@ -1470,7 +1486,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "timeStamp": "2020-08-20T11:22:41Z",
+  "timeStamp": "2020-08-21T07:55:00Z",
   "hasFocus": true
 }
 ```

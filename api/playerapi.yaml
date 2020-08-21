@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Player Module
-  version: '2.0.0'
+  version: '2.1.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
@@ -349,3 +349,8 @@ components:
             - disabled
             - lean
             - rich
+        pagingMode:
+          enum:
+            - separate
+            - scroll
+            - scroll-snap
