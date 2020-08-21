@@ -403,56 +403,6 @@ string
 
 
           
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">responseType</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>This string is important when the responses and the logs are processed. Every data transformation afterwards requires to know where the data came from. The type can be an ID of the player or a known data format.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
         
 
         
@@ -511,8 +461,7 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "apiVersion": "string",
-  "responseType": "string"
+  "apiVersion": "string"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -736,7 +685,7 @@ string
   <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">responses</span>
+        <span class="text-sm " style="word-break: break-word;">unitState</span>
         
         <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
           xmlns="http://www.w3.org/2000/svg" y="0">
@@ -782,6 +731,59 @@ object
     
       <div class="children bg-grey-lighter py-4 rounded">
         
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">dataParts</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
 
         
         
@@ -791,10 +793,10 @@ object
         
           
             <p class="pl-6 mb-2 mt-4 text-xs font-bold text-grey-darker">Additional properties must adhere to the following schema:</p>
-            <div class="bg-grey-lighter pl-6">
+            <div class="bg-grey-lightest pl-6">
               
 
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
@@ -842,6 +844,199 @@ string
 
 
             </div>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">presentationProgress</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+          <div class="text-xs">
+            Enum:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"none"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"some"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"complete"</span>
+            
+          </div>
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">responseProgress</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+          <div class="text-xs">
+            Enum:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"none"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"some"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"complete"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"complete-and-valid"</span>
+            
+          </div>
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">unitStateDataType</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>This string specifies the format of the data stored in dataParts (value). Every transformation or analysis of stored unit data requires knowledge about the format. When the host sends data to the player to restore the former unit state, the player should check the given data type to avoid data mess after getting an old data type.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
           
         
 
@@ -1218,9 +1413,9 @@ string
             
               <span class="border text-orange rounded ml-1 py-0 px-2">"separate"</span>
             
-              <span class="border text-orange rounded ml-1 py-0 px-2">"scroll"</span>
+              <span class="border text-orange rounded ml-1 py-0 px-2">"concat-scroll"</span>
             
-              <span class="border text-orange rounded ml-1 py-0 px-2">"scroll-snap"</span>
+              <span class="border text-orange rounded ml-1 py-0 px-2">"concat-scroll-snap"</span>
             
           </div>
         
@@ -1319,9 +1514,14 @@ string
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
   "unitDefinition": "string",
-  "responses": {
-    "property1": "string",
-    "property2": "string"
+  "unitState": {
+    "dataParts": {
+      "property1": "string",
+      "property2": "string"
+    },
+    "presentationProgress": "none",
+    "responseProgress": "none",
+    "unitStateDataType": "string"
   },
   "playerConfig": {
     "unitNumber": 1,
@@ -1616,7 +1816,7 @@ object
   <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">responses</span>
+        <span class="text-sm " style="word-break: break-word;">dataParts</span>
         
         <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
           xmlns="http://www.w3.org/2000/svg" y="0">
@@ -1649,7 +1849,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
+          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </div>
         
         
@@ -1855,6 +2055,56 @@ string
 
 
           
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">unitStateDataType</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>This string specifies the format of the data stored in dataParts (value). Every transformation or analysis of stored unit data requires knowledge about the format. When the host sends data to the player to restore the former unit state, the player should check the given data type to avoid data mess after getting an old data type.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
         
 
         
@@ -1995,55 +2245,6 @@ object
 
 <div class="bg-grey-lighter pl-8 pr-8 rounded">
   <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">currentPage</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
         <span class="text-sm " style="word-break: break-word;">validPages</span>
@@ -2160,6 +2361,58 @@ string
 
         
       </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">currentPage</span>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Key of the page currently presented. This key is taken from the list of valid pages. If the paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
     
   </div>
 </div>
@@ -2566,26 +2819,27 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-08-21T07:55:21Z",
+  "timeStamp": "2020-08-21T14:33:55Z",
   "unitState": {
-    "responses": {
+    "dataParts": {
       "property1": "string",
       "property2": "string"
     },
     "presentationProgress": "none",
-    "responseProgress": "none"
+    "responseProgress": "none",
+    "unitStateDataType": "string"
   },
   "playerState": {
     "state": "running",
-    "currentPage": "string",
     "validPages": {
       "property1": "string",
       "property2": "string"
-    }
+    },
+    "currentPage": "string"
   },
   "log": [
     {
-      "timeStamp": "2020-08-21T07:55:21Z",
+      "timeStamp": "2020-08-21T14:33:55Z",
       "key": "string",
       "content": "string"
     }
@@ -3700,9 +3954,6 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>See StateChangedNotification.</p>
-</div>
-        
         
         
         
@@ -3720,7 +3971,7 @@ object
   <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">responses</span>
+        <span class="text-sm " style="word-break: break-word;">dataParts</span>
         
         <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
           xmlns="http://www.w3.org/2000/svg" y="0">
@@ -3753,7 +4004,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
+          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </div>
         
         
@@ -3959,6 +4210,56 @@ string
 
 
           
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">unitStateDataType</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>This string specifies the format of the data stored in dataParts (value). Every transformation or analysis of stored unit data requires knowledge about the format. When the host sends data to the player to restore the former unit state, the player should check the given data type to avoid data mess after getting an old data type.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
         
 
         
@@ -4023,9 +4324,6 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>See StateChangedNotification.</p>
-</div>
-        
         
         
         
@@ -4084,55 +4382,6 @@ object
               <span class="border text-orange rounded ml-1 py-0 px-2">"stopped"</span>
             
           </div>
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">currentPage</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
         
         
       </div>
@@ -4270,6 +4519,58 @@ string
 
 
           
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">currentPage</span>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Key of the page currently presented. This key is taken from the list of valid pages. If the paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
         
 
         
@@ -4333,9 +4634,6 @@ array&lt;object&gt;
           </div>
         </div>
 
-        
-          <div class="text-sm markdown"><p>See StateChangedNotification.</p>
-</div>
         
         
         
@@ -4670,26 +4968,27 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-08-21T07:55:21Z",
+  "timeStamp": "2020-08-21T14:33:55Z",
   "unitState": {
-    "responses": {
+    "dataParts": {
       "property1": "string",
       "property2": "string"
     },
     "presentationProgress": "none",
-    "responseProgress": "none"
+    "responseProgress": "none",
+    "unitStateDataType": "string"
   },
   "playerState": {
     "state": "running",
-    "currentPage": "string",
     "validPages": {
       "property1": "string",
       "property2": "string"
-    }
+    },
+    "currentPage": "string"
   },
   "log": [
     {
-      "timeStamp": "2020-08-21T07:55:21Z",
+      "timeStamp": "2020-08-21T14:33:55Z",
       "key": "string",
       "content": "string"
     }
@@ -5427,7 +5726,7 @@ boolean
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "timeStamp": "2020-08-21T07:55:21Z",
+  "timeStamp": "2020-08-21T14:33:55Z",
   "hasFocus": true
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>

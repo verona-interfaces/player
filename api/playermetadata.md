@@ -15,19 +15,29 @@ the main html file:
           data-version="2.1.0"
           data-repository-url="https://github.com/iqb-berlin/verona-player-dan"
           data-verona-version="2.1.0"
-          data-supports-stop-continue="false"
-          [...]
+          data-not-supported="key1 key2 ..."
     />
 ```
-### List of metadata
-| Key       | Description     | Values     | Default |
-| :------------- | :---------- | :----------- | :----------- |
-|`content`|application name|string| none |
-|`data-version`| version of the player | string (semver)|none |
-|`data-repository-url`| if published, the url of the code repositore should be given to get further information|string (url)|none|
-|`data-verona-version`|version of the interface supported by the player; since version 2, the player is expected to declare it's verona version as part of the `vopReadyNotification` - so the application host will ignore this metadata entry| string (semver)|none|   
-|`data-supports-stop-continue`|the player will/will not handle the host's `vopStopCommand` and `vopContinueCommand`|<code>true &#124; false</code>|`true`
-|`data-supports-focus-notify`|the player will/will not send `vopWindowsFocusChangedNotification` in case|<code>true &#124; false</code>|`true`
-|`data-supports-state-report-policy`|the player will/will not comply with `playerConfig.stateReportPolicy` of `vopStartCommand` and will/will not handle the host's `vopGetStateRequest`|<code>true &#124; false</code>|`true`
-|`data-supports-log-policy`|the player will/will not comply with `playerConfig.logPolicy` of `vopStartCommand`|<code>true &#124; false</code>|`true`
-|`data-supports-paging-mode`|the player will/will not comply with `playerConfig.pagingMode` of `vopStartCommand`|<code>true &#124; false</code>|`true`
+* `content`: application name
+* `data-version`: version of the player
+* `data-repository-url`: if published, the url of the code repository should be given to get further information
+* `data-verona-version`: version of the interface supported by the player; since version 2, the player is expected to 
+declare it's verona version as part of the `vopReadyNotification` - so the application host will ignore this metadata 
+entry   
+* `data-not-supported`: keys of not supported features separated by space (see below)
+
+### List of not supported features
+When the host receives the `vopReadyNotification`, some of the missing features are known 
+from the minor version of API. If the minor API version of the host is 3 and the player
+declares 2, then the host should know what the player does not support. By reading the 
+html metadata `data-not-supported`, the host learns what the player does not support in 
+addition.
+
+At the time of introduction of player metadata, the list of possibly missing features starts with
+verona player interface version 2.1:
+* `stop-continue`: the player will not handle the host's `vopStopCommand` and `vopContinueCommand`
+* `focus-notify`: the player will not send `vopWindowsFocusChangedNotification` in case
+* `state-report-policy`: the player will not comply with `playerConfig.stateReportPolicy` of `vopStartCommand` and 
+will not handle the host's `vopGetStateRequest`
+* `log-policy`: the player will ignore `playerConfig.logPolicy` of `vopStartCommand`
+* `paging-mode`: the player will ignore `playerConfig.pagingMode` of `vopStartCommand`
