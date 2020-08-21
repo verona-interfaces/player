@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Player Module
-  version: '2.0.0'
+  version: '2.1.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
@@ -27,11 +27,6 @@ channels:
               description: This lets the application know what API version the player supports. If this does not
                 fit the API version the application can offer, the player should not be used. An exception
                 should be thrown.
-            responseType:
-              type: string
-              description: This string is important when the responses and the logs are processed. Every data
-                transformation afterwards requires to know where the data came from. The type can be an ID of the
-                player or a known data format.
           required:
             - apiVersion
 
@@ -57,8 +52,8 @@ channels:
               format: byte
               description: The definition of the unit (if given) lets the player adapt. An audio player gets it's audio
                 sequence, a choice player gets it's options...
-            responses:
-              $ref: "#/components/schemas/ResponseType"
+            unitState:
+              $ref: "#/components/schemas/UnitState"
               description: If there is any state what should be restored, then this is the information for that.
             playerConfig:
               $ref: "#/components/schemas/PlayerConfig"
@@ -193,15 +188,12 @@ channels:
               format: date-time
             unitState:
               $ref: "#/components/schemas/UnitState"
-              description: See StateChangedNotification.
             playerState:
               $ref: "#/components/schemas/PlayerState"
-              description: See StateChangedNotification.
             log:
               type: array
               items:
                 $ref: "#/components/schemas/LogEntry"
-              description: See StateChangedNotification.
           required:
             - sessionId
             - timeStamp
@@ -265,16 +257,6 @@ channels:
 
 components:
   schemas:
-    ResponseType:
-      description: These are all data needed for restoring the unit state after reload. This is also the
-        basis for extracting the responses of the testee. Because the load of the whole state could be huge,
-        we can split the state into chunks. So the data structure is "key of chunk" => "chunk data". In order to
-        restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the
-        first one (accourding to the time stamp) should be overwritten.
-      type: object
-      additionalProperties:
-        type: string
-        format: byte
     LogEntry:
       description: The player can sent any information about events happening during the interaction phase.
       type: object
@@ -299,14 +281,16 @@ components:
           enum:
             - running
             - stopped
-        currentPage:
-          type: string
         validPages:
           description: These data are structured as "page key" => "page label", so we have (1) keys for navigation
             commands or state notifications and (2) strings as labels of navigation buttons if needed.
           type: object
           additionalProperties:
             type: string
+        currentPage:
+          description: Key of the page currently presented. This key is taken from the list of valid pages. If the
+            paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.
+          type: string
       required:
         - state
         - currentPage
@@ -314,8 +298,16 @@ components:
     UnitState:
       type: object
       properties:
-        responses:
-          $ref: "#/components/schemas/ResponseType"
+        dataParts:
+          description: These data are used by the player to restore the former response state and by data processing
+            systems to analyse the responses. The host must buffer all data parts, because the player might send only
+            changed data parts, not always the whole package. The host stores all parts but only the last given
+            version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as
+            serialized object (string).
+          type: object
+          additionalProperties:
+            type: string
+            format: byte
         presentationProgress:
           enum:
             - none
@@ -327,6 +319,12 @@ components:
             - some
             - complete
             - complete-and-valid
+        unitStateDataType:
+          type: string
+          description: This string specifies the format of the data stored in dataParts (value). Every
+            transformation or analysis of stored unit data requires knowledge about the format. When the host sends
+            data to the player to restore the former unit state, the player should check the given data type to
+            avoid data mess after getting an old data type.
     PlayerConfig:
       type: object
       properties:
@@ -349,3 +347,8 @@ components:
             - disabled
             - lean
             - rich
+        pagingMode:
+          enum:
+            - separate
+            - concat-scroll
+            - concat-scroll-snap

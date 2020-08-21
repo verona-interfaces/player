@@ -1,3 +1,4 @@
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 # Verona Interfaces: Specification for Player
 
 In order to understand Verona Interfaces, please go 
@@ -7,6 +8,7 @@ Texts about Player API:
 * Model: [Use cases and communication](model/model.md)
 * [About pages of a unit](model/pages.md)
 * Player API: [markdown](api/asyncapi.md), [shiny html](https://verona-interfaces.github.io/player)
+* see also: [player metadata](api/playermetadata.md)
 
 ## For Contributors
 

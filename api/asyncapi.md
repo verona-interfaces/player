@@ -1,4 +1,4 @@
-# Verona Player Module 2.0.0 documentation
+# Verona Player Module 2.1.0 documentation
 
 
 
@@ -82,22 +82,6 @@ Most important, the message body carries as first parameter the operationId of t
 
 
     
-      
-<tr>
-  <td>responseType </td>
-  <td>string</td>
-  <td><p>This string is important when the responses and the logs are processed. Every data transformation afterwards requires to know where the data came from. The type can be an ID of the player or a known data format.</p>
-</td>
-  <td><em>Any</em></td>
-</tr>
-
-
-
-
-
-
-
-    
   </tbody>
 </table>
 
@@ -107,8 +91,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "apiVersion": "string",
-  "responseType": "string"
+  "apiVersion": "string"
 }
 ```
 
@@ -194,12 +177,74 @@ Most important, the message body carries as first parameter the operationId of t
     
       
 <tr>
-  <td>responses </td>
+  <td>unitState </td>
   <td>object</td>
   <td><p>If there is any state what should be restored, then this is the information for that.</p>
 </td>
   <td><em>Any</em></td>
 </tr>
+
+
+
+
+
+<tr>
+  <td>unitState.dataParts </td>
+  <td>object</td>
+  <td><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>unitState.presentationProgress </td>
+  <td></td>
+  <td></td>
+  <td><code>none</code>, <code>some</code>, <code>complete</code></td>
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>unitState.responseProgress </td>
+  <td></td>
+  <td></td>
+  <td><code>none</code>, <code>some</code>, <code>complete</code>, <code>complete-and-valid</code></td>
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+  <td>unitState.unitStateDataType </td>
+  <td>string</td>
+  <td><p>This string specifies the format of the data stored in dataParts (value). Every transformation or analysis of stored unit data requires knowledge about the format. When the host sends data to the player to restore the former unit state, the player should check the given data type to avoid data mess after getting an old data type.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
 
 
 
@@ -298,6 +343,21 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
+<tr>
+  <td>playerConfig.pagingMode </td>
+  <td></td>
+  <td></td>
+  <td><code>separate</code>, <code>concat-scroll</code>, <code>concat-scroll-snap</code></td>
+</tr>
+
+
+
+
+
+
+
+
+
 
 
     
@@ -312,16 +372,22 @@ Most important, the message body carries as first parameter the operationId of t
 {
   "sessionId": "string",
   "unitDefinition": "string",
-  "responses": {
-    "property1": "string",
-    "property2": "string"
+  "unitState": {
+    "dataParts": {
+      "property1": "string",
+      "property2": "string"
+    },
+    "presentationProgress": "none",
+    "responseProgress": "none",
+    "unitStateDataType": "string"
   },
   "playerConfig": {
     "unitNumber": 1,
     "unitTitle": "string",
     "unitId": "string",
     "stateReportPolicy": "none",
-    "logPolicy": "disabled"
+    "logPolicy": "disabled",
+    "pagingMode": "separate"
   }
 }
 ```
@@ -420,9 +486,9 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 <tr>
-  <td>unitState.responses </td>
+  <td>unitState.dataParts </td>
   <td>object</td>
-  <td><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
+  <td><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -467,6 +533,22 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
+<tr>
+  <td>unitState.unitStateDataType </td>
+  <td>string</td>
+  <td><p>This string specifies the format of the data stored in dataParts (value). Every transformation or analysis of stored unit data requires knowledge about the format. When the host sends data to the player to restore the former unit state, the player should check the given data type to avoid data mess after getting an old data type.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+
+
 
 
     
@@ -499,11 +581,14 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 <tr>
-  <td>playerState.currentPage </td>
-  <td>string</td>
-  <td></td>
+  <td>playerState.validPages </td>
+  <td>object</td>
+  <td><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
+</td>
   <td><em>Any</em></td>
 </tr>
+
+
 
 
 
@@ -514,14 +599,12 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 <tr>
-  <td>playerState.validPages </td>
-  <td>object</td>
-  <td><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
+  <td>playerState.currentPage </td>
+  <td>string</td>
+  <td><p>Key of the page currently presented. This key is taken from the list of valid pages. If the paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.</p>
 </td>
   <td><em>Any</em></td>
 </tr>
-
-
 
 
 
@@ -609,26 +692,27 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-20T11:22:41Z",
+  "timeStamp": "2020-08-21T14:34:00Z",
   "unitState": {
-    "responses": {
+    "dataParts": {
       "property1": "string",
       "property2": "string"
     },
     "presentationProgress": "none",
-    "responseProgress": "none"
+    "responseProgress": "none",
+    "unitStateDataType": "string"
   },
   "playerState": {
     "state": "running",
-    "currentPage": "string",
     "validPages": {
       "property1": "string",
       "property2": "string"
-    }
+    },
+    "currentPage": "string"
   },
   "log": [
     {
-      "timeStamp": "2020-08-20T11:22:41Z",
+      "timeStamp": "2020-08-21T14:34:00Z",
       "key": "string",
       "content": "string"
     }
@@ -1001,8 +1085,7 @@ Most important, the message body carries as first parameter the operationId of t
 <tr>
   <td>unitState </td>
   <td>object</td>
-  <td><p>See StateChangedNotification.</p>
-</td>
+  <td></td>
   <td><em>Any</em></td>
 </tr>
 
@@ -1011,9 +1094,9 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 <tr>
-  <td>unitState.responses </td>
+  <td>unitState.dataParts </td>
   <td>object</td>
-  <td><p>These are all data needed for restoring the unit state after reload. This is also the basis for extracting the responses of the testee. Because the load of the whole state could be huge, we can split the state into chunks. So the data structure is &quot;key of chunk&quot; =&gt; &quot;chunk data&quot;. In order to restore the unit state or to analyse the response, all chunks are needed. If a chunk is sent twice, the first one (accourding to the time stamp) should be overwritten.</p>
+  <td><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -1058,6 +1141,22 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
+<tr>
+  <td>unitState.unitStateDataType </td>
+  <td>string</td>
+  <td><p>This string specifies the format of the data stored in dataParts (value). Every transformation or analysis of stored unit data requires knowledge about the format. When the host sends data to the player to restore the former unit state, the player should check the given data type to avoid data mess after getting an old data type.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+
+
 
 
     
@@ -1065,8 +1164,7 @@ Most important, the message body carries as first parameter the operationId of t
 <tr>
   <td>playerState </td>
   <td>object</td>
-  <td><p>See StateChangedNotification.</p>
-</td>
+  <td></td>
   <td><em>Any</em></td>
 </tr>
 
@@ -1079,21 +1177,6 @@ Most important, the message body carries as first parameter the operationId of t
   <td></td>
   <td></td>
   <td><code>running</code>, <code>stopped</code></td>
-</tr>
-
-
-
-
-
-
-
-
-
-<tr>
-  <td>playerState.currentPage </td>
-  <td>string</td>
-  <td></td>
-  <td><em>Any</em></td>
 </tr>
 
 
@@ -1122,6 +1205,22 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
+<tr>
+  <td>playerState.currentPage </td>
+  <td>string</td>
+  <td><p>Key of the page currently presented. This key is taken from the list of valid pages. If the paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+
+
 
 
     
@@ -1129,8 +1228,7 @@ Most important, the message body carries as first parameter the operationId of t
 <tr>
   <td>log </td>
   <td>array(object)</td>
-  <td><p>See StateChangedNotification.</p>
-</td>
+  <td></td>
   <td><em>Any</em></td>
 </tr>
 
@@ -1200,26 +1298,27 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-20T11:22:41Z",
+  "timeStamp": "2020-08-21T14:34:00Z",
   "unitState": {
-    "responses": {
+    "dataParts": {
       "property1": "string",
       "property2": "string"
     },
     "presentationProgress": "none",
-    "responseProgress": "none"
+    "responseProgress": "none",
+    "unitStateDataType": "string"
   },
   "playerState": {
     "state": "running",
-    "currentPage": "string",
     "validPages": {
       "property1": "string",
       "property2": "string"
-    }
+    },
+    "currentPage": "string"
   },
   "log": [
     {
-      "timeStamp": "2020-08-20T11:22:41Z",
+      "timeStamp": "2020-08-21T14:34:00Z",
       "key": "string",
       "content": "string"
     }
@@ -1470,7 +1569,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "timeStamp": "2020-08-20T11:22:41Z",
+  "timeStamp": "2020-08-21T14:34:00Z",
   "hasFocus": true
 }
 ```
