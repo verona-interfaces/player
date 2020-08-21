@@ -609,7 +609,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-05-06T05:35:16Z",
+  "timeStamp": "2020-08-20T11:22:41Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -628,7 +628,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-05-06T05:35:16Z",
+      "timeStamp": "2020-08-20T11:22:41Z",
       "key": "string",
       "content": "string"
     }
@@ -1200,7 +1200,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-05-06T05:35:16Z",
+  "timeStamp": "2020-08-20T11:22:41Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -1219,7 +1219,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-05-06T05:35:16Z",
+      "timeStamp": "2020-08-20T11:22:41Z",
       "key": "string",
       "content": "string"
     }
@@ -1378,6 +1378,100 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string"
+}
+```
+
+
+
+
+
+
+
+
+<a name="channel-vopWindowsFocusChangedNotification"></a>
+
+
+
+
+
+#### Channel Parameters
+
+
+
+
+
+
+
+###  `subscribe` vopWindowsFocusChangedNotification
+
+#### Message
+
+
+
+
+
+
+
+
+##### Payload
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Accepted values</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+<tr>
+  <td>timeStamp </td>
+  <td>string</td>
+  <td><p>Ensures, that later arriving states are ignored.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+    
+      
+<tr>
+  <td>hasFocus </td>
+  <td>boolean</td>
+  <td><p>true if the player got the focus, false if it lost the focus.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+    
+  </tbody>
+</table>
+
+
+
+###### Example of payload _(generated)_
+
+```json
+{
+  "timeStamp": "2020-08-20T11:22:41Z",
+  "hasFocus": true
 }
 ```
 

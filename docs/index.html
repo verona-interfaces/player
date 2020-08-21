@@ -196,6 +196,23 @@
         </a>
       </li>
       
+      <li>
+        
+        
+        <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
+          href="#operation-subscribe-vopWindowsFocusChangedNotification">
+          <span class="bg-green-dark font-bold no-underline text-white uppercase p-1 mr-2 rounded"
+            style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
+          
+          <span style="padding-top: 2px;">
+            the window of the player has got or lost the focus
+          </span>
+          
+        </a>
+        
+        </a>
+      </li>
+      
     </ul>
     
     
@@ -2490,7 +2507,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-05-06T05:35:29Z",
+  "timeStamp": "2020-08-20T11:25:57Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -2509,7 +2526,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2020-05-06T05:35:29Z",
+      "timeStamp": "2020-08-20T11:25:57Z",
       "key": "string",
       "content": "string"
     }
@@ -4594,7 +4611,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-05-06T05:35:29Z",
+  "timeStamp": "2020-08-20T11:25:57Z",
   "unitState": {
     "responses": {
       "property1": "string",
@@ -4613,7 +4630,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2020-05-06T05:35:29Z",
+      "timeStamp": "2020-08-20T11:25:57Z",
       "key": "string",
       "content": "string"
     }
@@ -5086,6 +5103,289 @@ string
     
   </div>
   <div class="responsive-container">
+    
+  </div>
+
+  <div class="responsive-container">
+    
+  </div>
+  <div class="responsive-container">
+    
+      
+
+<a name="operation-subscribe-vopWindowsFocusChangedNotification"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      
+      <span class="font-mono border border-green-dark text-green-dark uppercase p-1 rounded"
+        title="Subscribe">Sub</span>
+      
+      
+<span class="string-chunk" >vopWindowsFocusChangedNotification</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"></div>
+
+    <p class="text-grey text-sm">the window of the player has got or lost the focus</p>
+    <div class="mt-4 mb-4 markdown"><p>In some use cases like exam mode the host must know whether the host or the player has the window's focus. If none of these windows have the focus (i. e. the testee has left the test), some logging or warning could be necessary. The player listens to the window events 'blur' and 'focus'.</p>
+</div>
+
+
+
+    
+
+
+    
+    <p>Accepts the following message:</p>
+    
+
+<div class="bg-grey-lighter rounded p-4 mt-2">
+  <div class="text-sm text-grey-darker mb-2">
+    
+    
+      
+    
+  </div>
+  <p class="text-grey-dark text-sm"></p>
+  <div class="mt-4 mb-4 markdown"></div>
+  
+<div>
+  
+
+<div class="bg-grey-lighter  rounded">
+  <div class="is-open">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">Payload</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">timeStamp</span>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+              <span class="bg-yellow-dark font-bold no-underline text-black rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;">date-time</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Ensures, that later arriving states are ignored.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">hasFocus</span>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+boolean
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>true if the player got the focus, false if it lost the focus.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+</div>
+
+
+    
+
+    
+<div class="mt-4">
+  
+</div>
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+  
+
+<form>
+  <input type="radio" checked id="example-payload-vopWindowsFocusChangedNotification-&lt;anonymous-message-10&gt;" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload-vopWindowsFocusChangedNotification-&lt;anonymous-message-10&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+
+  <input type="radio" id="example-headers-vopWindowsFocusChangedNotification-&lt;anonymous-message-10&gt;" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers-vopWindowsFocusChangedNotification-&lt;anonymous-message-10&gt;"
+      class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
+
+  <div class="payload-examples mt-4">
+    
+    <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
+  "timeStamp": "2020-08-20T11:25:57Z",
+  "hasFocus": true
+}</code></pre>
+    <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
+    
+  </div>
+
+  <div class="headers-examples mt-4">
+    
+  </div>
+</form>
+
+
+  
+</div>
+
+
+
     
   </div>
 
