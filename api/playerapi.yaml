@@ -24,9 +24,21 @@ channels:
             apiVersion:
               type: string
               pattern: '^\d+\.\d+.\d+$'
-              description: This lets the application know what API version the player supports. If this does not
-                fit the API version the application can offer, the player should not be used. An exception
-                should be thrown.
+              description: This lets the application know what verona API version the player supports. The host will
+                decide whether this declaration matches the requirements of the host or not and which features are not or
+                differently implemented by the player.
+            notSupportedApiFeatures:
+              type: string
+              description: Space separated list of keys of features not implemented by the player. For details see
+                corresponding player metadata doc!
+            supportedUnitDefinitionTypes:
+              type: string
+              description: Space separated list of keys of unit definition formats supported by the player. If a
+                version is part of the key then it's enclosed in parentheses.
+            supportedUnitStateDataTypes:
+              type: string
+              description: Space separated list of keys of unit state data formats supported by the player. If a
+                version is part of the key then it's enclosed in parentheses.
           required:
             - apiVersion
 
@@ -52,6 +64,10 @@ channels:
               format: byte
               description: The definition of the unit (if given) lets the player adapt. An audio player gets it's audio
                 sequence, a choice player gets it's options...
+            unitDefinitionType:
+              type: string
+              description: This lets the player the unit definition format know. This might avoid UI mess after
+                getting old definitions.
             unitState:
               $ref: "#/components/schemas/UnitState"
               description: If there is any state what should be restored, then this is the information for that.

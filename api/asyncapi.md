@@ -70,7 +70,55 @@ Most important, the message body carries as first parameter the operationId of t
 <tr>
   <td>apiVersion </td>
   <td>string</td>
-  <td><p>This lets the application know what API version the player supports. If this does not fit the API version the application can offer, the player should not be used. An exception should be thrown.</p>
+  <td><p>This lets the application know what verona API version the player supports. The host will decide whether this declaration matches the requirements of the host or not and which features are not or differently implemented by the player.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+    
+      
+<tr>
+  <td>notSupportedApiFeatures </td>
+  <td>string</td>
+  <td><p>Space separated list of keys of features not implemented by the player. For details see corresponding player metadata doc!</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+    
+      
+<tr>
+  <td>supportedUnitDefinitionTypes </td>
+  <td>string</td>
+  <td><p>Space separated list of keys of unit definition formats supported by the player. If a version is part of the key then it's enclosed in parentheses.</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+    
+      
+<tr>
+  <td>supportedUnitStateDataTypes </td>
+  <td>string</td>
+  <td><p>Space separated list of keys of unit state data formats supported by the player. If a version is part of the key then it's enclosed in parentheses.</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -91,7 +139,10 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "apiVersion": "string"
+  "apiVersion": "string",
+  "notSupportedApiFeatures": "string",
+  "supportedUnitDefinitionTypes": "string",
+  "supportedUnitStateDataTypes": "string"
 }
 ```
 
@@ -164,6 +215,22 @@ Most important, the message body carries as first parameter the operationId of t
   <td>unitDefinition </td>
   <td>string</td>
   <td><p>The definition of the unit (if given) lets the player adapt. An audio player gets it's audio sequence, a choice player gets it's options...</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+    
+      
+<tr>
+  <td>unitDefinitionType </td>
+  <td>string</td>
+  <td><p>This lets the player the unit definition format know. This might avoid UI mess after getting old definitions.</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -372,6 +439,7 @@ Most important, the message body carries as first parameter the operationId of t
 {
   "sessionId": "string",
   "unitDefinition": "string",
+  "unitDefinitionType": "string",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -692,7 +760,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-21T14:34:00Z",
+  "timeStamp": "2020-08-21T16:44:56Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -712,7 +780,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-21T14:34:00Z",
+      "timeStamp": "2020-08-21T16:44:56Z",
       "key": "string",
       "content": "string"
     }
@@ -1298,7 +1366,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-21T14:34:00Z",
+  "timeStamp": "2020-08-21T16:44:56Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -1318,7 +1386,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-21T14:34:00Z",
+      "timeStamp": "2020-08-21T16:44:56Z",
       "key": "string",
       "content": "string"
     }
@@ -1569,7 +1637,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "timeStamp": "2020-08-21T14:34:00Z",
+  "timeStamp": "2020-08-21T16:44:56Z",
   "hasFocus": true
 }
 ```

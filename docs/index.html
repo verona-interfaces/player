@@ -387,7 +387,157 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>This lets the application know what API version the player supports. If this does not fit the API version the application can offer, the player should not be used. An exception should be thrown.</p>
+          <div class="text-sm markdown"><p>This lets the application know what verona API version the player supports. The host will decide whether this declaration matches the requirements of the host or not and which features are not or differently implemented by the player.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">notSupportedApiFeatures</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Space separated list of keys of features not implemented by the player. For details see corresponding player metadata doc!</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">supportedUnitDefinitionTypes</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Space separated list of keys of unit definition formats supported by the player. If a version is part of the key then it's enclosed in parentheses.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">supportedUnitStateDataTypes</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Space separated list of keys of unit state data formats supported by the player. If a version is part of the key then it's enclosed in parentheses.</p>
 </div>
         
         
@@ -461,7 +611,10 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "apiVersion": "string"
+  "apiVersion": "string",
+  "notSupportedApiFeatures": "string",
+  "supportedUnitDefinitionTypes": "string",
+  "supportedUnitStateDataTypes": "string"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -664,6 +817,56 @@ string
 
         
           <div class="text-sm markdown"><p>The definition of the unit (if given) lets the player adapt. An audio player gets it's audio sequence, a choice player gets it's options...</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">unitDefinitionType</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>This lets the player the unit definition format know. This might avoid UI mess after getting old definitions.</p>
 </div>
         
         
@@ -1514,6 +1717,7 @@ string
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
   "unitDefinition": "string",
+  "unitDefinitionType": "string",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -2819,7 +3023,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-08-21T14:33:55Z",
+  "timeStamp": "2020-08-21T16:44:51Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -2839,7 +3043,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2020-08-21T14:33:55Z",
+      "timeStamp": "2020-08-21T16:44:51Z",
       "key": "string",
       "content": "string"
     }
@@ -4968,7 +5172,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "string",
-  "timeStamp": "2020-08-21T14:33:55Z",
+  "timeStamp": "2020-08-21T16:44:51Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -4988,7 +5192,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2020-08-21T14:33:55Z",
+      "timeStamp": "2020-08-21T16:44:51Z",
       "key": "string",
       "content": "string"
     }
@@ -5726,7 +5930,7 @@ boolean
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "timeStamp": "2020-08-21T14:33:55Z",
+  "timeStamp": "2020-08-21T16:44:51Z",
   "hasFocus": true
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
