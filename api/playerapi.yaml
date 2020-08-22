@@ -9,7 +9,8 @@ info:
     Most important, the message body carries as first parameter the operationId of the message.
 
   license:
-    name: MIT
+    name: CC BY-SA 4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
 
 channels:
   vopReadyNotification:
