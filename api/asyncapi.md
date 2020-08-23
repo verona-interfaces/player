@@ -399,7 +399,7 @@ Most important, the message body carries as first parameter the operationId of t
   <td>playerConfig.logPolicy </td>
   <td></td>
   <td></td>
-  <td><code>disabled</code>, <code>lean</code>, <code>rich</code></td>
+  <td><code>disabled</code>, <code>lean</code>, <code>rich</code>, <code>debug</code></td>
 </tr>
 
 
@@ -760,7 +760,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-22T07:36:16Z",
+  "timeStamp": "2020-08-23T08:36:59Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -780,7 +780,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-22T07:36:16Z",
+      "timeStamp": "2020-08-23T08:36:59Z",
       "key": "string",
       "content": "string"
     }
@@ -1366,7 +1366,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-22T07:36:16Z",
+  "timeStamp": "2020-08-23T08:36:59Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -1386,7 +1386,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-22T07:36:16Z",
+      "timeStamp": "2020-08-23T08:36:59Z",
       "key": "string",
       "content": "string"
     }
@@ -1637,7 +1637,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "timeStamp": "2020-08-22T07:36:16Z",
+  "timeStamp": "2020-08-23T08:36:59Z",
   "hasFocus": true
 }
 ```

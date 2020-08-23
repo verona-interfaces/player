@@ -364,6 +364,7 @@ components:
             - disabled
             - lean
             - rich
+            - debug
         pagingMode:
           enum:
             - separate
