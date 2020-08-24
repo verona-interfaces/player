@@ -1,4 +1,4 @@
-# Verona Player Module 2.1.0 documentation
+# Verona Inferfaces Player 2.1.0 documentation
 
 
 
@@ -760,7 +760,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-23T08:36:59Z",
+  "timeStamp": "2020-08-24T09:28:19Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -780,7 +780,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-23T08:36:59Z",
+      "timeStamp": "2020-08-24T09:28:19Z",
       "key": "string",
       "content": "string"
     }
@@ -1366,7 +1366,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "string",
-  "timeStamp": "2020-08-23T08:36:59Z",
+  "timeStamp": "2020-08-24T09:28:19Z",
   "unitState": {
     "dataParts": {
       "property1": "string",
@@ -1386,7 +1386,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2020-08-23T08:36:59Z",
+      "timeStamp": "2020-08-24T09:28:19Z",
       "key": "string",
       "content": "string"
     }
@@ -1555,7 +1555,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
-<a name="channel-vopWindowsFocusChangedNotification"></a>
+<a name="channel-vopWindowFocusChangedNotification"></a>
 
 
 
@@ -1569,7 +1569,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
-###  `subscribe` vopWindowsFocusChangedNotification
+###  `subscribe` vopWindowFocusChangedNotification
 
 #### Message
 
@@ -1637,7 +1637,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "timeStamp": "2020-08-23T08:36:59Z",
+  "timeStamp": "2020-08-24T09:28:19Z",
   "hasFocus": true
 }
 ```

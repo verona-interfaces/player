@@ -1,6 +1,6 @@
 asyncapi: 2.0.0
 info:
-  title: Verona Player Module
+  title: Verona Inferfaces Player
   version: '2.1.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
@@ -249,9 +249,9 @@ channels:
           required:
             - sessionId
 
-  vopWindowsFocusChangedNotification:
+  vopWindowFocusChangedNotification:
     subscribe:
-      operationId: vopWindowsFocusChangedNotification
+      operationId: vopWindowFocusChangedNotification
       summary: the window of the player has got or lost the focus
       description: In some use cases like exam mode the host must know whether the host or the player has the
         window's focus. If none of these windows have the focus (i. e. the testee has left the test), some logging or

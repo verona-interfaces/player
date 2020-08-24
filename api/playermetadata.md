@@ -29,11 +29,12 @@ the main html file:
 * `data-api-version`: version of the interface supported by the player;  This information is also given 
 via `vopReadyNotification`.
 * `data-not-supported-api-features`: keys of not supported features separated by space (see below);  This information 
-is also given via `vopReadyNotification`.
-* `data-supported-unitdefinition-types`: Space separated list of keys of unit definition formats supported by the 
+is also given via `vopReadyNotification`. BTW the documentation of hosts could use this way of declaration
+for missing features as well.
+* `data-supported-unit-definition-types`: Space separated list of keys of unit definition formats supported by the 
 player. If a version is part of the key then it's enclosed in parentheses. This information is also 
 given via `vopReadyNotification`.
-* `data-supported-unitstate-datatypes`: Space separated list of keys of unit state data formats supported by the player. 
+* `data-supported-unit-state-data-types`: Space separated list of keys of unit state data formats supported by the player. 
 If a version is part of the key then it's enclosed in parentheses.  This information is also 
 given via `vopReadyNotification`. 
 
