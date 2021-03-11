@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   
-  <title>Verona Inferfaces Player 2.1.0 documentation</title>
+  <title>Verona Inferfaces Specification &quot;Player&quot; 2.2.0 documentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/atom-one-dark.min.css" />
@@ -24,7 +24,7 @@
 <div class="sidebar-panel fixed pin-t pin-l pin-b w-64 bg-grey-lighter font-sans pt-8 pr-4 pb-4 pl-4">
   <div class="sidebar-panel__content">
     
-    <h1 class="text-2xl font-thin">Verona Inferfaces Player 2.1.0</h1>
+    <h1 class="text-2xl font-thin">Verona Inferfaces Specification &quot;Player&quot; 2.2.0</h1>
     
     <ul class="text-sm mt-10 list-reset mt-2">
       <li class="mb-3">
@@ -52,7 +52,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            player announces readiness
+            Ready Notification
           </span>
           
         </a>
@@ -68,7 +68,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            application orders player to start
+            Start Command
           </span>
           
         </a>
@@ -86,7 +86,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            state has changed
+            State Changed Notification
           </span>
           
         </a>
@@ -102,7 +102,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            page navigation
+            Page Navigation Command
           </span>
           
         </a>
@@ -120,7 +120,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            unit navigation
+            Unit Navigation Requested Notification
           </span>
           
         </a>
@@ -136,7 +136,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            request for state
+            Get State Request
           </span>
           
         </a>
@@ -147,17 +147,17 @@
       
       <li>
         
-        
         <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
-          href="#operation-subscribe-vopGetStateResponse">
-          <span class="bg-green-dark font-bold no-underline text-white uppercase p-1 mr-2 rounded"
-            style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
+          href="#operation-publish-vopNavigationDeniedNotification">
+          <span class="bg-blue-dark font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded"
+            style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            responding to state request
+            Navigation Denied Notification
           </span>
           
         </a>
+        
         
         </a>
       </li>
@@ -170,7 +170,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            stop player
+            Stop Command
           </span>
           
         </a>
@@ -187,7 +187,7 @@
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
-            continue player
+            Continue Command
           </span>
           
         </a>
@@ -205,7 +205,7 @@
             style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
           
           <span style="padding-top: 2px;">
-            the window of the player has got or lost the focus
+            Window Focus Changed Notification
           </span>
           
         </a>
@@ -222,7 +222,7 @@
     <div class="content-panel flex-1 leading-loose z-10">
       <div class="center-block p-8">
   <a name="introduction"></a>
-  <h1>Verona Inferfaces Player 2.1.0</h1>
+  <h1>Verona Inferfaces Specification &quot;Player&quot; 2.2.0</h1>
   <div class="leading-normal mb-4">
     
     
@@ -239,6 +239,15 @@ Most important, the message body carries as first parameter the operationId of t
 
 
   <div class="leading-normal mb-4">
+    
+      
+      Contact link: <a class="border border-solid border-purple-lighter hover:bg-purple-lighter hover:text-purple-dark font-bold no-underline text-purple text-xs uppercase rounded mr-2 px-3 py-1"
+        href="https://www.iqb.hu-berlin.de" target="_blank">Institute for Educational Quality Improvement (IQB)</a>
+      
+      
+      Contact email: <a class="border border-solid border-purple-lighter hover:bg-purple-lighter hover:text-purple-dark font-bold no-underline text-purple text-xs uppercase rounded mr-2 px-3 py-1"
+        href="iqb-tbadev@hu-berlin.de" target="_blank">iqb-tbadev@hu-berlin.de</a>
+      
     
   </div>
 </div>
@@ -274,7 +283,7 @@ Most important, the message body carries as first parameter the operationId of t
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">player announces readiness</p>
+    <p class="text-grey text-sm">Ready Notification</p>
     <div class="mt-4 mb-4 markdown"><p>The player announces that it's code is loaded and initialized so the communication can start.</p>
 </div>
 
@@ -487,7 +496,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Space separated list of keys of unit definition formats supported by the player. If a version is part of the key then it's enclosed in parentheses.</p>
+          <div class="text-sm markdown"><p>Space separated list of keys of unit definition formats supported by the player. After a '@' char, a version might be added (semver-format, caret and tilde might be used).</p>
 </div>
         
         
@@ -537,7 +546,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Space separated list of keys of unit state data formats supported by the player. If a version is part of the key then it's enclosed in parentheses.</p>
+          <div class="text-sm markdown"><p>Space separated list of keys of unit state data formats supported by the player. After a '@' char, a version might be added (semver-format, caret and tilde might be used).</p>
 </div>
         
         
@@ -611,10 +620,10 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "apiVersion": "string",
-  "notSupportedApiFeatures": "string",
-  "supportedUnitDefinitionTypes": "string",
-  "supportedUnitStateDataTypes": "string"
+  "apiVersion": "2.2.0",
+  "notSupportedApiFeatures": "stop-continue paging-mode",
+  "supportedUnitDefinitionTypes": "iqb-scripted@2.4.1",
+  "supportedUnitStateDataTypes": "iqb-key-value@^1.1.0"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -653,7 +662,7 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">application orders player to start</p>
+    <p class="text-grey text-sm">Start Command</p>
     <div class="mt-4 mb-4 markdown"><p>The application sends parameters for running the unit and commands the start of user interaction.</p>
 </div>
 
@@ -763,7 +772,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>The session id flags all communication from this moment on. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit (via this StartCommand).</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
         
         
@@ -1076,7 +1085,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -1095,6 +1104,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>This reports the progress of presentation of unit content. The host can enable or disable the navigation to the next unit depending on that value. For example, all audio elements are required to be played or all pages must be presented to the page bottom. This way, giving no response to an item is always intended.</p>
+</div>
         
         
         
@@ -1134,7 +1146,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -1154,6 +1166,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>This reports the progress of responding. The host can enable or disable the navigation to the next unit depending on that value. The value 'complete' announces not only that all required responses are given but that these responses are valid too. The value 'complete' can be sent even not all responses are given - the host is interested only in REQUIRED responses. So make sure to mark all response elements correctly corresponding to this behaviour.</p>
+</div>
+        
         
         
         
@@ -1165,8 +1180,6 @@ string
               <span class="border text-orange rounded ml-1 py-0 px-2">"some"</span>
             
               <span class="border text-orange rounded ml-1 py-0 px-2">"complete"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"complete-and-valid"</span>
             
           </div>
         
@@ -1345,6 +1358,9 @@ integer
         </div>
 
         
+          <div class="text-sm markdown"><p>The player might show the numbering of the current unit to ease the navigation.</p>
+</div>
+        
         
         
         
@@ -1394,6 +1410,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>The player might show the title of the current unit. Unless the unit definition could consist of a title, the host might decide to change the title. For example, this is necessary if one unit appears more then once in a booklet.</p>
+</div>
         
         
         
@@ -1445,6 +1464,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>The player might include the internal unit id in state variables or logs.</p>
+</div>
+        
         
         
         
@@ -1472,7 +1494,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -1491,6 +1513,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>The host expects the player to send no state changes (e. g. for use case &quot;preview mode&quot;), all changes when happening or only on demand. The latter might lead to better performance. In this case, the host triggers state report by sending 'vopGetStateRequest'.</p>
+</div>
         
         
         
@@ -1530,7 +1555,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -1549,6 +1574,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>The host expects the player to send no logs, only important logs, all possible logs or even logs for debugging purposes. This is a guideline. The player can decide what exactly the logging consists of.</p>
+</div>
         
         
         
@@ -1590,7 +1618,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -1610,6 +1638,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>If the player makes it optional, then the page presentation can be changed by the host. The pages are presented separately, concatenated to one big page or concatenated in snap mode (scrolling vertically, but only one page is visible at a time).</p>
+</div>
+        
         
         
         
@@ -1623,6 +1654,202 @@ string
               <span class="border text-orange rounded ml-1 py-0 px-2">"concat-scroll-snap"</span>
             
           </div>
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">enabledNavigationTargets</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+array&lt;string&gt;
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>This lets the player know, what navigation target is enabled to natigate to. The player might then alter the presentation of responding buttons.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+
+        
+        
+
+        
+          
+            <p class="pl-6 mb-2 text-xs font-bold uppercase text-grey-darker">Items:</p>
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">0</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>This enumeration lists all possible targets the player could send a navigation request for, relative to the position of the current unit. This could be the next and previous unit, last and first unit of the current range of units (booklet, testlet) or the end of the test. The ending is seen as kind of termination of test, e. g. the announcement of the testee, that all responses are given. What exactly the host will navigate to depends of the nature of the test or the use case and might depend on configuration parameters of the specific booklet as well.</p>
+</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Enum:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"next"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"previous"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"first"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"last"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"end"</span>
+            
+          </div>
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+            
+          
+
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional items are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">startPage</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>This requests the player to navigate to a certain page after loading. The host might know this page id from former usages of the unit.</p>
+</div>
+        
+        
+        
         
         
       </div>
@@ -1717,25 +1944,29 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string",
-  "unitDefinition": "string",
-  "unitDefinitionType": "string",
+  "sessionId": "idk8ur5jf9ru5jk",
+  "unitDefinition": "iqb-scripted::1.4.0 title::Testscript Title2??Hilfetext2 multiple-choice::mc_var1::1::Multiple Choice Feld: ::Choice1##Choice2##Choice3??Hilfetext1 drop-down::dd_var1::1::Dropdown Feld: ::Choice1##Choice2##Choice3??Hilfetext1 checkbox::check_var1::0::Ja klick mal! if-start::dd_var1::1 input-text::jajaj::sap osjxapsoxa if-else input-text::jajaj22::sap osjxapsoxa UUUU text::NOT Choice1 if-end",
+  "unitDefinitionType": "iqb-scripted@1.4.0",
   "unitState": {
     "dataParts": {
-      "property1": "string",
-      "property2": "string"
+      "page1": "{\"a\": 1, \"b\": 233}",
+      "page2": "{\"c\": \"sehr gut!\", \"d\": true}"
     },
     "presentationProgress": "none",
-    "responseProgress": "none",
-    "unitStateDataType": "string"
+    "responseProgress": "some",
+    "unitStateDataType": "iqb-key-value@2.1.2"
   },
   "playerConfig": {
-    "unitNumber": 1,
-    "unitTitle": "string",
-    "unitId": "string",
-    "stateReportPolicy": "none",
-    "logPolicy": "disabled",
-    "pagingMode": "separate"
+    "unitNumber": "14",
+    "unitTitle": "Ein wunderbarer Ausflug",
+    "unitId": "M24093EX",
+    "stateReportPolicy": "eager",
+    "logPolicy": "lean",
+    "pagingMode": "concat-scroll",
+    "enabledNavigationTargets": [
+      "next"
+    ],
+    "startPage": "page5"
   }
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
@@ -1782,7 +2013,7 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">state has changed</p>
+    <p class="text-grey text-sm">State Changed Notification</p>
     <div class="mt-4 mb-4 markdown"><p>The state of the unit and/or of the player has changed. Some logs entries might be sent.</p>
 </div>
 
@@ -1892,7 +2123,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
         
         
@@ -2157,7 +2388,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -2176,6 +2407,9 @@ string
           </div>
         </div>
 
+        
+          <div class="text-sm markdown"><p>This reports the progress of presentation of unit content. The host can enable or disable the navigation to the next unit depending on that value. For example, all audio elements are required to be played or all pages must be presented to the page bottom. This way, giving no response to an item is always intended.</p>
+</div>
         
         
         
@@ -2215,7 +2449,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -2235,6 +2469,9 @@ string
         </div>
 
         
+          <div class="text-sm markdown"><p>This reports the progress of responding. The host can enable or disable the navigation to the next unit depending on that value. The value 'complete' announces not only that all required responses are given but that these responses are valid too. The value 'complete' can be sent even not all responses are given - the host is interested only in REQUIRED responses. So make sure to mark all response elements correctly corresponding to this behaviour.</p>
+</div>
+        
         
         
         
@@ -2246,8 +2483,6 @@ string
               <span class="border text-orange rounded ml-1 py-0 px-2">"some"</span>
             
               <span class="border text-orange rounded ml-1 py-0 px-2">"complete"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"complete-and-valid"</span>
             
           </div>
         
@@ -2405,7 +2640,7 @@ object
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -2460,8 +2695,6 @@ object
           <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
         </svg>
         
-        
-          <div class="text-red-dark text-xs">required</div>
         
       </div>
 
@@ -2581,8 +2814,6 @@ string
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
         <span class="text-sm " style="word-break: break-word;">currentPage</span>
         
-        
-          <div class="text-red-dark text-xs">required</div>
         
       </div>
 
@@ -2749,7 +2980,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>The player can sent any information about events happening during the interaction phase.</p>
+          <div class="text-sm markdown"><p>The player can send any information about events happening during the interaction phase.</p>
 </div>
         
         
@@ -3024,30 +3255,30 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string",
-  "timeStamp": "2020-08-24T09:28:24Z",
+  "sessionId": "idk8ur5jf9ru5jk",
+  "timeStamp": "2021-03-11T16:20:09Z",
   "unitState": {
     "dataParts": {
-      "property1": "string",
-      "property2": "string"
+      "page1": "{\"a\": 1, \"b\": 233}",
+      "page2": "{\"c\": \"sehr gut!\", \"d\": true}"
     },
     "presentationProgress": "none",
-    "responseProgress": "none",
-    "unitStateDataType": "string"
+    "responseProgress": "some",
+    "unitStateDataType": "iqb-key-value@2.1.2"
   },
   "playerState": {
     "state": "running",
     "validPages": {
-      "property1": "string",
-      "property2": "string"
+      "page1": "Seite 1",
+      "page2": "Seite 2"
     },
-    "currentPage": "string"
+    "currentPage": "page4"
   },
   "log": [
     {
-      "timeStamp": "2020-08-24T09:28:24Z",
-      "key": "string",
-      "content": "string"
+      "timeStamp": "2021-03-11T16:20:09Z",
+      "key": "UNIT_NAVIGATION_FAILED",
+      "content": "{\"unitId\": \"M24093EX\", \"reason\": \"responsesIncomplete\"}"
     }
   ]
 }</code></pre>
@@ -3088,7 +3319,7 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">page navigation</p>
+    <p class="text-grey text-sm">Page Navigation Command</p>
     <div class="mt-4 mb-4 markdown"><p>The application wants the player to navigate to a specific page.</p>
 </div>
 
@@ -3198,7 +3429,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
         
         
@@ -3324,8 +3555,8 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string",
-  "target": "string"
+  "sessionId": "idk8ur5jf9ru5jk",
+  "target": "page4"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -3371,7 +3602,7 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">unit navigation</p>
+    <p class="text-grey text-sm">Unit Navigation Requested Notification</p>
     <div class="mt-4 mb-4 markdown"><p>The user has triggered a navigation request.</p>
 </div>
 
@@ -3481,7 +3712,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
         
         
@@ -3503,15 +3734,17 @@ string
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">targetRelative</span>
+        <span class="text-sm " style="word-break: break-word;">target</span>
         
+        
+          <div class="text-red-dark text-xs">required</div>
         
       </div>
 
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-
+string
           
           
           
@@ -3531,7 +3764,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Refers to a unit relative to the position of the current unit or to the first or last unit. The key 'end' requests the finish of the test (close and go to the thank you page).</p>
+          <div class="text-sm markdown"><p>This enumeration lists all possible targets the player could send a navigation request for, relative to the position of the current unit. This could be the next and previous unit, last and first unit of the current range of units (booklet, testlet) or the end of the test. The ending is seen as kind of termination of test, e. g. the announcement of the testee, that all responses are given. What exactly the host will navigate to depends of the nature of the test or the use case and might depend on configuration parameters of the specific booklet as well.</p>
 </div>
         
         
@@ -3620,8 +3853,8 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string",
-  "targetRelative": "next"
+  "sessionId": "idk8ur5jf9ru5jk",
+  "target": "next"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -3660,8 +3893,8 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">request for state</p>
-    <div class="mt-4 mb-4 markdown"><p>The application wants the player to report the last state and (optional) to stop interaction.</p>
+    <p class="text-grey text-sm">Get State Request</p>
+    <div class="mt-4 mb-4 markdown"><p>The application wants the player to report the last state and (optional) to stop interaction. The player will answer by sending .</p>
 </div>
 
 
@@ -3770,7 +4003,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
         
         
@@ -3896,7 +4129,7 @@ boolean
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string",
+  "sessionId": "idk8ur5jf9ru5jk",
   "stop": true
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
@@ -3922,29 +4155,25 @@ boolean
 
   <div class="responsive-container">
     
-  </div>
-  <div class="responsive-container">
-    
       
 
-<a name="operation-subscribe-vopGetStateResponse"></a>
+<a name="operation-publish-vopNavigationDeniedNotification"></a>
 <div class="center-block p-8">
   <div class="operation pt-8 pb-8">
     <h3 class="font-mono text-base">
       
-      
-      <span class="font-mono border border-green-dark text-green-dark uppercase p-1 rounded"
-        title="Subscribe">Sub</span>
+      <span class="font-mono border border-blue text-blue uppercase p-1 rounded" title="Publish">Pub</span>
       
       
-<span class="string-chunk" >vopGetStateResponse</span>
+      
+<span class="string-chunk" >vopNavigationDeniedNotification</span>
 
     </h3>
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">responding to state request</p>
-    <div class="mt-4 mb-4 markdown"><p>The player sends the last unit state.</p>
+    <p class="text-grey text-sm">Navigation Denied Notification</p>
+    <div class="mt-4 mb-4 markdown"><p>The host lets the player know that a navigation request was denied due to player state.</p>
 </div>
 
 
@@ -4053,60 +4282,8 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">timeStamp</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-              <span class="bg-yellow-dark font-bold no-underline text-black rounded lowercase ml-2"
-                style="height: 20px;font-size: 11px;padding: 3px;">date-time</span>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
         
         
         
@@ -4127,7 +4304,7 @@ string
   <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">unitState</span>
+        <span class="text-sm " style="word-break: break-word;">reason</span>
         
         <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
           xmlns="http://www.w3.org/2000/svg" y="0">
@@ -4140,7 +4317,7 @@ string
       <div>
         <div class="capitalize text-sm text-teal font-bold">
           
-object
+array&lt;string&gt;
           
           
           
@@ -4160,686 +4337,8 @@ object
         </div>
 
         
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lighter py-4 rounded">
-        
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class="js-prop cursor-pointer py-2 flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">dataParts</span>
-        
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-object
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+          <div class="text-sm markdown"><p>This optional parameter explains the reason for the failed attempt to navigate. The player can visualise the problem to the testee. For example, all required but empty input elements get a red border or the message 'please scroll down' is presented.</p>
 </div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lightest py-4 rounded">
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs font-bold text-grey-darker">Additional properties must adhere to the following schema:</p>
-            <div class="bg-grey-lightest pl-6">
-              
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm italic text-grey" style="word-break: break-word;">(property name)</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-              <span class="bg-yellow-dark font-bold no-underline text-black rounded lowercase ml-2"
-                style="height: 20px;font-size: 11px;padding: 3px;">byte</span>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-            </div>
-          
-        
-
-        
-
-        
-
-        
-      </div>
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">presentationProgress</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-          <div class="text-xs">
-            Enum:
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"none"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"some"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"complete"</span>
-            
-          </div>
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">responseProgress</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-          <div class="text-xs">
-            Enum:
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"none"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"some"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"complete"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"complete-and-valid"</span>
-            
-          </div>
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">unitStateDataType</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>This string specifies the format of the data stored in dataParts (value). Every transformation or analysis of stored unit data requires knowledge about the format. When the host sends data to the player to restore the former unit state, the player should check the given data type to avoid data mess after getting an old data type.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
-          
-        
-
-        
-
-        
-
-        
-      </div>
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class="js-prop cursor-pointer py-2 flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">playerState</span>
-        
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-object
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lighter py-4 rounded">
-        
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">state</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-          <div class="text-xs">
-            Enum:
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"running"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"stopped"</span>
-            
-          </div>
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class="js-prop cursor-pointer py-2 flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">validPages</span>
-        
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-object
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lightest py-4 rounded">
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs font-bold text-grey-darker">Additional properties must adhere to the following schema:</p>
-            <div class="bg-grey-lightest pl-6">
-              
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm italic text-grey" style="word-break: break-word;">(property name)</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-            </div>
-          
-        
-
-        
-
-        
-
-        
-      </div>
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">currentPage</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>Key of the page currently presented. This key is taken from the list of valid pages. If the paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
-          
-        
-
-        
-
-        
-
-        
-      </div>
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class="js-prop cursor-pointer py-2 flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">log</span>
-        
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-array&lt;object&gt;
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
         
         
         
@@ -4863,117 +4362,10 @@ array&lt;object&gt;
 
 <div class="bg-grey-lighter pl-8 pr-8 rounded">
   <div class="">
-    <div class="js-prop cursor-pointer py-2 flex property">
+    <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
         <span class="text-sm " style="word-break: break-word;">0</span>
         
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-object
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>The player can sent any information about events happening during the interaction phase.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lightest py-4 rounded">
-        
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">timeStamp</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-              <span class="bg-yellow-dark font-bold no-underline text-black rounded lowercase ml-2"
-                style="height: 20px;font-size: 11px;padding: 3px;">date-time</span>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">key</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
         
       </div>
 
@@ -5000,94 +4392,22 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>This key might help to classify the events afterwards.</p>
-</div>
         
         
         
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
+          <div class="text-xs">
+            Enum:
             
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">content</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
+              <span class="border text-orange rounded ml-1 py-0 px-2">"presentationIncomplete"</span>
             
-              <span class="bg-yellow-dark font-bold no-underline text-black rounded lowercase ml-2"
-                style="height: 20px;font-size: 11px;padding: 3px;">byte</span>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"responsesIncomplete"</span>
             
           </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>Some information to specify the event.</p>
-</div>
-        
-        
-        
         
         
       </div>
     </div>
 
-    
-  </div>
-</div>
-
-
-          
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
-          
-        
-
-        
-
-        
-
-        
-      </div>
     
   </div>
 </div>
@@ -5163,41 +4483,19 @@ string
   
 
 <form>
-  <input type="radio" checked id="example-payload-vopGetStateResponse-&lt;anonymous-message-7&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopGetStateResponse-&lt;anonymous-message-7&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+  <input type="radio" checked id="example-payload-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
 
-  <input type="radio" id="example-headers-vopGetStateResponse-&lt;anonymous-message-7&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopGetStateResponse-&lt;anonymous-message-7&gt;"
+  <input type="radio" id="example-headers-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;"
       class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
 
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string",
-  "timeStamp": "2020-08-24T09:28:24Z",
-  "unitState": {
-    "dataParts": {
-      "property1": "string",
-      "property2": "string"
-    },
-    "presentationProgress": "none",
-    "responseProgress": "none",
-    "unitStateDataType": "string"
-  },
-  "playerState": {
-    "state": "running",
-    "validPages": {
-      "property1": "string",
-      "property2": "string"
-    },
-    "currentPage": "string"
-  },
-  "log": [
-    {
-      "timeStamp": "2020-08-24T09:28:24Z",
-      "key": "string",
-      "content": "string"
-    }
+  "sessionId": "idk8ur5jf9ru5jk",
+  "reason": [
+    "presentationIncomplete"
   ]
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
@@ -5215,6 +4513,9 @@ string
 
 
 
+    
+  </div>
+  <div class="responsive-container">
     
   </div>
 
@@ -5237,7 +4538,7 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">stop player</p>
+    <p class="text-grey text-sm">Stop Command</p>
     <div class="mt-4 mb-4 markdown"><p>The application wants the player to stop all activities and user interaction.</p>
 </div>
 
@@ -5347,7 +4648,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
         
         
@@ -5421,7 +4722,7 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string"
+  "sessionId": "idk8ur5jf9ru5jk"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -5463,7 +4764,7 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">continue player</p>
+    <p class="text-grey text-sm">Continue Command</p>
     <div class="mt-4 mb-4 markdown"><p>The application wants the player to continue all activities and user interaction.</p>
 </div>
 
@@ -5573,7 +4874,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>Unique identificator of the execution of the unit (one run). This id was generated by the application and first given to the player via StartCommand.</p>
+          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
 </div>
         
         
@@ -5647,7 +4948,7 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "string"
+  "sessionId": "idk8ur5jf9ru5jk"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -5693,8 +4994,8 @@ string
 
     <div class="mt-4 mb-4 markdown"></div>
 
-    <p class="text-grey text-sm">the window of the player has got or lost the focus</p>
-    <div class="mt-4 mb-4 markdown"><p>In some use cases like exam mode the host must know whether the host or the player has the window's focus. If none of these windows have the focus (i. e. the testee has left the test), some logging or warning could be necessary. The player listens to the window events 'blur' and 'focus'.</p>
+    <p class="text-grey text-sm">Window Focus Changed Notification</p>
+    <div class="mt-4 mb-4 markdown"><p>In some use cases like exam mode the host must know whether the host or the player has the window's focus. If none of these windows have the focus (i. e. the testee has left the test), some logging or warning could be necessary. The player should listen to the window events 'blur' and 'focus'.</p>
 </div>
 
 
@@ -5932,7 +5233,7 @@ boolean
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "timeStamp": "2020-08-24T09:28:24Z",
+  "timeStamp": "2021-03-11T16:20:09Z",
   "hasFocus": true
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
