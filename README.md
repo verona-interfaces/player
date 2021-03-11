@@ -17,7 +17,9 @@ Texts about Player API:
 * made `validPages` and `currentPage` optional in `playerState` for players w/o paging feature
 * added `enabledNavigationTargets` in `playerConfig` in `vopStartCommand` to let the player know whether navigation targets are enabled or not; values are the same as in `vopUnitNavigationRequestedNotification`
 * added `startPage` in `playerConfig` in `vopStartCommand` to let the player jump to the previously selected page; this might also be helpful in evaluation use cases where (after the test) the given answers of items at a specific page are expected to be presented
-* added ``
+* added `navigationDeniedNotification` to let the player know when the navigation failed due to `presentationProgress` or `responseProgress`
+* version notation of supported unit definition types and unit state data types changed to semver with a tilde and/or a caret, separated by `@`.
+* changed in `vopUnitNavigationRequestedNotification` property name `targetRelative` to `target`
 
 ## For Contributors
 
