@@ -4,6 +4,7 @@ participant "Player Host Application" as app
 
 create Player
 app -> Player: (load)
+Player --> app: ReportPlayerFeatures
 Player -> app: ReadyNotification
 
 group Start Command
