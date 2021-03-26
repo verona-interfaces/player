@@ -11,7 +11,7 @@ Texts about Player API:
 * see also: [player metadata](api/playermetadata.md)
 
 ## release notes
-### 2.2
+### 3.0
 * removed `vopGetStateResponse`; the player should answer the `vopGetStateRequest`by sending `vopStateChangedNotification` with all data parts
 * removed `complete-and-valid` as `responseProgress` value; it is assumed that no response will be reported unless it is valid, so `complete` will do
 * made `validPages` and `currentPage` optional in `playerState` for players w/o paging feature

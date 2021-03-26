@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Inferfaces Specification "Player"
-  version: '2.2.0'
+  version: '3.0.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
@@ -32,7 +32,7 @@ channels:
               description: This lets the application know what verona API version the player supports. The host will
                 decide whether this declaration matches the requirements of the host or not and which features are not or
                 differently implemented by the player.
-              example: '2.2.0'
+              example: '2.1.0'
             notSupportedApiFeatures:
               type: string
               description: Space separated list of keys of features not implemented by the player. For details see
