@@ -1,4 +1,4 @@
-# Verona Inferfaces Specification &quot;Player&quot; 2.2.0 documentation
+# Verona Inferfaces Specification &quot;Player&quot; 3.0.0 documentation
 
 
 
@@ -139,7 +139,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "apiVersion": "2.2.0",
+  "apiVersion": "2.1.0",
   "notSupportedApiFeatures": "stop-continue paging-mode",
   "supportedUnitDefinitionTypes": "iqb-scripted@2.4.1",
   "supportedUnitStateDataTypes": "iqb-key-value@^1.1.0"
@@ -808,7 +808,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "idk8ur5jf9ru5jk",
-  "timeStamp": "2021-03-11T16:21:51Z",
+  "timeStamp": "2021-03-26T11:02:11Z",
   "unitState": {
     "dataParts": {
       "page1": "{\"a\": 1, \"b\": 233}",
@@ -828,7 +828,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2021-03-11T16:21:51Z",
+      "timeStamp": "2021-03-26T11:02:11Z",
       "key": "UNIT_NAVIGATION_FAILED",
       "content": "{\"unitId\": \"M24093EX\", \"reason\": \"responsesIncomplete\"}"
     }
@@ -1459,7 +1459,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "timeStamp": "2021-03-11T16:21:51Z",
+  "timeStamp": "2021-03-26T11:02:11Z",
   "hasFocus": true
 }
 ```
