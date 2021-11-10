@@ -11,7 +11,7 @@ Texts about Player API:
 * see also: [metadata](https://github.com/verona-interfaces/metadata)
 
 ## release notes
-### 3.1
+### 4.0
 * added `directDownloadUrl` in `playerConfig` to enable download of additional code or data by the player
 * specify metadata as json-ld as described [here](https://github.com/verona-interfaces/metadata/#readme); changed `vopReadyNotification` to send this `metadata` instead of `apiVersion`, `notSupportedApiFeatures`, `supportedUnitDefinitionTypes` and `supportedUnitStateDataTypes`
 
