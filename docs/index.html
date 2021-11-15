@@ -233,8 +233,8 @@
 
   <div class="markdown">
     <p>This is one part of the Verona Online Assessment Standards. All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
-Most important, the message body carries as first parameter the operationId of the message.
-The html page MUST contain a &lt;script&gt;-tag with metadata. The syntax and structure of these data are described <a href="https://github.com/verona-interfaces/metadata/#readme">here</a>.</p>
+Most importantly, the message body carries as first parameter the operationId of the message.
+The html page MUST contain a &lt;script&gt;-tag with metadata. The syntax and structure of this data are described <a href="https://github.com/verona-interfaces/metadata/#readme">here</a>.</p>
 
   </div>
 
@@ -828,7 +828,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+          <div class="text-sm markdown"><p>This data is used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </div>
         
         
@@ -1740,7 +1740,7 @@ string
         </div>
 
         
-          <div class="text-sm markdown"><p>After starting the player and loading the unit definition and former responses, it might be necessary to load additional code or data from the server. This data is identified by an resource ID (ususally a file name). The player can download this resource by itself without further interaction with the host frontend. The property directDownloadUrl provides the url for download. The player extends this url by an url separator &quot;/&quot; and the resource ID (uri-encoded if needed).</p>
+          <div class="text-sm markdown"><p>After starting the player and loading the unit definition and former responses, it might be necessary to load additional code or data from the server. This data is identified by an resource ID (usually a file name). The player can download this resource by itself without further interaction with the host frontend. The property directDownloadUrl provides the url for download. The player extends this url by an url separator &quot;/&quot; and the resource ID (uri-encoded if needed).</p>
 </div>
         
         
@@ -1849,7 +1849,7 @@ string
     },
     "presentationProgress": "none",
     "responseProgress": "some",
-    "unitStateDataType": "iqb-key-value@2.1.2"
+    "unitStateDataType": "iqb-standard@2.1.2"
   },
   "playerConfig": {
     "unitNumber": "14",
@@ -2182,7 +2182,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+          <div class="text-sm markdown"><p>This data is used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </div>
         
         
@@ -2617,7 +2617,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
+          <div class="text-sm markdown"><p>This data is structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
 </div>
         
         
@@ -3152,7 +3152,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "idk8ur5jf9ru5jk",
-  "timeStamp": "2021-11-10T10:22:14Z",
+  "timeStamp": "2021-11-15T10:22:25Z",
   "unitState": {
     "dataParts": {
       "page1": "{\"a\": 1, \"b\": 233}",
@@ -3160,7 +3160,7 @@ string
     },
     "presentationProgress": "none",
     "responseProgress": "some",
-    "unitStateDataType": "iqb-key-value@2.1.2"
+    "unitStateDataType": "iqb-standard@2.1.2"
   },
   "playerState": {
     "state": "running",
@@ -3172,7 +3172,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2021-11-10T10:22:14Z",
+      "timeStamp": "2021-11-15T10:22:25Z",
       "key": "UNIT_NAVIGATION_FAILED",
       "content": "{\"unitId\": \"M24093EX\", \"reason\": \"responsesIncomplete\"}"
     }
@@ -5129,7 +5129,7 @@ boolean
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "timeStamp": "2021-11-10T10:22:14Z",
+  "timeStamp": "2021-11-15T10:22:25Z",
   "hasFocus": true
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>

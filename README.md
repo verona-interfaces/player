@@ -7,7 +7,7 @@ to [Verona Interfaces Introduction](https://github.com/verona-interfaces/introdu
 Texts about Player API:
 * Model: [Use cases and communication](model/model.md)
 * [About pages of a unit](model/pages.md)
-* Player API: [markdown](api/asyncapi.md), [shiny html](https://verona-interfaces.github.io/player)
+* Player API: [markdown](docs/asyncapi.md), [shiny html](https://verona-interfaces.github.io/player)
 * see also: [metadata](https://github.com/verona-interfaces/metadata)
 
 ## release notes
