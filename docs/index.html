@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   
-  <title>Verona Inferfaces Specification &quot;Player&quot; 3.0.0 documentation</title>
+  <title>Verona Inferfaces Specification &quot;Player&quot; 4.0.0 documentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/atom-one-dark.min.css" />
@@ -24,7 +24,7 @@
 <div class="sidebar-panel fixed pin-t pin-l pin-b w-64 bg-grey-lighter font-sans pt-8 pr-4 pb-4 pl-4">
   <div class="sidebar-panel__content">
     
-    <h1 class="text-2xl font-thin">Verona Inferfaces Specification &quot;Player&quot; 3.0.0</h1>
+    <h1 class="text-2xl font-thin">Verona Inferfaces Specification &quot;Player&quot; 4.0.0</h1>
     
     <ul class="text-sm mt-10 list-reset mt-2">
       <li class="mb-3">
@@ -222,7 +222,7 @@
     <div class="content-panel flex-1 leading-loose z-10">
       <div class="center-block p-8">
   <a name="introduction"></a>
-  <h1>Verona Inferfaces Specification &quot;Player&quot; 3.0.0</h1>
+  <h1>Verona Inferfaces Specification &quot;Player&quot; 4.0.0</h1>
   <div class="leading-normal mb-4">
     
     
@@ -233,7 +233,8 @@
 
   <div class="markdown">
     <p>This is one part of the Verona Online Assessment Standards. All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
-Most important, the message body carries as first parameter the operationId of the message.</p>
+Most importantly, the message body carries as first parameter the operationId of the message.
+The html page MUST contain a &lt;script&gt;-tag with metadata. The syntax and structure of this data are described <a href="https://github.com/verona-interfaces/metadata/#readme">here</a>.</p>
 
   </div>
 
@@ -363,7 +364,7 @@ object
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">apiVersion</span>
+        <span class="text-sm " style="word-break: break-word;">metadata</span>
         
         
           <div class="text-red-dark text-xs">required</div>
@@ -388,165 +389,12 @@ string
             
             
             
-            <span class="bg-purple-dark font-bold no-underline text-white rounded normal-case ml-2"
-                  style="height: 20px;font-size: 11px;padding: 3px;">must match ^\d+\.\d+.\d+$</span>
-            
             
           </div>
         </div>
 
         
-          <div class="text-sm markdown"><p>This lets the application know what verona API version the player supports. The host will decide whether this declaration matches the requirements of the host or not and which features are not or differently implemented by the player.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">notSupportedApiFeatures</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>Space separated list of keys of features not implemented by the player. For details see corresponding player metadata doc!</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">supportedUnitDefinitionTypes</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>Space separated list of keys of unit definition formats supported by the player. After a '@' char, a version might be added (semver-format, caret and tilde might be used).</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">supportedUnitStateDataTypes</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>Space separated list of keys of unit state data formats supported by the player. After a '@' char, a version might be added (semver-format, caret and tilde might be used).</p>
+          <div class="text-sm markdown"><p>Via this property, the player sends the stringified metadata object definied as json-ld in the header of the html file. See <a href="https://github.com/verona-interfaces/metadata/#readme">here</a> for more information.</p>
 </div>
         
         
@@ -620,10 +468,7 @@ string
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "apiVersion": "2.1.0",
-  "notSupportedApiFeatures": "stop-continue paging-mode",
-  "supportedUnitDefinitionTypes": "iqb-scripted@2.4.1",
-  "supportedUnitStateDataTypes": "iqb-key-value@^1.1.0"
+  "metadata": "string"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -983,7 +828,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+          <div class="text-sm markdown"><p>This data is used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </div>
         
         
@@ -1861,6 +1706,56 @@ string
 
 
           
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">directDownloadUrl</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>After starting the player and loading the unit definition and former responses, it might be necessary to load additional code or data from the server. This data is identified by an resource ID (usually a file name). The player can download this resource by itself without further interaction with the host frontend. The property directDownloadUrl provides the url for download. The player extends this url by an url separator &quot;/&quot; and the resource ID (uri-encoded if needed).</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
         
 
         
@@ -1954,7 +1849,7 @@ string
     },
     "presentationProgress": "none",
     "responseProgress": "some",
-    "unitStateDataType": "iqb-key-value@2.1.2"
+    "unitStateDataType": "iqb-standard@2.1.2"
   },
   "playerConfig": {
     "unitNumber": "14",
@@ -1966,7 +1861,8 @@ string
     "enabledNavigationTargets": [
       "next"
     ],
-    "startPage": "page5"
+    "startPage": "page5",
+    "directDownloadUrl": "https://www.iqb-testcenter.de/download/iskeid-34e845-didmmemdkek"
   }
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
@@ -2286,7 +2182,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+          <div class="text-sm markdown"><p>This data is used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </div>
         
         
@@ -2721,7 +2617,7 @@ object
         </div>
 
         
-          <div class="text-sm markdown"><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
+          <div class="text-sm markdown"><p>This data is structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
 </div>
         
         
@@ -3256,7 +3152,7 @@ string
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
   "sessionId": "idk8ur5jf9ru5jk",
-  "timeStamp": "2021-03-26T11:03:16Z",
+  "timeStamp": "2021-11-15T10:22:25Z",
   "unitState": {
     "dataParts": {
       "page1": "{\"a\": 1, \"b\": 233}",
@@ -3264,7 +3160,7 @@ string
     },
     "presentationProgress": "none",
     "responseProgress": "some",
-    "unitStateDataType": "iqb-key-value@2.1.2"
+    "unitStateDataType": "iqb-standard@2.1.2"
   },
   "playerState": {
     "state": "running",
@@ -3276,7 +3172,7 @@ string
   },
   "log": [
     {
-      "timeStamp": "2021-03-26T11:03:16Z",
+      "timeStamp": "2021-11-15T10:22:25Z",
       "key": "UNIT_NAVIGATION_FAILED",
       "content": "{\"unitId\": \"M24093EX\", \"reason\": \"responsesIncomplete\"}"
     }
@@ -5233,7 +5129,7 @@ boolean
   <div class="payload-examples mt-4">
     
     <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "timeStamp": "2021-03-26T11:03:16Z",
+  "timeStamp": "2021-11-15T10:22:25Z",
   "hasFocus": true
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>

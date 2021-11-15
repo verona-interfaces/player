@@ -1,12 +1,15 @@
 asyncapi: 2.0.0
 info:
   title: Verona Inferfaces Specification "Player"
-  version: '3.0.0'
+  version: '4.0.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
 
-    Most important, the message body carries as first parameter the operationId of the message.
+    Most importantly, the message body carries as first parameter the operationId of the message.
+
+    The html page MUST contain a <script>-tag with metadata. The syntax and structure of this data are described
+    [here](https://github.com/verona-interfaces/metadata/#readme).
 
   license:
     name: CC BY-SA 4.0
@@ -26,30 +29,13 @@ channels:
         payload:
           type: object
           properties:
-            apiVersion:
+            metadata:
               type: string
-              pattern: '^\d+\.\d+.\d+$'
-              description: This lets the application know what verona API version the player supports. The host will
-                decide whether this declaration matches the requirements of the host or not and which features are not or
-                differently implemented by the player.
-              example: '2.1.0'
-            notSupportedApiFeatures:
-              type: string
-              description: Space separated list of keys of features not implemented by the player. For details see
-                corresponding player metadata doc!
-              example: 'stop-continue paging-mode'
-            supportedUnitDefinitionTypes:
-              type: string
-              description: Space separated list of keys of unit definition formats supported by the player. After a
-                '@' char, a version might be added (semver-format, caret and tilde might be used).
-              example: 'iqb-scripted@2.4.1'
-            supportedUnitStateDataTypes:
-              type: string
-              description: Space separated list of keys of unit state data formats supported by the player. After a
-                '@' char, a version might be added (semver-format, caret and tilde might be used).
-              example: 'iqb-key-value@^1.1.0'
+              description: Via this property, the player sends the stringified metadata object definied as json-ld
+                in the header of the html file. See [here](https://github.com/verona-interfaces/metadata/#readme) for
+                more information.
           required:
-            - apiVersion
+            - metadata
 
   vopStartCommand:
     publish:
@@ -110,6 +96,7 @@ channels:
               type: string
               format: date-time
               description: Ensures, that later arriving states are ignored.
+              example: "2021-11-15T10:22:25Z"
             unitState:
               $ref: "#/components/schemas/UnitState"
               description: To be stored, evaluated etc. This is the main yield, the responses.
@@ -258,6 +245,7 @@ channels:
               type: string
               format: date-time
               description: Ensures, that later arriving states are ignored.
+              example: "2021-11-15T10:22:25Z"
             hasFocus:
               type: boolean
               description: true if the player got the focus, false if it lost the focus.
@@ -274,6 +262,7 @@ components:
         timeStamp:
           type: string
           format: date-time
+          example: "2021-11-15T10:22:25Z"
         key:
           type: string
           description: This key might help to classify the events afterwards.
@@ -295,7 +284,7 @@ components:
             - running
             - stopped
         validPages:
-          description: These data are structured as "page key" => "page label", so we have (1) keys for navigation
+          description: This data is structured as "page key" => "page label", so we have (1) keys for navigation
             commands or state notifications and (2) strings as labels of navigation buttons if needed.
           type: object
           additionalProperties:
@@ -314,7 +303,7 @@ components:
       type: object
       properties:
         dataParts:
-          description: These data are used by the player to restore the former response state and by data processing
+          description: This data is used by the player to restore the former response state and by data processing
             systems to analyse the responses. The host must buffer all data parts, because the player might send only
             changed data parts, not always the whole package. The host stores all parts but only the last given
             version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as
@@ -355,7 +344,7 @@ components:
             transformation or analysis of stored unit data requires knowledge about the format. When the host sends
             data to the player to restore the former unit state, the player should check the given data type to
             avoid data mess after getting an old data type.
-          example: 'iqb-key-value@2.1.2'
+          example: 'iqb-standard@2.1.2'
     NavigationTarget:
       description: This enumeration lists all possible targets the player could send a navigation request for, relative
         to the position of the current unit. This could be the next and previous unit, last and first unit of the current
@@ -442,3 +431,11 @@ components:
             page id from former usages of the unit.
           type: string
           example: 'page5'
+        directDownloadUrl:
+          description: After starting the player and loading the unit definition and former responses, it might be
+            necessary to load additional code or data from the server. This data is identified by an resource ID
+            (usually a file name). The player can download this resource by itself without further interaction with
+            the host frontend. The property directDownloadUrl provides the url for download. The player extends this
+            url by an url separator "/" and the resource ID (uri-encoded if needed).
+          type: string
+          example: 'https://www.iqb-testcenter.de/download/iskeid-34e845-didmmemdkek'

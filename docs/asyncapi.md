@@ -1,9 +1,10 @@
-# Verona Inferfaces Specification &quot;Player&quot; 3.0.0 documentation
+# Verona Inferfaces Specification &quot;Player&quot; 4.0.0 documentation
 
 
 
 This is one part of the Verona Online Assessment Standards. All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
-Most important, the message body carries as first parameter the operationId of the message.
+Most importantly, the message body carries as first parameter the operationId of the message.
+The html page MUST contain a <script>-tag with metadata. The syntax and structure of this data are described [here](https://github.com/verona-interfaces/metadata/#readme).
 
 ## Table of Contents
 
@@ -68,57 +69,9 @@ Most important, the message body carries as first parameter the operationId of t
     
       
 <tr>
-  <td>apiVersion </td>
+  <td>metadata </td>
   <td>string</td>
-  <td><p>This lets the application know what verona API version the player supports. The host will decide whether this declaration matches the requirements of the host or not and which features are not or differently implemented by the player.</p>
-</td>
-  <td><em>Any</em></td>
-</tr>
-
-
-
-
-
-
-
-    
-      
-<tr>
-  <td>notSupportedApiFeatures </td>
-  <td>string</td>
-  <td><p>Space separated list of keys of features not implemented by the player. For details see corresponding player metadata doc!</p>
-</td>
-  <td><em>Any</em></td>
-</tr>
-
-
-
-
-
-
-
-    
-      
-<tr>
-  <td>supportedUnitDefinitionTypes </td>
-  <td>string</td>
-  <td><p>Space separated list of keys of unit definition formats supported by the player. After a '@' char, a version might be added (semver-format, caret and tilde might be used).</p>
-</td>
-  <td><em>Any</em></td>
-</tr>
-
-
-
-
-
-
-
-    
-      
-<tr>
-  <td>supportedUnitStateDataTypes </td>
-  <td>string</td>
-  <td><p>Space separated list of keys of unit state data formats supported by the player. After a '@' char, a version might be added (semver-format, caret and tilde might be used).</p>
+  <td><p>Via this property, the player sends the stringified metadata object definied as json-ld in the header of the html file. See <a href="https://github.com/verona-interfaces/metadata/#readme">here</a> for more information.</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -139,10 +92,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "apiVersion": "2.1.0",
-  "notSupportedApiFeatures": "stop-continue paging-mode",
-  "supportedUnitDefinitionTypes": "iqb-scripted@2.4.1",
-  "supportedUnitStateDataTypes": "iqb-key-value@^1.1.0"
+  "metadata": "string"
 }
 ```
 
@@ -258,7 +208,7 @@ Most important, the message body carries as first parameter the operationId of t
 <tr>
   <td>unitState.dataParts </td>
   <td>object</td>
-  <td><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+  <td><p>This data is used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -467,6 +417,22 @@ Most important, the message body carries as first parameter the operationId of t
 
 
 
+<tr>
+  <td>playerConfig.directDownloadUrl </td>
+  <td>string</td>
+  <td><p>After starting the player and loading the unit definition and former responses, it might be necessary to load additional code or data from the server. This data is identified by an resource ID (usually a file name). The player can download this resource by itself without further interaction with the host frontend. The property directDownloadUrl provides the url for download. The player extends this url by an url separator &quot;/&quot; and the resource ID (uri-encoded if needed).</p>
+</td>
+  <td><em>Any</em></td>
+</tr>
+
+
+
+
+
+
+
+
+
 
 
     
@@ -489,7 +455,7 @@ Most important, the message body carries as first parameter the operationId of t
     },
     "presentationProgress": "none",
     "responseProgress": "some",
-    "unitStateDataType": "iqb-key-value@2.1.2"
+    "unitStateDataType": "iqb-standard@2.1.2"
   },
   "playerConfig": {
     "unitNumber": "14",
@@ -501,7 +467,8 @@ Most important, the message body carries as first parameter the operationId of t
     "enabledNavigationTargets": [
       "next"
     ],
-    "startPage": "page5"
+    "startPage": "page5",
+    "directDownloadUrl": "https://www.iqb-testcenter.de/download/iskeid-34e845-didmmemdkek"
   }
 }
 ```
@@ -602,7 +569,7 @@ Most important, the message body carries as first parameter the operationId of t
 <tr>
   <td>unitState.dataParts </td>
   <td>object</td>
-  <td><p>These data are used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
+  <td><p>This data is used by the player to restore the former response state and by data processing systems to analyse the responses. The host must buffer all data parts, because the player might send only changed data parts, not always the whole package. The host stores all parts but only the last given version (respect timeStamp!). Every data part is identified by a unique key, the data is stored as serialized object (string).</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -699,7 +666,7 @@ Most important, the message body carries as first parameter the operationId of t
 <tr>
   <td>playerState.validPages </td>
   <td>object</td>
-  <td><p>These data are structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
+  <td><p>This data is structured as &quot;page key&quot; =&gt; &quot;page label&quot;, so we have (1) keys for navigation commands or state notifications and (2) strings as labels of navigation buttons if needed.</p>
 </td>
   <td><em>Any</em></td>
 </tr>
@@ -808,7 +775,7 @@ Most important, the message body carries as first parameter the operationId of t
 ```json
 {
   "sessionId": "idk8ur5jf9ru5jk",
-  "timeStamp": "2021-03-26T11:02:11Z",
+  "timeStamp": "2021-11-15T10:22:25Z",
   "unitState": {
     "dataParts": {
       "page1": "{\"a\": 1, \"b\": 233}",
@@ -816,7 +783,7 @@ Most important, the message body carries as first parameter the operationId of t
     },
     "presentationProgress": "none",
     "responseProgress": "some",
-    "unitStateDataType": "iqb-key-value@2.1.2"
+    "unitStateDataType": "iqb-standard@2.1.2"
   },
   "playerState": {
     "state": "running",
@@ -828,7 +795,7 @@ Most important, the message body carries as first parameter the operationId of t
   },
   "log": [
     {
-      "timeStamp": "2021-03-26T11:02:11Z",
+      "timeStamp": "2021-11-15T10:22:25Z",
       "key": "UNIT_NAVIGATION_FAILED",
       "content": "{\"unitId\": \"M24093EX\", \"reason\": \"responsesIncomplete\"}"
     }
@@ -1459,7 +1426,7 @@ Most important, the message body carries as first parameter the operationId of t
 
 ```json
 {
-  "timeStamp": "2021-03-26T11:02:11Z",
+  "timeStamp": "2021-11-15T10:22:25Z",
   "hasFocus": true
 }
 ```

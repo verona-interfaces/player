@@ -7,10 +7,14 @@ to [Verona Interfaces Introduction](https://github.com/verona-interfaces/introdu
 Texts about Player API:
 * Model: [Use cases and communication](model/model.md)
 * [About pages of a unit](model/pages.md)
-* Player API: [markdown](api/asyncapi.md), [shiny html](https://verona-interfaces.github.io/player)
-* see also: [player metadata](api/playermetadata.md)
+* Player API: [markdown](docs/asyncapi.md), [shiny html](https://verona-interfaces.github.io/player)
+* see also: [metadata](https://github.com/verona-interfaces/metadata)
 
 ## release notes
+### 4.0
+* added `directDownloadUrl` in `playerConfig` to enable download of additional code or data by the player
+* specify metadata as json-ld as described [here](https://github.com/verona-interfaces/metadata/#readme); changed `vopReadyNotification` to send this `metadata` instead of `apiVersion`, `notSupportedApiFeatures`, `supportedUnitDefinitionTypes` and `supportedUnitStateDataTypes`
+
 ### 3.0
 * removed `vopGetStateResponse`; the player should answer the `vopGetStateRequest`by sending `vopStateChangedNotification` with all data parts
 * removed `complete-and-valid` as `responseProgress` value; it is assumed that no response will be reported unless it is valid, so `complete` will do
