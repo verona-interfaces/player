@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Inferfaces Specification "Player"
-  version: '4.0.0'
+  version: '5.0.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
@@ -152,28 +152,6 @@ channels:
             - sessionId
             - target
 
-  vopGetStateRequest:
-    publish:
-      operationId: vopGetStateRequest
-      summary: Get State Request
-      description: The application wants the player to report the last state and (optional) to stop interaction. The
-        player will answer by sending .
-      message:
-        contentType: application/json
-        payload:
-          type: object
-          properties:
-            sessionId:
-              $ref: "#/components/schemas/SessionIdString"
-            stop:
-              type: boolean
-              description: If true, the player should not accept any user interaction anymore to be sure, that all
-                states of the unit are reported. Usually, you will do so just before unloading the player and
-                prepare for the next unit.
-          required:
-            - sessionId
-            - stop
-
   vopNavigationDeniedNotification:
     publish:
       operationId: vopNavigationDeniedNotification
@@ -196,36 +174,6 @@ channels:
                 enum:
                   - presentationIncomplete
                   - responsesIncomplete
-          required:
-            - sessionId
-
-  vopStopCommand:
-    publish:
-      operationId: vopStopCommand
-      summary: Stop Command
-      description: The application wants the player to stop all activities and user interaction.
-      message:
-        contentType: application/json
-        payload:
-          type: object
-          properties:
-            sessionId:
-              $ref: "#/components/schemas/SessionIdString"
-          required:
-            - sessionId
-
-  vopContinueCommand:
-    publish:
-      operationId: vopContinueCommand
-      summary: Continue Command
-      description: The application wants the player to continue all activities and user interaction.
-      message:
-        contentType: application/json
-        payload:
-          type: object
-          properties:
-            sessionId:
-              $ref: "#/components/schemas/SessionIdString"
           required:
             - sessionId
 
@@ -278,11 +226,6 @@ components:
     PlayerState:
       type: object
       properties:
-        state:
-          type: string
-          enum:
-            - running
-            - stopped
         validPages:
           description: This data is structured as "page key" => "page label", so we have (1) keys for navigation
             commands or state notifications and (2) strings as labels of navigation buttons if needed.
@@ -297,8 +240,6 @@ components:
             paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.
           type: string
           example: 'page4'
-      required:
-        - state
     UnitState:
       type: object
       properties:
@@ -390,16 +331,6 @@ components:
           type: string
           maxLength: 20
           example: 'M24093EX'
-        stateReportPolicy:
-          description: The host expects the player to send no state changes (e. g. for use case "preview mode"), all
-            changes when happening or only on demand. The latter might lead to better performance. In this case,
-            the host triggers state report by sending 'vopGetStateRequest'.
-          type: string
-          enum:
-            - none
-            - eager
-            - on-demand
-          example: 'eager'
         logPolicy:
           description: The host expects the player to send no logs, only important logs, all possible logs or even logs
             for debugging purposes. This is a guideline. The player can decide what exactly the logging consists of.
