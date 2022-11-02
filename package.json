@@ -2,6 +2,6 @@
   "name": "verona-player-specification",
   "version": "5.0.0",
   "dependencies": {
-    "asyncapi-generator": "^0.33.0"
+    "@asyncapi/generator": "^1.9.13"
   }
 }
