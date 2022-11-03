@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   
-  <title>Verona Inferfaces Specification &quot;Player&quot; 4.0.0 documentation</title>
+  <title>Verona Inferfaces Specification &quot;Player&quot; 5.0.0 documentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/atom-one-dark.min.css" />
@@ -24,7 +24,7 @@
 <div class="sidebar-panel fixed pin-t pin-l pin-b w-64 bg-grey-lighter font-sans pt-8 pr-4 pb-4 pl-4">
   <div class="sidebar-panel__content">
     
-    <h1 class="text-2xl font-thin">Verona Inferfaces Specification &quot;Player&quot; 4.0.0</h1>
+    <h1 class="text-2xl font-thin">Verona Inferfaces Specification &quot;Player&quot; 5.0.0</h1>
     
     <ul class="text-sm mt-10 list-reset mt-2">
       <li class="mb-3">
@@ -131,63 +131,12 @@
       <li>
         
         <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
-          href="#operation-publish-vopGetStateRequest">
-          <span class="bg-blue-dark font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded"
-            style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
-          
-          <span style="padding-top: 2px;">
-            Get State Request
-          </span>
-          
-        </a>
-        
-        
-        </a>
-      </li>
-      
-      <li>
-        
-        <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
           href="#operation-publish-vopNavigationDeniedNotification">
           <span class="bg-blue-dark font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded"
             style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
           
           <span style="padding-top: 2px;">
             Navigation Denied Notification
-          </span>
-          
-        </a>
-        
-        
-        </a>
-      </li>
-      
-      <li>
-        
-        <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
-          href="#operation-publish-vopStopCommand">
-          <span class="bg-blue-dark font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded"
-            style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
-          
-          <span style="padding-top: 2px;">
-            Stop Command
-          </span>
-          
-        </a>
-        
-        
-        </a>
-      </li>
-      
-      <li>
-        
-        <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
-          href="#operation-publish-vopContinueCommand">
-          <span class="bg-blue-dark font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded"
-            style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
-          
-          <span style="padding-top: 2px;">
-            Continue Command
           </span>
           
         </a>
@@ -222,7 +171,7 @@
     <div class="content-panel flex-1 leading-loose z-10">
       <div class="center-block p-8">
   <a name="introduction"></a>
-  <h1>Verona Inferfaces Specification &quot;Player&quot; 4.0.0</h1>
+  <h1>Verona Inferfaces Specification &quot;Player&quot; 5.0.0</h1>
   <div class="leading-normal mb-4">
     
     
@@ -1331,67 +1280,6 @@ string
   <div class="">
     <div class=" flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">stateReportPolicy</span>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>The host expects the player to send no state changes (e. g. for use case &quot;preview mode&quot;), all changes when happening or only on demand. The latter might lead to better performance. In this case, the host triggers state report by sending 'vopGetStateRequest'.</p>
-</div>
-        
-        
-        
-        
-          <div class="text-xs">
-            Enum:
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"none"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"eager"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"on-demand"</span>
-            
-          </div>
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
         <span class="text-sm " style="word-break: break-word;">logPolicy</span>
         
         
@@ -1855,7 +1743,6 @@ string
     "unitNumber": "14",
     "unitTitle": "Ein wunderbarer Ausflug",
     "unitId": "M24093EX",
-    "stateReportPolicy": "eager",
     "logPolicy": "lean",
     "pagingMode": "concat-scroll",
     "enabledNavigationTargets": [
@@ -2524,64 +2411,6 @@ object
 
 <div class="bg-grey-lighter pl-8 pr-8 rounded">
   <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">state</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-          <div class="text-xs">
-            Enum:
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"running"</span>
-            
-              <span class="border text-orange rounded ml-1 py-0 px-2">"stopped"</span>
-            
-          </div>
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lighter pl-8 pr-8 rounded">
-  <div class="">
     <div class="js-prop cursor-pointer py-2 flex property">
       <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
         <span class="text-sm " style="word-break: break-word;">validPages</span>
@@ -3163,7 +2992,6 @@ string
     "unitStateDataType": "iqb-standard@2.1.2"
   },
   "playerState": {
-    "state": "running",
     "validPages": {
       "page1": "Seite 1",
       "page2": "Seite 2"
@@ -3774,285 +3602,6 @@ string
     
       
 
-<a name="operation-publish-vopGetStateRequest"></a>
-<div class="center-block p-8">
-  <div class="operation pt-8 pb-8">
-    <h3 class="font-mono text-base">
-      
-      <span class="font-mono border border-blue text-blue uppercase p-1 rounded" title="Publish">Pub</span>
-      
-      
-      
-<span class="string-chunk" >vopGetStateRequest</span>
-
-    </h3>
-
-    <div class="mt-4 mb-4 markdown"></div>
-
-    <p class="text-grey text-sm">Get State Request</p>
-    <div class="mt-4 mb-4 markdown"><p>The application wants the player to report the last state and (optional) to stop interaction. The player will answer by sending .</p>
-</div>
-
-
-
-    
-
-
-    
-    <p>Accepts the following message:</p>
-    
-
-<div class="bg-grey-lighter rounded p-4 mt-2">
-  <div class="text-sm text-grey-darker mb-2">
-    
-    
-      
-    
-  </div>
-  <p class="text-grey-dark text-sm"></p>
-  <div class="mt-4 mb-4 markdown"></div>
-  
-<div>
-  
-
-<div class="bg-grey-lighter  rounded">
-  <div class="is-open">
-    <div class="js-prop cursor-pointer py-2 flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">Payload</span>
-        
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-object
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lightest py-4 rounded">
-        
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">sessionId</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">stop</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-boolean
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>If true, the player should not accept any user interaction anymore to be sure, that all states of the unit are reported. Usually, you will do so just before unloading the player and prepare for the next unit.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
-          
-        
-
-        
-
-        
-
-        
-      </div>
-    
-  </div>
-</div>
-
-
-</div>
-
-  
-</div>
-
-
-    
-
-    
-<div class="mt-4">
-  
-</div>
-
-
-  </div>
-</div>
-
-<div class="right-block p-8">
-  <h4 class="text-lg text-white mb-4">Examples</h4>
-
-  
-  
-
-<form>
-  <input type="radio" checked id="example-payload-vopGetStateRequest-&lt;anonymous-message-6&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopGetStateRequest-&lt;anonymous-message-6&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
-
-  <input type="radio" id="example-headers-vopGetStateRequest-&lt;anonymous-message-6&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopGetStateRequest-&lt;anonymous-message-6&gt;"
-      class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
-
-  <div class="payload-examples mt-4">
-    
-    <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "idk8ur5jf9ru5jk",
-  "stop": true
-}</code></pre>
-    <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
-    
-  </div>
-
-  <div class="headers-examples mt-4">
-    
-  </div>
-</form>
-
-
-  
-</div>
-
-
-
-    
-  </div>
-  <div class="responsive-container">
-    
-  </div>
-
-  <div class="responsive-container">
-    
-      
-
 <a name="operation-publish-vopNavigationDeniedNotification"></a>
 <div class="center-block p-8">
   <div class="operation pt-8 pb-8">
@@ -4379,11 +3928,11 @@ string
   
 
 <form>
-  <input type="radio" checked id="example-payload-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+  <input type="radio" checked id="example-payload-vopNavigationDeniedNotification-&lt;anonymous-message-6&gt;" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload-vopNavigationDeniedNotification-&lt;anonymous-message-6&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
 
-  <input type="radio" id="example-headers-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopNavigationDeniedNotification-&lt;anonymous-message-7&gt;"
+  <input type="radio" id="example-headers-vopNavigationDeniedNotification-&lt;anonymous-message-6&gt;" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers-vopNavigationDeniedNotification-&lt;anonymous-message-6&gt;"
       class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
 
   <div class="payload-examples mt-4">
@@ -4393,458 +3942,6 @@ string
   "reason": [
     "presentationIncomplete"
   ]
-}</code></pre>
-    <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
-    
-  </div>
-
-  <div class="headers-examples mt-4">
-    
-  </div>
-</form>
-
-
-  
-</div>
-
-
-
-    
-  </div>
-  <div class="responsive-container">
-    
-  </div>
-
-  <div class="responsive-container">
-    
-      
-
-<a name="operation-publish-vopStopCommand"></a>
-<div class="center-block p-8">
-  <div class="operation pt-8 pb-8">
-    <h3 class="font-mono text-base">
-      
-      <span class="font-mono border border-blue text-blue uppercase p-1 rounded" title="Publish">Pub</span>
-      
-      
-      
-<span class="string-chunk" >vopStopCommand</span>
-
-    </h3>
-
-    <div class="mt-4 mb-4 markdown"></div>
-
-    <p class="text-grey text-sm">Stop Command</p>
-    <div class="mt-4 mb-4 markdown"><p>The application wants the player to stop all activities and user interaction.</p>
-</div>
-
-
-
-    
-
-
-    
-    <p>Accepts the following message:</p>
-    
-
-<div class="bg-grey-lighter rounded p-4 mt-2">
-  <div class="text-sm text-grey-darker mb-2">
-    
-    
-      
-    
-  </div>
-  <p class="text-grey-dark text-sm"></p>
-  <div class="mt-4 mb-4 markdown"></div>
-  
-<div>
-  
-
-<div class="bg-grey-lighter  rounded">
-  <div class="is-open">
-    <div class="js-prop cursor-pointer py-2 flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">Payload</span>
-        
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-object
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lightest py-4 rounded">
-        
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">sessionId</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
-          
-        
-
-        
-
-        
-
-        
-      </div>
-    
-  </div>
-</div>
-
-
-</div>
-
-  
-</div>
-
-
-    
-
-    
-<div class="mt-4">
-  
-</div>
-
-
-  </div>
-</div>
-
-<div class="right-block p-8">
-  <h4 class="text-lg text-white mb-4">Examples</h4>
-
-  
-  
-
-<form>
-  <input type="radio" checked id="example-payload-vopStopCommand-&lt;anonymous-message-8&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopStopCommand-&lt;anonymous-message-8&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
-
-  <input type="radio" id="example-headers-vopStopCommand-&lt;anonymous-message-8&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopStopCommand-&lt;anonymous-message-8&gt;"
-      class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
-
-  <div class="payload-examples mt-4">
-    
-    <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "idk8ur5jf9ru5jk"
-}</code></pre>
-    <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
-    
-  </div>
-
-  <div class="headers-examples mt-4">
-    
-  </div>
-</form>
-
-
-  
-</div>
-
-
-
-    
-  </div>
-  <div class="responsive-container">
-    
-  </div>
-
-  <div class="responsive-container">
-    
-      
-
-<a name="operation-publish-vopContinueCommand"></a>
-<div class="center-block p-8">
-  <div class="operation pt-8 pb-8">
-    <h3 class="font-mono text-base">
-      
-      <span class="font-mono border border-blue text-blue uppercase p-1 rounded" title="Publish">Pub</span>
-      
-      
-      
-<span class="string-chunk" >vopContinueCommand</span>
-
-    </h3>
-
-    <div class="mt-4 mb-4 markdown"></div>
-
-    <p class="text-grey text-sm">Continue Command</p>
-    <div class="mt-4 mb-4 markdown"><p>The application wants the player to continue all activities and user interaction.</p>
-</div>
-
-
-
-    
-
-
-    
-    <p>Accepts the following message:</p>
-    
-
-<div class="bg-grey-lighter rounded p-4 mt-2">
-  <div class="text-sm text-grey-darker mb-2">
-    
-    
-      
-    
-  </div>
-  <p class="text-grey-dark text-sm"></p>
-  <div class="mt-4 mb-4 markdown"></div>
-  
-<div>
-  
-
-<div class="bg-grey-lighter  rounded">
-  <div class="is-open">
-    <div class="js-prop cursor-pointer py-2 flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">Payload</span>
-        
-        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
-          xmlns="http://www.w3.org/2000/svg" y="0">
-          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
-        </svg>
-        
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-object
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-      <div class="children bg-grey-lightest py-4 rounded">
-        
-          
-            
-
-<div class="bg-grey-lightest pl-8 pr-8 rounded">
-  <div class="">
-    <div class=" flex property">
-      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
-        <span class="text-sm " style="word-break: break-word;">sessionId</span>
-        
-        
-          <div class="text-red-dark text-xs">required</div>
-        
-      </div>
-
-      <div>
-        <div class="capitalize text-sm text-teal font-bold">
-          
-string
-          
-          
-          
-          <div class="inline-block">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
-        </div>
-
-        
-          <div class="text-sm markdown"><p>The session id flags all communication. If a message has no or empty session id, it's not processed. The session id is unique and was generated by the application. Any simple algorithm would work. The session id helps to link the correct unit with the data of the message. Using the id of the player hosting html element is less reliable, because the element could be reused with another unit.</p>
-</div>
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    
-  </div>
-</div>
-
-
-          
-        
-
-        
-        
-
-        
-
-        
-          
-            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
-          
-        
-
-        
-
-        
-
-        
-      </div>
-    
-  </div>
-</div>
-
-
-</div>
-
-  
-</div>
-
-
-    
-
-    
-<div class="mt-4">
-  
-</div>
-
-
-  </div>
-</div>
-
-<div class="right-block p-8">
-  <h4 class="text-lg text-white mb-4">Examples</h4>
-
-  
-  
-
-<form>
-  <input type="radio" checked id="example-payload-vopContinueCommand-&lt;anonymous-message-9&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopContinueCommand-&lt;anonymous-message-9&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
-
-  <input type="radio" id="example-headers-vopContinueCommand-&lt;anonymous-message-9&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopContinueCommand-&lt;anonymous-message-9&gt;"
-      class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
-
-  <div class="payload-examples mt-4">
-    
-    <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
-  "sessionId": "idk8ur5jf9ru5jk"
 }</code></pre>
     <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
     
@@ -5119,11 +4216,11 @@ boolean
   
 
 <form>
-  <input type="radio" checked id="example-payload-vopWindowFocusChangedNotification-&lt;anonymous-message-10&gt;" name="tab" class="examples-payload-tab hidden" />
-  <label for="example-payload-vopWindowFocusChangedNotification-&lt;anonymous-message-10&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+  <input type="radio" checked id="example-payload-vopWindowFocusChangedNotification-&lt;anonymous-message-7&gt;" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload-vopWindowFocusChangedNotification-&lt;anonymous-message-7&gt;" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
 
-  <input type="radio" id="example-headers-vopWindowFocusChangedNotification-&lt;anonymous-message-10&gt;" name="tab" class="examples-headers-tab hidden" disabled />
-  <label for="example-headers-vopWindowFocusChangedNotification-&lt;anonymous-message-10&gt;"
+  <input type="radio" id="example-headers-vopWindowFocusChangedNotification-&lt;anonymous-message-7&gt;" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers-vopWindowFocusChangedNotification-&lt;anonymous-message-7&gt;"
       class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
 
   <div class="payload-examples mt-4">

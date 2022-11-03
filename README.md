@@ -55,5 +55,5 @@ npm install -g asyncapi-generator
 The following command (PC-version) will create a `api/playerapi.md` file from `api/playerapi.yaml`:
 
 ```
-ag -o .\api .\api\playerapi.yaml markdown 
+ag -o .\docs .\api\playerapi.yaml markdown 
 ```
