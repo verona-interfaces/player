@@ -1,4 +1,5 @@
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/verona-interfaces/player)
 
 In order to understand Verona Interfaces, please go 
 to [Verona Interfaces Introduction](https://github.com/verona-interfaces/introduction)! 
@@ -44,16 +45,6 @@ java -jar ..\plantuml.jar -checkmetadata -o png model\*.puml
 ```
 
 ### API
-We went for the [AsyncAPI](https://www.asyncapi.com/) specification, because we deal with asynchronous messages rather then HTTP requests.
+The api is written as [async api](https://www.asyncapi.com) yaml file. After editing, we create markdown and html files for better reading.
 
-The API definition in AsyncAPI format is stored in this repository. We prefer the yaml format rather then the JSON format. The corresponding and better readable markdown document should be created right after changes of the definition file have been made, and should be included in this repository. It's easy if you use the [AsyncAPI Generator](https://github.com/asyncapi/generator) by Fran Méndez:
-
-```
-npm install -g asyncapi-generator
-```
-
-The following command (PC-version) will create a `api/playerapi.md` file from `api/playerapi.yaml`:
-
-```
-ag -o .\docs .\api\playerapi.yaml markdown 
-```
+To ease that post-processing, we use [node.js](https://nodejs.org). The repo contains a package.json. By running `npm install` you get the tool `@asyncapi/generator` and two templates. Run `npm run ag` to recreate html and markdown representations of the api.
