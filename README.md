@@ -11,6 +11,9 @@ Texts about Player API:
 * see also: [metadata](https://github.com/verona-interfaces/metadata)
 
 ## release notes
+### 5.1
+* add print mode to start command
+
 ### 5.0
 * the player should send always full payload; in case of performance issues, the player should use strategies like buffer/delay/debounce; furthermore, the host can decide to ignore state messages; therefor, `vopGetStateRequest` and `stateReportPolicy` property of `playerConfig` in `vopStartCommand` are removed
 * the host should manage any stop request by hiding or unloading the player; to continue, the player can be reloaded with previous responses; therefor, `vopStopCommand`, `vopContinueCommand` and the `state` property of `playerState` in `vopStateChangedNotification` are removed
