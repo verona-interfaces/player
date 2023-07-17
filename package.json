@@ -1,6 +1,6 @@
 {
   "name": "verona-interfaces_specification_player",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "license": "BY BY-SA 4.0",
   "repository": {
     "type": "git",
@@ -12,8 +12,8 @@
   },
   "private": true,
   "devDependencies": {
-    "@asyncapi/generator": "^1.8.27",
-    "@asyncapi/html-template": "^0.26.0",
+    "@asyncapi/generator": "^1.9.18",
+    "@asyncapi/html-template": "^0.28.3",
     "@asyncapi/markdown-template": "^1.2.1"
   }
 }

@@ -1,7 +1,7 @@
-asyncapi: 2.0.0
+asyncapi: 2.4.0
 info:
-  title: Verona Inferfaces Specification "Player"
-  version: '5.0.0'
+  title: Verona Interfaces Specification "Player"
+  version: '5.1.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
@@ -22,16 +22,17 @@ info:
 channels:
   vopReadyNotification:
     subscribe:
-      operationId: vopReadyNotification
       summary: Ready Notification
       description: The player announces that it's code is loaded and initialized so the communication can start.
       message:
+        messageId: vopReadyNotificationMessage
+        contentType: application/json
         payload:
           type: object
           properties:
             metadata:
               type: string
-              description: Via this property, the player sends the stringified metadata object definied as json-ld
+              description: Via this property, the player sends the stringified metadata object defined as json-ld
                 in the header of the html file. See [here](https://github.com/verona-interfaces/metadata/#readme) for
                 more information.
           required:
@@ -39,10 +40,10 @@ channels:
 
   vopStartCommand:
     publish:
-      operationId: vopStartCommand
       summary: Start Command
       description: The application sends parameters for running the unit and commands the start of user interaction.
       message:
+        messageId: vopStartCommandMessage
         contentType: application/json
         payload:
           type: object
@@ -82,10 +83,10 @@ channels:
 
   vopStateChangedNotification:
     subscribe:
-      operationId: vopStateChangedNotification
       summary: State Changed Notification
       description: The state of the unit and/or of the player has changed. Some logs entries might be sent.
       message:
+        messageId: vopStateChangedNotificationMessage
         contentType: application/json
         payload:
           type: object
@@ -116,10 +117,10 @@ channels:
 
   vopPageNavigationCommand:
     publish:
-      operationId: vopPageNavigationCommand
       summary: Page Navigation Command
       description: The application wants the player to navigate to a specific page.
       message:
+        messageId: vopPageNavigationCommandMessage
         contentType: application/json
         payload:
           type: object
@@ -136,10 +137,10 @@ channels:
             - target
   vopUnitNavigationRequestedNotification:
     subscribe:
-      operationId: vopUnitNavigationRequestedNotification
       summary: Unit Navigation Requested Notification
       description: The user has triggered a navigation request.
       message:
+        messageId: vopUnitNavigationRequestedNotificationMessage
         contentType: application/json
         payload:
           type: object
@@ -154,10 +155,10 @@ channels:
 
   vopNavigationDeniedNotification:
     publish:
-      operationId: vopNavigationDeniedNotification
       summary: Navigation Denied Notification
       description: The host lets the player know that a navigation request was denied due to player state.
       message:
+        messageId: vopNavigationDeniedNotificationMessage
         contentType: application/json
         payload:
           type: object
@@ -179,12 +180,12 @@ channels:
 
   vopWindowFocusChangedNotification:
     subscribe:
-      operationId: vopWindowFocusChangedNotification
       summary: Window Focus Changed Notification
       description: In some use cases like exam mode the host must know whether the host or the player has the
         window's focus. If none of these windows have the focus (i. e. the testee has left the test), some logging or
         warning could be necessary. The player should listen to the window events 'blur' and 'focus'.
       message:
+        messageId: vopWindowFocusChangedNotificationMessage
         contentType: application/json
         payload:
           type: object
@@ -351,6 +352,18 @@ components:
             - concat-scroll
             - concat-scroll-snap
           example: 'concat-scroll'
+        printMode:
+          description: If this mode is 'on', the host presents the unit as preview for printing. Depending on the unit,
+            the player modifies the presentation by (1) assignment of print styles, (2) ALL unit parts are displayed regardless
+            of conditions, (3) all pages are displayed among each other, (4) the height of the given space is ignored
+            (no vertical scrollbars by player). If the mode is set to 'on-with-ids', the player adds control labels to
+            show the IDs.
+          type: string
+          enum:
+            - off
+            - on
+            - on-with-ids
+          example: 'off'
         enabledNavigationTargets:
           description: This lets the player know, what navigation target is enabled to natigate to. The player might
             then alter the presentation of responding buttons.
