@@ -8,7 +8,7 @@ info:
 
     Most importantly, the message body carries as first parameter the operationId of the message.
 
-    The html page MUST contain a <script>-tag with metadata. The syntax and structure of this data are described
+    The html page MUST contain a `<script>`-tag with metadata. The syntax and structure of this data are described
     [here](https://github.com/verona-interfaces/metadata/#readme).
 
   license:

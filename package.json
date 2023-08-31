@@ -7,6 +7,7 @@
     "url": "https://github.com/verona-interfaces/player"
   },
   "scripts": {
+    "uml": "puml generate model/CommunicationScheme.puml -o model/CommunicationScheme.png",
     "ag": "ag -o ./docs ./api/playerapi.yaml @asyncapi/markdown-template --force-write",
     "postag": "ag -o ./docs ./api/playerapi.yaml @asyncapi/html-template --force-write"
   },
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@asyncapi/generator": "^1.9.18",
     "@asyncapi/html-template": "^0.28.3",
-    "@asyncapi/markdown-template": "^1.2.1"
+    "@asyncapi/markdown-template": "^1.2.1",
+    "node-plantuml": "^0.9.0"
   }
 }

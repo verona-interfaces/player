@@ -1,2 +1,7 @@
 /.idea
 /node_modules
+/public/**
+
+# System files
+.DS_Store
+Thumbs.db

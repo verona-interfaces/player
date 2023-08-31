@@ -41,11 +41,7 @@ By editing, you might like to see the diagrams rendered on every change. This is
 
 In order to use the UML diagrams directly in markdown documents, one must render every UML diagram as image file and keep it in the repository too. We found png format very useful, because PlantUML is able to store the uml syntax in the png file as metadata. If only the png file is available, one can extract the syntax out of the png file.
 
-Please render the puml files to png files before every git push. This helps on GitHub to evaluate the changes. You need to install PlantUML on your computer. It's a Java application, so ensure that Java is installed too. Assuming that `plantuml.jar` resides in one folder above the project, the following command (on PC) will process all changed puml files in subfolder `model` as png files into the subfolder `model/png`. 
-
-```
-java -jar ..\plantuml.jar -checkmetadata -o png model\*.puml   
-```
+Please render the puml files to png files before every git push. This helps on GitHub to evaluate the changes. When you run `npm install` after cloning this repo, you can use the script `uml` in the `package.json` to run the conversion. 
 
 ### API
 The api is written as [async api](https://www.asyncapi.com) yaml file. After editing, we create markdown and html files for better reading.
