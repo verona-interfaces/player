@@ -11,6 +11,10 @@ Texts about Player API:
 * see also: [metadata](https://github.com/verona-interfaces/metadata)
 
 ## release notes
+
+### 5.2
+* add `buttons` mode to player config in start command
+
 ### 5.1
 * add print mode to start command
 

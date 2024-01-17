@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: Verona Interfaces Specification "Player"
-  version: '5.1.0'
+  version: '5.2.0'
   description: This is one part of the Verona Online Assessment Standards.
     All messages are sent via the postMessage function of the html page. The player takes the page root of its parent
     as target (parent.window), and the application binds the function call to the iframe element of the player.
@@ -344,11 +344,12 @@ components:
           example: 'lean'
         pagingMode:
           description: If the player makes it optional, then the page presentation can be changed by the host. The pages are
-            presented separately, concatenated to one big page or concatenated in snap mode (scrolling vertically, but
+            presented separately, with page navigation buttons, concatenated to one big page or concatenated in snap mode (scrolling vertically, but
             only one page is visible at a time).
           type: string
           enum:
             - separate
+            - buttons
             - concat-scroll
             - concat-scroll-snap
           example: 'concat-scroll'
