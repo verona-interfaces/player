@@ -20,10 +20,11 @@ info:
 channels:
   vopReadyNotification:
     subscribe:
+      operationId: vopReadyNotification
       summary: Ready Notification
       description: The player announces that it's code is loaded and initialized so the communication can start.
       message:
-        contentType: application/json
+        name: vopReadyNotification
         payload:
           type: object
           properties:
@@ -37,10 +38,11 @@ channels:
 
   vopStartCommand:
     publish:
+      operationId: vopStartCommand
       summary: Start Command
       description: The application sends parameters for running the unit and commands the start of user interaction.
       message:
-        contentType: application/json
+        name: vopStartCommand
         payload:
           type: object
           properties:
@@ -79,10 +81,11 @@ channels:
 
   vopStateChangedNotification:
     subscribe:
+      operationId: vopStateChangedNotification
       summary: State Changed Notification
       description: The state of the unit and/or of the player has changed. Some logs entries might be sent.
       message:
-        contentType: application/json
+        name: vopStateChangedNotification
         payload:
           type: object
           properties:
@@ -112,10 +115,11 @@ channels:
 
   vopPageNavigationCommand:
     publish:
+      operationId: vopPageNavigationCommand
       summary: Page Navigation Command
       description: The application wants the player to navigate to a specific page.
       message:
-        contentType: application/json
+        name: vopPageNavigationCommand
         payload:
           type: object
           properties:
@@ -131,10 +135,11 @@ channels:
             - target
   vopUnitNavigationRequestedNotification:
     subscribe:
+      operationId: vopUnitNavigationRequestedNotification
       summary: Unit Navigation Requested Notification
       description: The user has triggered a navigation request.
       message:
-        contentType: application/json
+        name: vopUnitNavigationRequestedNotification
         payload:
           type: object
           properties:
@@ -148,10 +153,11 @@ channels:
 
   vopNavigationDeniedNotification:
     publish:
+      operationId: vopNavigationDeniedNotification
       summary: Navigation Denied Notification
       description: The host lets the player know that a navigation request was denied due to player state.
       message:
-        contentType: application/json
+        name: vopNavigationDeniedNotification
         payload:
           type: object
           properties:
@@ -172,12 +178,13 @@ channels:
 
   vopWindowFocusChangedNotification:
     subscribe:
+      operationId: vopWindowFocusChangedNotification
       summary: Window Focus Changed Notification
       description: In some use cases like exam mode the host must know whether the host or the player has the
         window's focus. If none of these windows have the focus (i. e. the testee has left the test), some logging or
         warning could be necessary. The player should listen to the window events 'blur' and 'focus'.
       message:
-        contentType: application/json
+        name: vopWindowFocusChangedNotification
         payload:
           type: object
           properties:
