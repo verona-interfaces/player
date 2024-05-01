@@ -1,21 +1,14 @@
 {
   "name": "verona-interfaces_specification_player",
-  "version": "5.2.0",
-  "license": "BY BY-SA 4.0",
+  "license": "CC0-1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/verona-interfaces/player"
   },
   "scripts": {
-    "uml": "puml generate model/CommunicationScheme.puml -o model/CommunicationScheme.png",
-    "ag": "ag -o ./docs ./api/playerapi.yaml @asyncapi/markdown-template --force-write",
-    "postag": "ag -o ./docs ./api/playerapi.yaml @asyncapi/html-template --force-write"
+    "generate": "ag -o ./docs ./playerapi.yaml @asyncapi/html-template --force-write -p singleFile=true"
   },
-  "private": true,
   "devDependencies": {
-    "@asyncapi/generator": "^1.9.18",
-    "@asyncapi/html-template": "^0.28.3",
-    "@asyncapi/markdown-template": "^1.2.1",
-    "node-plantuml": "^0.9.0"
+    "@asyncapi/cli": "^1.9.2"
   }
 }

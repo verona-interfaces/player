@@ -1,7 +1,7 @@
-/.idea
 /node_modules
-/public/**
-
-# System files
+/.idea
 .DS_Store
 Thumbs.db
+/css
+/js
+/docs/*

@@ -1,14 +1,15 @@
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/verona-interfaces/player)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
-In order to understand Verona Interfaces, please go 
-to [Verona Interfaces Introduction](https://github.com/verona-interfaces/introduction)! 
+In order to understand Verona Interfaces, please go
+to [Verona Interfaces Introduction](https://verona-interfaces.github.io)!
 
-Texts about Player API:
-* Model: [Use cases and communication](model/model.md)
-* [About pages of a unit](model/pages.md)
-* Player API: [markdown](docs/asyncapi.md), [shiny html](https://verona-interfaces.github.io/player)
-* see also: [metadata](https://github.com/verona-interfaces/metadata)
+A Verona Player is a Html-file to be loaded into an iframe element of a web application. We call the web application "host". This specification describes the asynchronous communication between a host and the player.
+
+Read the spec here:
+* [Html-Document](https://verona-interfaces.github.io/player)
+* [AsyncApi source yaml](playerapi.yaml)
+
+The player file must contain of one script tag for metadata as json-ld. The syntax and elements are described [here](https://verona-interfaces.github.io/intro/metadata).
 
 ## release notes
 
@@ -37,17 +38,13 @@ Texts about Player API:
 * changed in `vopUnitNavigationRequestedNotification` property name `targetRelative` to `target`
 
 ## For Contributors
+This api is written as [async api](https://www.asyncapi.com/de) yaml file. After committing to main branch, a GitHub action is triggered to build the html page. Don't forget to update the version and the release notes in `README.md`. Then, create an release.
 
-### UML
-For discussions, we visualise models (sequences, interfaces, classes) via UML. These diagrams are stored in this repository as *.puml files as we use [PlantUML](https://plantuml.com/) as a tool.
+If you like to check the html page before committing to main branch, 
 
-By editing, you might like to see the diagrams rendered on every change. This is supported by many tools depending on your development environment. For example, IntelliJ idea offers a plugin mechanism, and the plugins "PlantUML integration" by Eugene Steinberg and "PlantUML Syntax Check" by Stefan Zeller are very useful. For Visual Studio Code there are also good extensions in the marketplace.
+* have an npm/node.js-environment installed
+* check out the repo
+* run `npm install`
+* run the `generate` script in package.json.
 
-In order to use the UML diagrams directly in markdown documents, one must render every UML diagram as image file and keep it in the repository too. We found png format very useful, because PlantUML is able to store the uml syntax in the png file as metadata. If only the png file is available, one can extract the syntax out of the png file.
-
-Please render the puml files to png files before every git push. This helps on GitHub to evaluate the changes. When you run `npm install` after cloning this repo, you can use the script `uml` in the `package.json` to run the conversion. 
-
-### API
-The api is written as [async api](https://www.asyncapi.com) yaml file. After editing, we create markdown and html files for better reading.
-
-To ease that post-processing, we use [node.js](https://nodejs.org). The repo contains a package.json. By running `npm install` you get the tool `@asyncapi/generator` and two templates. Run `npm run ag` to recreate html and markdown representations of the api.
+After that, you can check `docs/index.html` in a browser. This file will be ignored by git.
