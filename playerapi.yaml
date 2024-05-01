@@ -1,7 +1,7 @@
 asyncapi: 2.0.0
 info:
   title: Verona Interfaces Specification "Player"
-  version: '5.2.0'
+  version: '6.0.0'
   description: |
     This is one part of the [Verona Online Assessment Standards](https://verona-interfaces.github.io). All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
 
@@ -71,11 +71,8 @@ channels:
               example: 'iqb-scripted@1.4.0'
             unitState:
               $ref: "#/components/schemas/UnitState"
-              description: If there is any state what should be restored, then this is the information for that.
             playerConfig:
               $ref: "#/components/schemas/PlayerConfig"
-              description: This data supplies some information or instruction about this specific run of the unit
-                (number, unit title, some behavioral data for the player).
           required:
             - sessionId
 
@@ -98,17 +95,14 @@ channels:
               example: "2021-11-15T10:22:25Z"
             unitState:
               $ref: "#/components/schemas/UnitState"
-              description: To be stored, evaluated etc. This is the main yield, the responses.
             playerState:
               $ref: "#/components/schemas/PlayerState"
-              description: Information important only for the application to ensure the correct visual, such as
-                navigation buttons.
             log:
               type: array
-              items:
-                $ref: "#/components/schemas/LogEntry"
               description: Log entries (lean version) add some information to the response in order to understand
                 the response process better or (rich version) let the analyst replay every change of the state.
+              items:
+                $ref: "#/components/schemas/LogEntry"
           required:
             - sessionId
             - timeStamp
@@ -224,23 +218,38 @@ components:
         - key
     PlayerState:
       type: object
+      description: The player sends some information on pages (valid pages, current page).
       properties:
         validPages:
-          description: This data is structured as "page key" => "page label", so we have (1) keys for navigation
-            commands or state notifications and (2) strings as labels of navigation buttons if needed.
-          type: object
-          additionalProperties:
-            type: string
+          description: This is an array with the id of the page und its label. The order of the items matter.
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              label:
+                type: string
+            required:
+              - id
           example:
-            page1: 'Seite 1'
-            page2: 'Seite 2'
+            [
+              {
+                "id": "p1",
+                "label": "start"
+              },{
+                "id": "p3",
+                "label": "on the beach"
+              }
+            ]
         currentPage:
-          description: Key of the page currently presented. This key is taken from the list of valid pages. If the
+          description: Id of the page currently presented. This id is taken from the list of valid pages. If the
             paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.
           type: string
-          example: 'page4'
+          example: 'p3'
     UnitState:
       type: object
+      description: These data stand for the answers and some additional information on the status of responding. Emitted by the player during the test, it is given back to the player on start to restore the former state.
       properties:
         dataParts:
           description: This data is used by the player to restore the former response state and by data processing
@@ -312,6 +321,8 @@ components:
 
     PlayerConfig:
       type: object
+      description: This data supplies some information or instruction about this specific run of the unit
+        (number, unit title, some behavioral data for the player).
       properties:
         unitNumber:
           description: The player might show the numbering of the current unit to ease the navigation.
