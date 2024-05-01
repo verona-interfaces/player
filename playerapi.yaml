@@ -111,7 +111,7 @@ channels:
     publish:
       operationId: vopPageNavigationCommand
       summary: Page Navigation Command
-      description: The application wants the player to navigate to a specific page.
+      description: The host wants the player to navigate to a specific page.
       message:
         name: vopPageNavigationCommand
         payload:
@@ -127,6 +127,7 @@ channels:
           required:
             - sessionId
             - target
+
   vopUnitNavigationRequestedNotification:
     subscribe:
       operationId: vopUnitNavigationRequestedNotification
@@ -169,6 +170,50 @@ channels:
                   - responsesIncomplete
           required:
             - sessionId
+
+  vopPlayerConfigChangedNotification:
+    publish:
+      operationId: vopPlayerConfigChangedNotification
+      summary: Player Config Changed Notification
+      description: The host wants the player to update its configuration given at start.
+      message:
+        name: vopPlayerConfigChangedNotification
+        payload:
+          type: object
+          properties:
+            sessionId:
+              $ref: "#/components/schemas/SessionIdString"
+            playerConfig:
+              $ref: "#/components/schemas/PlayerConfig"
+          required:
+            - sessionId
+            - playerConfig
+
+  vopRuntimeErrorNotification:
+    subscribe:
+      operationId: vopRuntimeErrorNotification
+      summary: Runtime Error Notification
+      description: The player had some trouble and the response process is at risk.
+      message:
+        name: vopRuntimeErrorNotification
+        payload:
+          type: object
+          properties:
+            sessionId:
+              $ref: "#/components/schemas/SessionIdString"
+            code:
+              type: string
+              description: The list should be defined after getting some experience with that operation.
+              examples: 
+                - AUDIO_CORRUPT
+                - GEOGEBRA_CRASH
+            message:
+              type: string
+              description: Some additional information.
+              example: "Was not able to play Element 'audio_4'"
+          required:
+            - sessionId
+            - code
 
   vopWindowFocusChangedNotification:
     subscribe:

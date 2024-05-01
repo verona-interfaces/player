@@ -13,6 +13,11 @@ The player file must contain of one script tag for metadata as json-ld. The synt
 
 ## release notes
 
+### 6.0
+* change data type of `validPages` in `playerState`
+* add `vopPlayerConfigChangedNotification`
+* add `vopRuntimeErrorNotification`
+
 ### 5.2
 * add `buttons` mode to player config in start command
 
