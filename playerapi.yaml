@@ -215,6 +215,58 @@ channels:
             - sessionId
             - code
 
+  vopWidgetCall:
+    subscribe:
+      operationId: vopWidgetCall
+      summary: Request widget dialog
+      description: The player calls for the execution of a widget.
+      message:
+        name: vopWidgetCall
+        payload:
+          type: object
+          properties:
+            sessionId:
+              $ref: "#/components/schemas/SessionIdString"
+            callId:
+              type: string
+              description: Helps to assign the return value to an player element.
+            type:
+              type: string
+              examples:
+                - CALC
+                - PERIODIC_TABLE
+                - MOLECULE_EDITOR
+            parameters:
+              type: array
+              items:
+                $ref: "#/components/schemas/WidgetParameter"
+            state:
+              type: string
+              format: byte
+          required:
+            - sessionId
+            - type
+
+  vopWidgetReturn:
+    publish:
+      operationId: vopWidgetReturn
+      description: Sends the return value of a widget call to the player.
+      message:
+        name: vopWidgetReturn
+        payload:
+          type: object
+          properties:
+            sessionId:
+              $ref: "#/components/schemas/SessionIdString"
+            callId:
+              type: string
+              description: Helps to find the corresponding element in the player.
+            state:
+              type: string
+              format: byte
+          required:
+            - sessionId
+
   vopWindowFocusChangedNotification:
     subscribe:
       operationId: vopWindowFocusChangedNotification
@@ -261,6 +313,25 @@ components:
       required:
         - timeStamp
         - key
+
+    WidgetParameter:
+      type: object
+      description: This object structure is used to send parameters to a widget.
+      properties:
+        key:
+          description: Identifier for the parameter.
+          type: string
+          minLength: 2
+        value:
+          description: Value of the parameter.
+          type: string
+      required:
+        - key
+      example:
+        {
+          "key": "LAYOUT",
+          "value": "EXTENDED"
+        }
 
     SharedParameter:
       type: object
