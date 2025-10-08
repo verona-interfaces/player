@@ -1,7 +1,7 @@
-asyncapi: 2.0.0
+asyncapi: 2.5.0
 info:
   title: Verona Interfaces Specification "Player"
-  version: '6.0.0'
+  version: '6.1.0'
   description: |
     This is one part of the [Verona Online Assessment Standards](https://verona-interfaces.github.io). All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
 
@@ -261,6 +261,27 @@ components:
       required:
         - timeStamp
         - key
+
+    SharedParameter:
+      type: object
+      description: This object structure is used to share data between instances of the module. The host may collect all shared data 
+        sent by modules and provide it to every module.
+      properties:
+        key:
+          description: Identifier to find or set the shared parameter.
+          type: string
+          minLength: 2
+        value:
+          description: Value of the parameter.
+          type: string
+      required:
+        - key
+      example:
+        {
+          "key": "KEYBOARD_USE",
+          "value": "INTERNAL_ONLY"
+        }
+
     PlayerState:
       type: object
       description: The player sends some information on pages (valid pages, current page).
@@ -292,6 +313,11 @@ components:
             paging mode is 'concat-scroll', the first page with parts in view port is taken as current page.
           type: string
           example: 'p3'
+        sharedParameters:
+          type: array
+          items:
+            $ref: "#/components/schemas/SharedParameter"
+
     UnitState:
       type: object
       description: These data stand for the answers and some additional information on the status of responding. Emitted by the player during the test, it is given back to the player on start to restore the former state.
@@ -339,6 +365,7 @@ components:
             data to the player to restore the former unit state, the player should check the given data type to
             avoid data mess after getting an old data type.
           example: 'iqb-standard@2.1.2'
+
     NavigationTarget:
       description: This enumeration lists all possible targets the player could send a navigation request for, relative
         to the position of the current unit. This could be the next and previous unit, last and first unit of the current
@@ -438,3 +465,7 @@ components:
             url by an url separator "/" and the resource ID (uri-encoded if needed).
           type: string
           example: 'https://www.iqb-testcenter.de/download/iskeid-34e845-didmmemdkek'
+        sharedParameters:
+          type: array
+          items:
+            $ref: "#/components/schemas/SharedParameter"
