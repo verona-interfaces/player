@@ -2,7 +2,4 @@
 /.idea
 .DS_Store
 Thumbs.db
-/css
-/js
-/docs/*
-/public/*
+/public/**
