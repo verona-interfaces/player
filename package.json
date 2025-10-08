@@ -6,7 +6,7 @@
     "url": "https://github.com/verona-interfaces/player"
   },
   "scripts": {
-    "generate_docs": "ag ./playerapi.yaml @asyncapi/html-template --param config=make_doc/asyncapi.config.json -o ./public --force-write"
+    "generate": "ag ./playerapi.yaml @asyncapi/html-template --param config=make_doc/asyncapi.config.json -o ./public --force-write"
   },
   "devDependencies": {
     "@asyncapi/generator": "2.4.1",
