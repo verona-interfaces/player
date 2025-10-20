@@ -1,7 +1,7 @@
 asyncapi: 2.5.0
 info:
   title: Verona Interfaces Specification "Player"
-  version: '6.1.0'
+  version: '6.1.1'
   description: |
     This is one part of the [Verona Online Assessment Standards](https://verona-interfaces.github.io). All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
 
@@ -230,12 +230,13 @@ channels:
             callId:
               type: string
               description: Helps to assign the return value to an player element.
-            type:
+            widgetType:
               type: string
-              examples:
-                - CALC
-                - PERIODIC_TABLE
-                - MOLECULE_EDITOR
+              enum:
+                - WIDGET_CALC
+                - WIDGET_PERIODIC_TABLE
+                - WIDGET_MOLECULE_EDITOR
+                - UNIT
             parameters:
               type: array
               items:
