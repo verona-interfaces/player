@@ -1,7 +1,7 @@
 asyncapi: 2.5.0
 info:
   title: Verona Interfaces Specification "Player"
-  version: '6.1.1'
+  version: '6.3.0'
   description: |
     This is one part of the [Verona Online Assessment Standards](https://verona-interfaces.github.io). All messages are sent via the postMessage function of the html page. The player takes the page root of its parent as target (parent.window), and the application binds the function call to the iframe element of the player.
 
@@ -517,7 +517,16 @@ components:
             - off
             - on
             - on-with-ids
+            - selected-elements-only
           example: 'off'
+        elementsToHighlight:
+          type: array
+          description: If 'printMode' is 'selected-elements-only', this parameter enumerates all elements to be visible. The player will remove all 
+            other elements and pages. Otherwise, the player will bring the elements into the viewport and will set some kind of visual
+            accentuation (i. e. colored border). The parameter 'startPage' (see below) will be ignored.
+          items:
+            type: string
+
         enabledNavigationTargets:
           description: This lets the player know, what navigation target is enabled to natigate to. The player might
             then alter the presentation of responding buttons.
